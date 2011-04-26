@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28031BE3136728BD006A76F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28031BE2136728BD006A76F6 /* UIKit.framework */; };
+		28031BE5136728BD006A76F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28031BE4136728BD006A76F6 /* Foundation.framework */; };
+		28031BE7136728BD006A76F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28031BE6136728BD006A76F6 /* CoreGraphics.framework */; };
+		28031BED136728BD006A76F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28031BEB136728BD006A76F6 /* InfoPlist.strings */; };
+		28031BF0136728BD006A76F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031BEF136728BD006A76F6 /* main.m */; };
+		28031BF3136728BD006A76F6 /* Disluncho1AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031BF2136728BD006A76F6 /* Disluncho1AppDelegate.m */; };
+		28031BF6136728BD006A76F6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031BF4136728BD006A76F6 /* MainWindow.xib */; };
+		28031BF9136728BD006A76F6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031BF8136728BD006A76F6 /* RootViewController.m */; };
+		28031BFC136728BD006A76F6 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031BFA136728BD006A76F6 /* RootViewController.xib */; };
+		28031C03136728BE006A76F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28031BE2136728BD006A76F6 /* UIKit.framework */; };
+		28031C04136728BE006A76F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28031BE4136728BD006A76F6 /* Foundation.framework */; };
+		28031C05136728BE006A76F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28031BE6136728BD006A76F6 /* CoreGraphics.framework */; };
+		28031C0D136728BE006A76F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28031C0B136728BE006A76F6 /* InfoPlist.strings */; };
+		28031C10136728BE006A76F6 /* Disluncho1Tests.h in Resources */ = {isa = PBXBuildFile; fileRef = 28031C0F136728BE006A76F6 /* Disluncho1Tests.h */; };
+		28031C12136728BE006A76F6 /* Disluncho1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C11136728BE006A76F6 /* Disluncho1Tests.m */; };
+		28031C1E13672CB1006A76F6 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */; };
+		28031C1F13672CB1006A76F6 /* GroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C1D13672CB1006A76F6 /* GroupsViewController.xib */; };
+		28031C33136740B6006A76F6 /* NominateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C31136740B6006A76F6 /* NominateViewController.m */; };
+		28031C34136740B6006A76F6 /* NominateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C32136740B6006A76F6 /* NominateViewController.xib */; };
+		28031C38136745D9006A76F6 /* VoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C36136745D9006A76F6 /* VoteViewController.m */; };
+		28031C39136745D9006A76F6 /* VoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C37136745D9006A76F6 /* VoteViewController.xib */; };
+		28031C3D13674A73006A76F6 /* WinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */; };
+		28031C3E13674A73006A76F6 /* WinnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C3C13674A73006A76F6 /* WinnerViewController.xib */; };
+		28031C421367578E006A76F6 /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C401367578D006A76F6 /* AddGroupViewController.m */; };
+		28031C431367578E006A76F6 /* AddGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C411367578E006A76F6 /* AddGroupViewController.xib */; };
+		28031C4713675D38006A76F6 /* AddRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C4513675D37006A76F6 /* AddRestaurantViewController.m */; };
+		28031C4813675D38006A76F6 /* AddRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C4613675D38006A76F6 /* AddRestaurantViewController.xib */; };
+		28031C4C1367647D006A76F6 /* GroupDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C4A1367647C006A76F6 /* GroupDetailsViewController.m */; };
+		28031C4D1367647D006A76F6 /* GroupDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C4B1367647C006A76F6 /* GroupDetailsViewController.xib */; };
+		28031C571367890E006A76F6 /* default_restuarant.png in Resources */ = {isa = PBXBuildFile; fileRef = 28031C561367890E006A76F6 /* default_restuarant.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		28031C06136728BE006A76F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28031BD5136728BD006A76F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28031BDD136728BD006A76F6;
+			remoteInfo = Disluncho1;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		28031BDE136728BD006A76F6 /* Disluncho1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Disluncho1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28031BE2136728BD006A76F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28031BE4136728BD006A76F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		28031BE6136728BD006A76F6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28031BEA136728BD006A76F6 /* Disluncho1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Disluncho1-Info.plist"; sourceTree = "<group>"; };
+		28031BEC136728BD006A76F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		28031BEE136728BD006A76F6 /* Disluncho1-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Disluncho1-Prefix.pch"; sourceTree = "<group>"; };
+		28031BEF136728BD006A76F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		28031BF1136728BD006A76F6 /* Disluncho1AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Disluncho1AppDelegate.h; sourceTree = "<group>"; };
+		28031BF2136728BD006A76F6 /* Disluncho1AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Disluncho1AppDelegate.m; sourceTree = "<group>"; };
+		28031BF5136728BD006A76F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		28031BF7136728BD006A76F6 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		28031BF8136728BD006A76F6 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		28031BFB136728BD006A76F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		28031C02136728BE006A76F6 /* Disluncho1Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Disluncho1Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28031C0A136728BE006A76F6 /* Disluncho1Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Disluncho1Tests-Info.plist"; sourceTree = "<group>"; };
+		28031C0C136728BE006A76F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		28031C0E136728BE006A76F6 /* Disluncho1Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Disluncho1Tests-Prefix.pch"; sourceTree = "<group>"; };
+		28031C0F136728BE006A76F6 /* Disluncho1Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Disluncho1Tests.h; sourceTree = "<group>"; };
+		28031C11136728BE006A76F6 /* Disluncho1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Disluncho1Tests.m; sourceTree = "<group>"; };
+		28031C1B13672CB1006A76F6 /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
+		28031C1C13672CB1006A76F6 /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
+		28031C1D13672CB1006A76F6 /* GroupsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupsViewController.xib; sourceTree = "<group>"; };
+		28031C30136740B5006A76F6 /* NominateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NominateViewController.h; sourceTree = "<group>"; };
+		28031C31136740B6006A76F6 /* NominateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NominateViewController.m; sourceTree = "<group>"; };
+		28031C32136740B6006A76F6 /* NominateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NominateViewController.xib; sourceTree = "<group>"; };
+		28031C35136745D8006A76F6 /* VoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteViewController.h; sourceTree = "<group>"; };
+		28031C36136745D9006A76F6 /* VoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteViewController.m; sourceTree = "<group>"; };
+		28031C37136745D9006A76F6 /* VoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoteViewController.xib; sourceTree = "<group>"; };
+		28031C3A13674A73006A76F6 /* WinnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinnerViewController.h; sourceTree = "<group>"; };
+		28031C3B13674A73006A76F6 /* WinnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinnerViewController.m; sourceTree = "<group>"; };
+		28031C3C13674A73006A76F6 /* WinnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WinnerViewController.xib; sourceTree = "<group>"; };
+		28031C3F1367578D006A76F6 /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGroupViewController.h; sourceTree = "<group>"; };
+		28031C401367578D006A76F6 /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupViewController.m; sourceTree = "<group>"; };
+		28031C411367578E006A76F6 /* AddGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGroupViewController.xib; sourceTree = "<group>"; };
+		28031C4413675D37006A76F6 /* AddRestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRestaurantViewController.h; sourceTree = "<group>"; };
+		28031C4513675D37006A76F6 /* AddRestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRestaurantViewController.m; sourceTree = "<group>"; };
+		28031C4613675D38006A76F6 /* AddRestaurantViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRestaurantViewController.xib; sourceTree = "<group>"; };
+		28031C491367647C006A76F6 /* GroupDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetailsViewController.h; sourceTree = "<group>"; };
+		28031C4A1367647C006A76F6 /* GroupDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailsViewController.m; sourceTree = "<group>"; };
+		28031C4B1367647C006A76F6 /* GroupDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupDetailsViewController.xib; sourceTree = "<group>"; };
+		28031C561367890E006A76F6 /* default_restuarant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_restuarant.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28031BDB136728BD006A76F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28031BE3136728BD006A76F6 /* UIKit.framework in Frameworks */,
+				28031BE5136728BD006A76F6 /* Foundation.framework in Frameworks */,
+				28031BE7136728BD006A76F6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28031BFE136728BE006A76F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28031C03136728BE006A76F6 /* UIKit.framework in Frameworks */,
+				28031C04136728BE006A76F6 /* Foundation.framework in Frameworks */,
+				28031C05136728BE006A76F6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28031BD3136728BD006A76F6 = {
+			isa = PBXGroup;
+			children = (
+				28031BE8136728BD006A76F6 /* Disluncho1 */,
+				28031C08136728BE006A76F6 /* Disluncho1Tests */,
+				28031BE1136728BD006A76F6 /* Frameworks */,
+				28031BDF136728BD006A76F6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28031BDF136728BD006A76F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28031BDE136728BD006A76F6 /* Disluncho1.app */,
+				28031C02136728BE006A76F6 /* Disluncho1Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28031BE1136728BD006A76F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28031BE2136728BD006A76F6 /* UIKit.framework */,
+				28031BE4136728BD006A76F6 /* Foundation.framework */,
+				28031BE6136728BD006A76F6 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		28031BE8136728BD006A76F6 /* Disluncho1 */ = {
+			isa = PBXGroup;
+			children = (
+				28031BF1136728BD006A76F6 /* Disluncho1AppDelegate.h */,
+				28031BF2136728BD006A76F6 /* Disluncho1AppDelegate.m */,
+				28031BF7136728BD006A76F6 /* RootViewController.h */,
+				28031BF8136728BD006A76F6 /* RootViewController.m */,
+				28031C1B13672CB1006A76F6 /* GroupsViewController.h */,
+				28031C1C13672CB1006A76F6 /* GroupsViewController.m */,
+				28031C491367647C006A76F6 /* GroupDetailsViewController.h */,
+				28031C4A1367647C006A76F6 /* GroupDetailsViewController.m */,
+				28031C30136740B5006A76F6 /* NominateViewController.h */,
+				28031C31136740B6006A76F6 /* NominateViewController.m */,
+				28031C35136745D8006A76F6 /* VoteViewController.h */,
+				28031C36136745D9006A76F6 /* VoteViewController.m */,
+				28031C3A13674A73006A76F6 /* WinnerViewController.h */,
+				28031C3B13674A73006A76F6 /* WinnerViewController.m */,
+				28031C3F1367578D006A76F6 /* AddGroupViewController.h */,
+				28031C401367578D006A76F6 /* AddGroupViewController.m */,
+				28031C4413675D37006A76F6 /* AddRestaurantViewController.h */,
+				28031C4513675D37006A76F6 /* AddRestaurantViewController.m */,
+				28031BF4136728BD006A76F6 /* MainWindow.xib */,
+				28031BFA136728BD006A76F6 /* RootViewController.xib */,
+				28031C1D13672CB1006A76F6 /* GroupsViewController.xib */,
+				28031C4B1367647C006A76F6 /* GroupDetailsViewController.xib */,
+				28031C411367578E006A76F6 /* AddGroupViewController.xib */,
+				28031C4613675D38006A76F6 /* AddRestaurantViewController.xib */,
+				28031C3C13674A73006A76F6 /* WinnerViewController.xib */,
+				28031C37136745D9006A76F6 /* VoteViewController.xib */,
+				28031C32136740B6006A76F6 /* NominateViewController.xib */,
+				28031BE9136728BD006A76F6 /* Supporting Files */,
+			);
+			path = Disluncho1;
+			sourceTree = "<group>";
+		};
+		28031BE9136728BD006A76F6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				28031C561367890E006A76F6 /* default_restuarant.png */,
+				28031BEA136728BD006A76F6 /* Disluncho1-Info.plist */,
+				28031BEB136728BD006A76F6 /* InfoPlist.strings */,
+				28031BEE136728BD006A76F6 /* Disluncho1-Prefix.pch */,
+				28031BEF136728BD006A76F6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28031C08136728BE006A76F6 /* Disluncho1Tests */ = {
+			isa = PBXGroup;
+			children = (
+				28031C0F136728BE006A76F6 /* Disluncho1Tests.h */,
+				28031C11136728BE006A76F6 /* Disluncho1Tests.m */,
+				28031C09136728BE006A76F6 /* Supporting Files */,
+			);
+			path = Disluncho1Tests;
+			sourceTree = "<group>";
+		};
+		28031C09136728BE006A76F6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				28031C0A136728BE006A76F6 /* Disluncho1Tests-Info.plist */,
+				28031C0B136728BE006A76F6 /* InfoPlist.strings */,
+				28031C0E136728BE006A76F6 /* Disluncho1Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28031BDD136728BD006A76F6 /* Disluncho1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28031C15136728BE006A76F6 /* Build configuration list for PBXNativeTarget "Disluncho1" */;
+			buildPhases = (
+				28031BDA136728BD006A76F6 /* Sources */,
+				28031BDB136728BD006A76F6 /* Frameworks */,
+				28031BDC136728BD006A76F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Disluncho1;
+			productName = Disluncho1;
+			productReference = 28031BDE136728BD006A76F6 /* Disluncho1.app */;
+			productType = "com.apple.product-type.application";
+		};
+		28031C01136728BE006A76F6 /* Disluncho1Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28031C18136728BE006A76F6 /* Build configuration list for PBXNativeTarget "Disluncho1Tests" */;
+			buildPhases = (
+				28031BFD136728BE006A76F6 /* Sources */,
+				28031BFE136728BE006A76F6 /* Frameworks */,
+				28031BFF136728BE006A76F6 /* Resources */,
+				28031C00136728BE006A76F6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28031C07136728BE006A76F6 /* PBXTargetDependency */,
+			);
+			name = Disluncho1Tests;
+			productName = Disluncho1Tests;
+			productReference = 28031C02136728BE006A76F6 /* Disluncho1Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28031BD5136728BD006A76F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = NYU;
+			};
+			buildConfigurationList = 28031BD8136728BD006A76F6 /* Build configuration list for PBXProject "Disluncho1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 28031BD3136728BD006A76F6;
+			productRefGroup = 28031BDF136728BD006A76F6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28031BDD136728BD006A76F6 /* Disluncho1 */,
+				28031C01136728BE006A76F6 /* Disluncho1Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28031BDC136728BD006A76F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28031BED136728BD006A76F6 /* InfoPlist.strings in Resources */,
+				28031BF6136728BD006A76F6 /* MainWindow.xib in Resources */,
+				28031BFC136728BD006A76F6 /* RootViewController.xib in Resources */,
+				28031C1F13672CB1006A76F6 /* GroupsViewController.xib in Resources */,
+				28031C34136740B6006A76F6 /* NominateViewController.xib in Resources */,
+				28031C39136745D9006A76F6 /* VoteViewController.xib in Resources */,
+				28031C3E13674A73006A76F6 /* WinnerViewController.xib in Resources */,
+				28031C431367578E006A76F6 /* AddGroupViewController.xib in Resources */,
+				28031C4813675D38006A76F6 /* AddRestaurantViewController.xib in Resources */,
+				28031C4D1367647D006A76F6 /* GroupDetailsViewController.xib in Resources */,
+				28031C571367890E006A76F6 /* default_restuarant.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28031BFF136728BE006A76F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28031C0D136728BE006A76F6 /* InfoPlist.strings in Resources */,
+				28031C10136728BE006A76F6 /* Disluncho1Tests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28031C00136728BE006A76F6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28031BDA136728BD006A76F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28031BF0136728BD006A76F6 /* main.m in Sources */,
+				28031BF3136728BD006A76F6 /* Disluncho1AppDelegate.m in Sources */,
+				28031BF9136728BD006A76F6 /* RootViewController.m in Sources */,
+				28031C1E13672CB1006A76F6 /* GroupsViewController.m in Sources */,
+				28031C33136740B6006A76F6 /* NominateViewController.m in Sources */,
+				28031C38136745D9006A76F6 /* VoteViewController.m in Sources */,
+				28031C3D13674A73006A76F6 /* WinnerViewController.m in Sources */,
+				28031C421367578E006A76F6 /* AddGroupViewController.m in Sources */,
+				28031C4713675D38006A76F6 /* AddRestaurantViewController.m in Sources */,
+				28031C4C1367647D006A76F6 /* GroupDetailsViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28031BFD136728BE006A76F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28031C12136728BE006A76F6 /* Disluncho1Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		28031C07136728BE006A76F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28031BDD136728BD006A76F6 /* Disluncho1 */;
+			targetProxy = 28031C06136728BE006A76F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		28031BEB136728BD006A76F6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28031BEC136728BD006A76F6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		28031BF4136728BD006A76F6 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28031BF5136728BD006A76F6 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		28031BFA136728BD006A76F6 /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28031BFB136728BD006A76F6 /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+		28031C0B136728BE006A76F6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28031C0C136728BE006A76F6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		28031C13136728BE006A76F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		28031C14136728BE006A76F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		28031C16136728BE006A76F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Disluncho1/Disluncho1-Prefix.pch";
+				INFOPLIST_FILE = "Disluncho1/Disluncho1-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		28031C17136728BE006A76F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Disluncho1/Disluncho1-Prefix.pch";
+				INFOPLIST_FILE = "Disluncho1/Disluncho1-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		28031C19136728BE006A76F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Disluncho1.app/Disluncho1";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Disluncho1Tests/Disluncho1Tests-Prefix.pch";
+				INFOPLIST_FILE = "Disluncho1Tests/Disluncho1Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		28031C1A136728BE006A76F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Disluncho1.app/Disluncho1";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Disluncho1Tests/Disluncho1Tests-Prefix.pch";
+				INFOPLIST_FILE = "Disluncho1Tests/Disluncho1Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28031BD8136728BD006A76F6 /* Build configuration list for PBXProject "Disluncho1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28031C13136728BE006A76F6 /* Debug */,
+				28031C14136728BE006A76F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28031C15136728BE006A76F6 /* Build configuration list for PBXNativeTarget "Disluncho1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28031C16136728BE006A76F6 /* Debug */,
+				28031C17136728BE006A76F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		28031C18136728BE006A76F6 /* Build configuration list for PBXNativeTarget "Disluncho1Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28031C19136728BE006A76F6 /* Debug */,
+				28031C1A136728BE006A76F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28031BD5136728BD006A76F6 /* Project object */;
+}
