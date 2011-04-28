@@ -49,7 +49,7 @@
     self.navigationItem.hidesBackButton = YES;
     
     //add cancel button
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAddGroup:)];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAddGroup)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     [cancelButton release];
     
@@ -62,9 +62,16 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+-(void) cancelAddGroup
+{
+    //pop this view off the screen (back to the previous view)
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void) doneWithGroup
 {
     NSLog(@"Done Adding New Group");
+   
+    // save and update all the set information
     
     //pop this view off the screen (back to the previous view)
     [self.navigationController popViewControllerAnimated:YES];
