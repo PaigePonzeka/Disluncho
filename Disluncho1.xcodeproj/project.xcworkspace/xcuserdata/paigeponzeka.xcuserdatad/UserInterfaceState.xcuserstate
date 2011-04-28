@@ -2010,8 +2010,8 @@
     s = 0;
 }</string>
 		</dict>
-		<real>325719949.67596197</real>
-		<string>{89, 1350}</string>
+		<real>325722408.21340603</real>
+		<string>{89, 986}</string>
 		<string>{461, 238}</string>
 		<dict>
 			<key>$class</key>
@@ -2106,7 +2106,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>325719937.19951999</real>
+		<real>325722053.12896597</real>
 		<string>{0, 439}</string>
 		<string>{370, 63}</string>
 		<dict>
@@ -2286,8 +2286,8 @@
     s = 0;
 }</string>
 		</dict>
-		<real>325716887.38907599</real>
-		<string>{0, 999}</string>
+		<real>325722052.434295</real>
+		<string>{0, 1001}</string>
 		<string>{677, 105}</string>
 		<dict>
 			<key>$class</key>
@@ -2504,8 +2504,8 @@
     s = 0;
 }</string>
 		</dict>
-		<real>325721983.36100602</real>
-		<string>{1485, 1106}</string>
+		<real>325722048.254915</real>
+		<string>{2631, 1355}</string>
 		<string>{1831, 0}</string>
 		<dict>
 			<key>$class</key>
@@ -2829,7 +2829,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>325716884.33362502</real>
+		<real>325722049.43977201</real>
 		<string>{0, 358}</string>
 		<string>{289, 0}</string>
 		<dict>
@@ -5995,7 +5995,7 @@
 				<integer>464</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddGroupViewController.m</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/GroupsViewController.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6013,7 +6013,7 @@
 				<integer>466</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddGroupViewController.h</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/GroupsViewController.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6031,7 +6031,7 @@
 				<integer>468</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/main.m</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/RootViewController.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6049,7 +6049,7 @@
 				<integer>470</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddMemberViewController.m</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/RootViewController.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6067,7 +6067,7 @@
 				<integer>472</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddMemberViewController.h</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddGroupViewController.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6085,7 +6085,7 @@
 				<integer>474</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddRestaurantViewController.m</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddGroupViewController.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6103,7 +6103,7 @@
 				<integer>476</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddMemberViewController.xib</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/main.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6121,7 +6121,7 @@
 				<integer>478</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/GroupsViewController.m</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddMemberViewController.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6139,7 +6139,7 @@
 				<integer>480</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/GroupsViewController.h</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddMemberViewController.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6157,7 +6157,7 @@
 				<integer>482</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/GroupDetailsViewController.m</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddRestaurantViewController.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -17839,7 +17839,7 @@
 				</dict>
 			</array>
 		</dict>
-		<string>AddGroupViewController.m</string>
+		<string>GroupsViewController.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -18055,7 +18055,7 @@
 				</dict>
 			</array>
 		</dict>
-		<string>{{0, 31}, {244, 689}}</string>
+		<string>{{0, 0}, {244, 689}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -18093,7 +18093,7 @@
 			</array>
 		</dict>
 		<string>Disluncho1</string>
-		<string>AddGroupViewController.m</string>
+		<string>GroupsViewController.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -18547,7 +18547,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>26</integer>
+					<integer>143</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -19137,7 +19137,7 @@
 			<key>documentURL</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>116</integer>
+				<integer>100</integer>
 			</dict>
 			<key>timestamp</key>
 			<dict>
@@ -19209,28 +19209,28 @@
     c =     (
                 {
             l = DetailViewController;
-            r = "{7231, 24}";
+            r = "{7594, 24}";
             s = 1;
         },
                 {
             l = DetailViewController;
-            r = "{7282, 24}";
+            r = "{7645, 24}";
             s = 1;
         },
                 {
             l = "Nib name";
-            r = "{7332, 12}";
+            r = "{7695, 12}";
             s = 1;
         }
     );
-    r = "{0, 7572}";
+    r = "{0, 7961}";
     s = 0;
 }</string>
 		</dict>
-		<real>325721983.36483097</real>
-		<string>{1485, 1106}</string>
-		<string>{1831, 0}</string>
-		<string>-cancelAddGroup</string>
+		<real>325722408.21589899</real>
+		<string>{89, 986}</string>
+		<string>{461, 238}</string>
+		<string>-initWithStyle:</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -19248,7 +19248,7 @@
 				<integer>1272</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/AddGroupViewController.m</string>
+		<string>file://localhost/Users/paigeponzeka/Documents/Disluncho1/Disluncho1/GroupsViewController.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -19263,7 +19263,7 @@
 				</dict>
 			</array>
 		</dict>
-		<string>{{0, 0}, {920, 596}}</string>
+		<string>{{0, 0}, {920, 733}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
