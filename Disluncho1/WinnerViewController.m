@@ -39,36 +39,34 @@
 {
     [super viewDidLoad];
 
-    
-    //remove the back button
+    // remove the back button
     self.navigationItem.hidesBackButton = YES;
     
-    //self.navigationItem.backBarButtonItem.title = @"Groups";
-    //self.navigationItem.
-    if(true) //everyone has finished voting/the vote has ended
+    // set the status of voting (are we waiting for people to finish voting?)
+    waiting_for_votes = NO;
+    
+    // get the nominees orders by Most votes to the least votes
+    nomineesArray = [[NSMutableArray alloc] init];
+    [nomineesArray addObject:@"Qdoba"];
+    [nomineesArray addObject:@"Chipotle"];
+    [nomineesArray retain];
+
+    if(!waiting_for_votes) // everyone has finished voting/the vote has ended
     {
         self.title = @"And The Winner is...";
-        //get the nominees orders by Most votes to the least votes
-        nomineesArray = [[NSMutableArray alloc] init];
-        [nomineesArray addObject:@"Qdoba"];
-        [nomineesArray addObject:@"Chipotle"];
-        [nomineesArray retain];
-        
-        //add a back button back to the "Groups"
+                
+        // add a back button back to the "Groups"
         UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Groups" style:UIBarButtonItemStylePlain  target:self action:@selector(goToGroups:)];
         self.navigationItem.rightBarButtonItem = backButton;
         [backButton release];
 
-        
     }
-    else //some one is still voting show the "tallying votes screen"
+    else // some one is still voting show the "tallying votes screen"
     {
+        // user waits here until the voting process has complete
         self.title = @"Tallying Votes...";
         self.navigationItem.hidesBackButton = YES;
 
-        
-        //get the nominees orders by Most votes to the least votes
-        
     }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -80,13 +78,11 @@
 {
     /*Reset back to the groups screen*/
     NSLog(@"Reset to Groups Controller");
-    //navigate to the winnerViewController to see the results
+    
+    // navigate to the winnerViewController to see the results
     GroupsViewController *winnerview = [[GroupsViewController alloc] initWithNibName:@"GroupsViewController" bundle:nil];
     [self.navigationController pushViewController:winnerview animated:NO];
 
-    //GroupsViewController *groupview = [[GroupsViewController alloc] initWithNibName:@"GroupsViewController" bundle:nil];
-    //[self.navigationController popToViewController:groupview animated: true];
-    
     
 }
 - (void)viewDidUnload
@@ -142,68 +138,46 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+    }
+    //set the cell subtitle (time of last visit)
+    
+    // add Subtitle (Last visit to the resturant)
+    cell.detailTextLabel.text=@"Last visit 2 days ago";
+    cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
+    
+    //create total number of votes label
+    UILabel *voteCount;
+    voteCount = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
+    NSString *vote = [NSString stringWithFormat:@"%i",8];
+    voteCount.text = vote;
+    voteCount.textAlignment =UITextAlignmentCenter;
+    voteCount.backgroundColor = [UIColor grayColor];
+    voteCount.textColor =[UIColor whiteColor];
+    voteCount.font=[UIFont fontWithName:@"Helvetica Bold" size:12];
+    voteCount.layer.cornerRadius= 4;
+    // Add Destination Image Icon
+    UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
+        if(!waiting_for_votes){ //all votes are finished so set the fade look for everyone but the winner
+            if(indexPath.row!=0) //these are the losers - faded
+            {
+                CGFloat opacity= .3;
+                cell.imageView.alpha = opacity;
+                voteCount.alpha = opacity;
+                cell.textLabel.alpha = opacity;
+                voteCount.backgroundColor = [UIColor lightGrayColor];
+            }
     }
     
-    if(true){ //all votes are finished so set the fade look for everyone but the winner
-        if(indexPath.row !=0) //these are the losers - faded
-        {
-            cell.opaque = YES;
-            cell.textLabel.opaque = YES;
-            cell.textLabel.alpha = .5;
-            NSLog(@"Set Opaque");
-        }
-        // Configure the cell...
-        [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
-    }
-    else //not everyone is finished voting - every resturant should be the same
-    {
-        // Configure the cell...
-        [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
-    }
+   
+    cell.imageView.image = theImage;
+    // Configure the cell title...
+    [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
+    cell.accessoryView = voteCount;
     
-    
+
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

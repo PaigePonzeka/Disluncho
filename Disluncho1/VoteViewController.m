@@ -7,7 +7,7 @@
 //
 
 #import "VoteViewController.h"
-#import <QuartzCore/QuartzCore.h>
+
 
 @implementation VoteViewController
 @synthesize nomineesArray;
@@ -42,7 +42,8 @@
     maxTotalVotes = 5;
     userTotalVotes = maxTotalVotes; //intialze the players spending points
     votes=0;
-    wait_for_nominations = YES;
+    wait_for_nominations = NO; //the current state of the voting process
+    
     if(!wait_for_nominations) //if everyone is done nominating
     {
         

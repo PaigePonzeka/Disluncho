@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WinnerViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface VoteViewController : UITableViewController {
     NSMutableArray *nomineesArray;

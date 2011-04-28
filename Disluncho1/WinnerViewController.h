@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "GroupsViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface WinnerViewController : UITableViewController {
     NSMutableArray *nomineesArray;
+    BOOL waiting_for_votes;
 }
 @property (nonatomic, retain) NSMutableArray *nomineesArray;
 
