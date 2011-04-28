@@ -42,7 +42,8 @@
     maxTotalVotes = 5;
     userTotalVotes = maxTotalVotes; //intialze the players spending points
     votes=0;
-    if(true) //if everyone is done nominating
+    wait_for_nominations = YES;
+    if(!wait_for_nominations) //if everyone is done nominating
     {
         
         //show the regular vote screen (set based on total number of votes available to the user)
@@ -68,8 +69,14 @@
     }
     else //someone still hasnt nominated (or skipped) 
     {
+        NSLog(@"Waiting for Nominations");
         //show the "waiting" screen
         self.title = @"Waiting on ..."; 
+        delayedUsersArray = [[NSMutableArray alloc] init];
+        [delayedUsersArray addObject:@"Jack Cheng"];
+        [delayedUsersArray addObject:@"Mike Potter"];
+        [delayedUsersArray addObject:@"Jason Roos"];
+        [delayedUsersArray retain];
         
     }
     // Uncomment the following line to preserve selection between presentations.
@@ -132,8 +139,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     // Return the number of rows in the section.
-    return [nomineesArray count];
+    if(!wait_for_nominations) //everyone has nominated a location
+    {
+        return [nomineesArray count];
+    }
+    else //we are still waiting for some nominees
+    {   
+        return [delayedUsersArray count];
+    }
 }
 /* set the height of the rows */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -149,83 +164,103 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-        
-    // Configure the cell...
-    [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
-    
     //disable selection view for this cell
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-   
-    // add Subtitle (Last visit to the resturant)
-    cell.detailTextLabel.text=@"Last visit 2 days ago";
-    cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
-    
-    // Add Destination Image Icon
-    UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
-    cell.imageView.image = theImage;
-    
-    //create custom Accessory View
-    UIView *voteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 55)];
-    
-    if(votes!=0) //Only show the label if the eatery has any votes
+    if(!wait_for_nominations) //everyone has nominated a location
     {
-        //create num of votes label
-        UILabel *voteCount;
-        voteCount = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
-        NSString *vote = [NSString stringWithFormat:@"%i",votes];
-        voteCount.text = vote;
-        voteCount.textAlignment =UITextAlignmentCenter;
-        voteCount.backgroundColor = [UIColor grayColor];
-        voteCount.textColor =[UIColor whiteColor];
-        voteCount.font=[UIFont fontWithName:@"Helvetica Bold" size:12];
-        voteCount.layer.cornerRadius= 4;
-        [voteView addSubview:voteCount];
-    }
-
-    
-    //create custom upVote button
-    UIButton *upVote = [UIButton buttonWithType:UIButtonTypeCustom];
-    [upVote addTarget:self action:@selector(votedUp:) forControlEvents:UIControlEventTouchUpInside];
-    upVote.frame = CGRectMake(35, 10, 30, 30);
-    UIImage *addImage = [UIImage imageNamed:@"default_add.png"]; 
-    [upVote setImage:addImage forState:UIControlStateNormal];
-    //if the user has not votes left - disable the add buttom
-    if(userTotalVotes <= 0)
-    {
-        upVote.enabled = NO;
+        // Configure the cell...
+        [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
         
-    }
-    else
-    {
-        upVote.enabled = YES;
-    }
-    
-    //create custom downVote button
-    UIButton *downVote = [UIButton buttonWithType:UIButtonTypeCustom];
-    [downVote addTarget:self action:@selector(votedDown:) forControlEvents:UIControlEventTouchUpInside];
-    downVote.frame = CGRectMake(65, 10, 30, 30);
-    UIImage *downImage = [UIImage imageNamed:@"default_remove.png"]; 
-    [downVote setImage:downImage forState:UIControlStateNormal];
-    if(userTotalVotes == maxTotalVotes)
-    {
-        downVote.enabled = NO;
-    }
-    else
-    {
-        downVote.enabled = YES;
-    }
+        
+       
+        // add Subtitle (Last visit to the resturant)
+        cell.detailTextLabel.text=@"Last visit 2 days ago";
+        cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
+        
+        // Add Destination Image Icon
+        UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
+        cell.imageView.image = theImage;
+        
+        //create custom Accessory View
+        UIView *voteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 55)];
+        
+        if(votes!=0) //Only show the label if the eatery has any votes
+        {
+            //create num of votes label
+            UILabel *voteCount;
+            voteCount = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
+            NSString *vote = [NSString stringWithFormat:@"%i",votes];
+            voteCount.text = vote;
+            voteCount.textAlignment =UITextAlignmentCenter;
+            voteCount.backgroundColor = [UIColor grayColor];
+            voteCount.textColor =[UIColor whiteColor];
+            voteCount.font=[UIFont fontWithName:@"Helvetica Bold" size:12];
+            voteCount.layer.cornerRadius= 4;
+            [voteView addSubview:voteCount];
+        }
 
-    
-    // add all to a view
-    
-    [voteView addSubview:upVote];
-    [voteView addSubview:downVote];
-    
-    //add the voteView to the cell
-    cell.accessoryView = voteView;
-    
-    [voteView release];
-        return cell;
+        
+        //create custom upVote button
+        UIButton *upVote = [UIButton buttonWithType:UIButtonTypeCustom];
+        [upVote addTarget:self action:@selector(votedUp:) forControlEvents:UIControlEventTouchUpInside];
+        upVote.frame = CGRectMake(35, 10, 30, 30);
+        UIImage *addImage = [UIImage imageNamed:@"default_add.png"]; 
+        [upVote setImage:addImage forState:UIControlStateNormal];
+        //if the user has not votes left - disable the add buttom
+        if(userTotalVotes <= 0)
+        {
+            upVote.enabled = NO;
+            
+        }
+        else
+        {
+            upVote.enabled = YES;
+        }
+        
+        //create custom downVote button
+        UIButton *downVote = [UIButton buttonWithType:UIButtonTypeCustom];
+        [downVote addTarget:self action:@selector(votedDown:) forControlEvents:UIControlEventTouchUpInside];
+        downVote.frame = CGRectMake(65, 10, 30, 30);
+        UIImage *downImage = [UIImage imageNamed:@"default_remove.png"]; 
+        [downVote setImage:downImage forState:UIControlStateNormal];
+        if(userTotalVotes == maxTotalVotes)
+        {
+            downVote.enabled = NO;
+        }
+        else
+        {
+            downVote.enabled = YES;
+        }
+
+        
+        // add all to a view
+        
+        [voteView addSubview:upVote];
+        [voteView addSubview:downVote];
+        
+        //add the voteView to the cell
+            cell.accessoryView = voteView;
+        [voteView release];
+    }
+    else //still waiting for some nominations set the user's we're waiting for
+    {
+        // Configure the cell...
+        [cell.textLabel setText:[delayedUsersArray objectAtIndex:indexPath.row]];
+        
+        //get the users icon and set that to the image view
+        // Add Destination Image Icon
+        UIImage* userIcon = [UIImage imageNamed:@"default_restuarant.png"];
+        cell.imageView.image = userIcon;
+
+        //add the loading image to the accessory view
+        UIActivityIndicatorView *waitingIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        waitingIndicator.frame = CGRectMake(0.0, 0.0, 20, 20);
+        waitingIndicator.center = self.view.center;
+        [waitingIndicator startAnimating];
+        cell.accessoryView= waitingIndicator;
+   
+    }
+    return cell;
 }
 -(NSString *) VoteChanged
 {

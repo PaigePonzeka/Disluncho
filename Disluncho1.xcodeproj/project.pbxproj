@@ -40,6 +40,8 @@
 		28932A621369D2EA006054CE /* default_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 28932A601369D2EA006054CE /* default_add.png */; };
 		28932A631369D2EA006054CE /* default_remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 28932A611369D2EA006054CE /* default_remove.png */; };
 		28932A661369E8DD006054CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28932A651369E8DD006054CE /* QuartzCore.framework */; };
+		28932A7C136A01C6006054CE /* loading_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 28932A7B136A01C6006054CE /* loading_animation.gif */; };
+		28932A7F136A03CE006054CE /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 28932A7E136A03CE006054CE /* loading.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 		28932A601369D2EA006054CE /* default_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_add.png; sourceTree = "<group>"; };
 		28932A611369D2EA006054CE /* default_remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_remove.png; sourceTree = "<group>"; };
 		28932A651369E8DD006054CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		28932A7B136A01C6006054CE /* loading_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading_animation.gif; sourceTree = "<group>"; };
+		28932A7E136A03CE006054CE /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +197,8 @@
 		28031BE9136728BD006A76F6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				28932A7E136A03CE006054CE /* loading.gif */,
+				28932A7B136A01C6006054CE /* loading_animation.gif */,
 				28932A601369D2EA006054CE /* default_add.png */,
 				28932A611369D2EA006054CE /* default_remove.png */,
 				28031C561367890E006A76F6 /* default_restuarant.png */,
@@ -307,6 +313,8 @@
 				28031C571367890E006A76F6 /* default_restuarant.png in Resources */,
 				28932A621369D2EA006054CE /* default_add.png in Resources */,
 				28932A631369D2EA006054CE /* default_remove.png in Resources */,
+				28932A7C136A01C6006054CE /* loading_animation.gif in Resources */,
+				28932A7F136A03CE006054CE /* loading.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
