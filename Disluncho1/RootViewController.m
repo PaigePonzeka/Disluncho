@@ -9,15 +9,24 @@
 #import "RootViewController.h"
 
 @implementation RootViewController
+//@synthesize login_name=_login_name;
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
+    //change the navigation bar title 
     self.title = @"Register";
+    
+    //create an add a done button to the right navigation bar
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(registerUser:)];
     self.navigationItem.rightBarButtonItem = doneButton;
     [doneButton release];
 
-    [super viewDidLoad];
+    //set the height of the login_name text field
+    login_name.borderStyle = UITextBorderStyleRoundedRect;
+
+        
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -28,6 +37,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -114,6 +124,7 @@
 
 - (void)dealloc
 {
+    [login_name release];
     [super dealloc];
 }
 

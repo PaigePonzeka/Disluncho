@@ -10,7 +10,7 @@
 
 
 @interface AddGroupViewController : UIViewController {
-    
+    IBOutlet UITextField *add_group_name;
 }
 
 @end

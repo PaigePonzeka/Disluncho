@@ -11,7 +11,8 @@
 
 @interface RootViewController : UIViewController {
 
+    IBOutlet UITextField *login_name;
 }
 
-
+//@property (nonatomic, retain) IBOutlet UITextField *login_name;
 @end

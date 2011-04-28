@@ -44,6 +44,9 @@
     self.navigationItem.leftBarButtonItem = cancelButton;
     [cancelButton release];
 
+    //change add group name
+    add_group_name.borderStyle = UITextBorderStyleRoundedRect;
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
