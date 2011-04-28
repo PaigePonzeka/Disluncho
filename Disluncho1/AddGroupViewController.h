@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddMemberViewController.h"
 
-
-@interface AddGroupViewController : UIViewController {
+@interface AddGroupViewController : UITableViewController {
     IBOutlet UITextField *add_group_name;
+    
+    NSMutableArray *groupMembersArray;
+
 }
 
 @end

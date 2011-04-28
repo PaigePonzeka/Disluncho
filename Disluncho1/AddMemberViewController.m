@@ -38,9 +38,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
+    
+    //set navigation bar title
+    self.title = @"Add a member";
+    
+    //set 
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneWithMember)];
+    self.navigationItem.rightBarButtonItem = doneButton;
+    [doneButton release];
+    
+    member_email.borderStyle =UITextBorderStyleRoundedRect;
 
+}
+-(void)doneWithMember
+{
+        //get the email address of the new member
+    NSString *new_member_email=member_email.text;
+    NSLog(@"Done Adding Member with Email: %@", new_member_email);
+
+    //pop this view off the screen (back to the previous view)
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];

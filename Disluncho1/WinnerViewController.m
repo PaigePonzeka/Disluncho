@@ -76,7 +76,7 @@
 }
 -(void)goToGroups:(UIBarButtonItem*)button
 {
-    /*Reset back to the groups screen*/
+    /* Reset back to the groups screen*/
     NSLog(@"Reset to Groups Controller");
     
     // navigate to the winnerViewController to see the results

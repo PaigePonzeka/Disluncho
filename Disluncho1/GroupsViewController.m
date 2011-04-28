@@ -76,8 +76,6 @@
 /*Selected when User wants to add a new group to the Group list*/
 - (void)addNewGroup:(UIBarButtonItem*)button {
     NSLog(@"Adding New Group");
-	//[usersGroupsArray addObject:@"New Group"];
-    //AddGroupViewController addGroup =
      AddGroupViewController *addGroup = [[AddGroupViewController alloc] initWithNibName:@"AddGroupViewController" bundle:nil];
     [self.navigationController pushViewController:addGroup animated:YES];
     

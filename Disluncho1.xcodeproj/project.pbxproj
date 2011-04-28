@@ -31,7 +31,6 @@
 		28031C3D13674A73006A76F6 /* WinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */; };
 		28031C3E13674A73006A76F6 /* WinnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C3C13674A73006A76F6 /* WinnerViewController.xib */; };
 		28031C421367578E006A76F6 /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C401367578D006A76F6 /* AddGroupViewController.m */; };
-		28031C431367578E006A76F6 /* AddGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C411367578E006A76F6 /* AddGroupViewController.xib */; };
 		28031C4713675D38006A76F6 /* AddRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C4513675D37006A76F6 /* AddRestaurantViewController.m */; };
 		28031C4813675D38006A76F6 /* AddRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C4613675D38006A76F6 /* AddRestaurantViewController.xib */; };
 		28031C4C1367647D006A76F6 /* GroupDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C4A1367647C006A76F6 /* GroupDetailsViewController.m */; };
@@ -44,6 +43,7 @@
 		28932A84136A0DA8006054CE /* AddMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28932A82136A0DA7006054CE /* AddMemberViewController.xib */; };
 		28932A86136A0E46006054CE /* icon in Resources */ = {isa = PBXBuildFile; fileRef = 28932A85136A0E46006054CE /* icon */; };
 		28932A8A136A0E98006054CE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28932A89136A0E98006054CE /* icon.png */; };
+		28932A8C136A10D7006054CE /* AddGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28932A8B136A10D6006054CE /* AddGroupViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +91,6 @@
 		28031C3C13674A73006A76F6 /* WinnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WinnerViewController.xib; sourceTree = "<group>"; };
 		28031C3F1367578D006A76F6 /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGroupViewController.h; sourceTree = "<group>"; };
 		28031C401367578D006A76F6 /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupViewController.m; sourceTree = "<group>"; };
-		28031C411367578E006A76F6 /* AddGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGroupViewController.xib; sourceTree = "<group>"; };
 		28031C4413675D37006A76F6 /* AddRestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRestaurantViewController.h; sourceTree = "<group>"; };
 		28031C4513675D37006A76F6 /* AddRestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRestaurantViewController.m; sourceTree = "<group>"; };
 		28031C4613675D38006A76F6 /* AddRestaurantViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRestaurantViewController.xib; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		28932A82136A0DA7006054CE /* AddMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemberViewController.xib; sourceTree = "<group>"; };
 		28932A85136A0E46006054CE /* icon */ = {isa = PBXFileReference; lastKnownFileType = file; path = icon; sourceTree = "<group>"; };
 		28932A89136A0E98006054CE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		28932A8B136A10D6006054CE /* AddGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddGroupViewController.xib; path = Disluncho1.xcodeproj/AddGroupViewController.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,19 +183,19 @@
 				28031C3B13674A73006A76F6 /* WinnerViewController.m */,
 				28031C3F1367578D006A76F6 /* AddGroupViewController.h */,
 				28031C401367578D006A76F6 /* AddGroupViewController.m */,
-				28031C4413675D37006A76F6 /* AddRestaurantViewController.h */,
 				28031C4513675D37006A76F6 /* AddRestaurantViewController.m */,
+				28031C4413675D37006A76F6 /* AddRestaurantViewController.h */,
+				28932A80136A0DA6006054CE /* AddMemberViewController.h */,
+				28932A81136A0DA7006054CE /* AddMemberViewController.m */,
 				28031BF4136728BD006A76F6 /* MainWindow.xib */,
 				28031BFA136728BD006A76F6 /* RootViewController.xib */,
 				28031C1D13672CB1006A76F6 /* GroupsViewController.xib */,
 				28031C4B1367647C006A76F6 /* GroupDetailsViewController.xib */,
-				28031C411367578E006A76F6 /* AddGroupViewController.xib */,
-				28031C4613675D38006A76F6 /* AddRestaurantViewController.xib */,
 				28031C3C13674A73006A76F6 /* WinnerViewController.xib */,
 				28031C37136745D9006A76F6 /* VoteViewController.xib */,
 				28031C32136740B6006A76F6 /* NominateViewController.xib */,
-				28932A80136A0DA6006054CE /* AddMemberViewController.h */,
-				28932A81136A0DA7006054CE /* AddMemberViewController.m */,
+				28932A8B136A10D6006054CE /* AddGroupViewController.xib */,
+				28031C4613675D38006A76F6 /* AddRestaurantViewController.xib */,
 				28932A82136A0DA7006054CE /* AddMemberViewController.xib */,
 				28031BE9136728BD006A76F6 /* Supporting Files */,
 			);
@@ -315,7 +315,6 @@
 				28031C34136740B6006A76F6 /* NominateViewController.xib in Resources */,
 				28031C39136745D9006A76F6 /* VoteViewController.xib in Resources */,
 				28031C3E13674A73006A76F6 /* WinnerViewController.xib in Resources */,
-				28031C431367578E006A76F6 /* AddGroupViewController.xib in Resources */,
 				28031C4813675D38006A76F6 /* AddRestaurantViewController.xib in Resources */,
 				28031C4D1367647D006A76F6 /* GroupDetailsViewController.xib in Resources */,
 				28031C571367890E006A76F6 /* default_restuarant.png in Resources */,
@@ -324,6 +323,7 @@
 				28932A84136A0DA8006054CE /* AddMemberViewController.xib in Resources */,
 				28932A86136A0E46006054CE /* icon in Resources */,
 				28932A8A136A0E98006054CE /* icon.png in Resources */,
+				28932A8C136A10D7006054CE /* AddGroupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

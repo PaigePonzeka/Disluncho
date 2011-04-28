@@ -10,7 +10,7 @@
 
 
 @interface AddMemberViewController : UIViewController {
-    
+    IBOutlet UITextField *member_email;
 }
 
 @end
