@@ -7,7 +7,7 @@
 //
 
 #import "VoteViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @implementation VoteViewController
 @synthesize nomineesArray;
@@ -148,6 +148,9 @@
     // Configure the cell...
     [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
     
+    //disable selection view for this cell
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+   
     // add Subtitle (Last visit to the resturant)
     cell.detailTextLabel.text=@"Last visit 2 days ago";
     cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
@@ -155,9 +158,51 @@
     // Add Destination Image Icon
     UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
     cell.imageView.image = theImage;
-    return cell;
-}
+    
+    //create custom Accessory View
+    UIView *voteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 55)];
+    
+    //create num of votes label
+    UILabel *voteCount = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
+    voteCount.text = @"3";
+    voteCount.textAlignment =UITextAlignmentCenter;
+    voteCount.backgroundColor = [UIColor grayColor];
+    voteCount.textColor =[UIColor whiteColor];
+    voteCount.font=[UIFont fontWithName:@"Helvetica Bold" size:12];
+    voteCount.layer.cornerRadius= 4;
 
+    
+    //create custom upVote button
+    UIButton *upVote = [UIButton buttonWithType:UIButtonTypeCustom];
+    [upVote addTarget:self action:@selector(voteAdded:) forControlEvents:UIControlEventTouchUpInside];
+    upVote.frame = CGRectMake(35, 10, 30, 30);
+    UIImage *addImage = [UIImage imageNamed:@"default_add.png"]; 
+    [upVote setImage:addImage forState:UIControlStateNormal];
+
+    
+    //create custom downVote button
+    UIButton *downVote = [UIButton buttonWithType:UIButtonTypeCustom];
+    downVote.frame = CGRectMake(65, 10, 30, 30);
+    UIImage *downImage = [UIImage imageNamed:@"default_remove.png"]; 
+    [downVote setImage:downImage forState:UIControlStateNormal];
+    
+    // add all to a view
+    [voteView addSubview:voteCount];
+    [voteView addSubview:upVote];
+    [voteView addSubview:downVote];
+    
+    //add the voteView to the cell
+    cell.accessoryView = voteView;
+    
+    [voteView release];
+        return cell;
+}
+/*event called for the add vote button*/
+-(void) voteAdded: (id)sender
+{
+
+    NSLog(@"PRESSED");
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -201,6 +246,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Just Selected %d", indexPath.row);
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

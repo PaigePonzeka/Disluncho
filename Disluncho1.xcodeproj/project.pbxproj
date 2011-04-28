@@ -37,6 +37,9 @@
 		28031C4C1367647D006A76F6 /* GroupDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28031C4A1367647C006A76F6 /* GroupDetailsViewController.m */; };
 		28031C4D1367647D006A76F6 /* GroupDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28031C4B1367647C006A76F6 /* GroupDetailsViewController.xib */; };
 		28031C571367890E006A76F6 /* default_restuarant.png in Resources */ = {isa = PBXBuildFile; fileRef = 28031C561367890E006A76F6 /* default_restuarant.png */; };
+		28932A621369D2EA006054CE /* default_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 28932A601369D2EA006054CE /* default_add.png */; };
+		28932A631369D2EA006054CE /* default_remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 28932A611369D2EA006054CE /* default_remove.png */; };
+		28932A661369E8DD006054CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28932A651369E8DD006054CE /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +95,9 @@
 		28031C4A1367647C006A76F6 /* GroupDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailsViewController.m; sourceTree = "<group>"; };
 		28031C4B1367647C006A76F6 /* GroupDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupDetailsViewController.xib; sourceTree = "<group>"; };
 		28031C561367890E006A76F6 /* default_restuarant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_restuarant.png; sourceTree = "<group>"; };
+		28932A601369D2EA006054CE /* default_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_add.png; sourceTree = "<group>"; };
+		28932A611369D2EA006054CE /* default_remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_remove.png; sourceTree = "<group>"; };
+		28932A651369E8DD006054CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28932A661369E8DD006054CE /* QuartzCore.framework in Frameworks */,
 				28031BE3136728BD006A76F6 /* UIKit.framework in Frameworks */,
 				28031BE5136728BD006A76F6 /* Foundation.framework in Frameworks */,
 				28031BE7136728BD006A76F6 /* CoreGraphics.framework in Frameworks */,
@@ -140,6 +147,7 @@
 		28031BE1136728BD006A76F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28932A651369E8DD006054CE /* QuartzCore.framework */,
 				28031BE2136728BD006A76F6 /* UIKit.framework */,
 				28031BE4136728BD006A76F6 /* Foundation.framework */,
 				28031BE6136728BD006A76F6 /* CoreGraphics.framework */,
@@ -185,6 +193,8 @@
 		28031BE9136728BD006A76F6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				28932A601369D2EA006054CE /* default_add.png */,
+				28932A611369D2EA006054CE /* default_remove.png */,
 				28031C561367890E006A76F6 /* default_restuarant.png */,
 				28031BEA136728BD006A76F6 /* Disluncho1-Info.plist */,
 				28031BEB136728BD006A76F6 /* InfoPlist.strings */,
@@ -295,6 +305,8 @@
 				28031C4813675D38006A76F6 /* AddRestaurantViewController.xib in Resources */,
 				28031C4D1367647D006A76F6 /* GroupDetailsViewController.xib in Resources */,
 				28031C571367890E006A76F6 /* default_restuarant.png in Resources */,
+				28932A621369D2EA006054CE /* default_add.png in Resources */,
+				28932A631369D2EA006054CE /* default_remove.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +532,7 @@
 				28031C17136728BE006A76F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28031C18136728BE006A76F6 /* Build configuration list for PBXNativeTarget "Disluncho1Tests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +541,7 @@
 				28031C1A136728BE006A76F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
