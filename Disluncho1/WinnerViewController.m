@@ -57,7 +57,7 @@
                 
         // add a back button back to the "Groups"
         UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Groups" style:UIBarButtonItemStylePlain  target:self action:@selector(goToGroups:)];
-        self.navigationItem.rightBarButtonItem = backButton;
+        self.navigationItem.leftBarButtonItem = backButton;
         [backButton release];
 
     }

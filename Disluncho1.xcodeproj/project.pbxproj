@@ -40,6 +40,8 @@
 		28932A621369D2EA006054CE /* default_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 28932A601369D2EA006054CE /* default_add.png */; };
 		28932A631369D2EA006054CE /* default_remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 28932A611369D2EA006054CE /* default_remove.png */; };
 		28932A661369E8DD006054CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28932A651369E8DD006054CE /* QuartzCore.framework */; };
+		28932A83136A0DA8006054CE /* AddMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28932A81136A0DA7006054CE /* AddMemberViewController.m */; };
+		28932A84136A0DA8006054CE /* AddMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28932A82136A0DA7006054CE /* AddMemberViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,9 @@
 		28932A601369D2EA006054CE /* default_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_add.png; sourceTree = "<group>"; };
 		28932A611369D2EA006054CE /* default_remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_remove.png; sourceTree = "<group>"; };
 		28932A651369E8DD006054CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		28932A80136A0DA6006054CE /* AddMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberViewController.h; sourceTree = "<group>"; };
+		28932A81136A0DA7006054CE /* AddMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberViewController.m; sourceTree = "<group>"; };
+		28932A82136A0DA7006054CE /* AddMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemberViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +190,9 @@
 				28031C3C13674A73006A76F6 /* WinnerViewController.xib */,
 				28031C37136745D9006A76F6 /* VoteViewController.xib */,
 				28031C32136740B6006A76F6 /* NominateViewController.xib */,
+				28932A80136A0DA6006054CE /* AddMemberViewController.h */,
+				28932A81136A0DA7006054CE /* AddMemberViewController.m */,
+				28932A82136A0DA7006054CE /* AddMemberViewController.xib */,
 				28031BE9136728BD006A76F6 /* Supporting Files */,
 			);
 			path = Disluncho1;
@@ -307,6 +315,7 @@
 				28031C571367890E006A76F6 /* default_restuarant.png in Resources */,
 				28932A621369D2EA006054CE /* default_add.png in Resources */,
 				28932A631369D2EA006054CE /* default_remove.png in Resources */,
+				28932A84136A0DA8006054CE /* AddMemberViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +361,7 @@
 				28031C421367578E006A76F6 /* AddGroupViewController.m in Sources */,
 				28031C4713675D38006A76F6 /* AddRestaurantViewController.m in Sources */,
 				28031C4C1367647D006A76F6 /* GroupDetailsViewController.m in Sources */,
+				28932A83136A0DA8006054CE /* AddMemberViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
