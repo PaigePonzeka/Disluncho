@@ -42,6 +42,8 @@
 		28932A661369E8DD006054CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28932A651369E8DD006054CE /* QuartzCore.framework */; };
 		28932A83136A0DA8006054CE /* AddMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28932A81136A0DA7006054CE /* AddMemberViewController.m */; };
 		28932A84136A0DA8006054CE /* AddMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28932A82136A0DA7006054CE /* AddMemberViewController.xib */; };
+		28932A86136A0E46006054CE /* icon in Resources */ = {isa = PBXBuildFile; fileRef = 28932A85136A0E46006054CE /* icon */; };
+		28932A8A136A0E98006054CE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28932A89136A0E98006054CE /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		28932A80136A0DA6006054CE /* AddMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberViewController.h; sourceTree = "<group>"; };
 		28932A81136A0DA7006054CE /* AddMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberViewController.m; sourceTree = "<group>"; };
 		28932A82136A0DA7006054CE /* AddMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemberViewController.xib; sourceTree = "<group>"; };
+		28932A85136A0E46006054CE /* icon */ = {isa = PBXFileReference; lastKnownFileType = file; path = icon; sourceTree = "<group>"; };
+		28932A89136A0E98006054CE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,8 @@
 		28031BE9136728BD006A76F6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				28932A89136A0E98006054CE /* icon.png */,
+				28932A85136A0E46006054CE /* icon */,
 				28932A601369D2EA006054CE /* default_add.png */,
 				28932A611369D2EA006054CE /* default_remove.png */,
 				28031C561367890E006A76F6 /* default_restuarant.png */,
@@ -316,6 +322,8 @@
 				28932A621369D2EA006054CE /* default_add.png in Resources */,
 				28932A631369D2EA006054CE /* default_remove.png in Resources */,
 				28932A84136A0DA8006054CE /* AddMemberViewController.xib in Resources */,
+				28932A86136A0E46006054CE /* icon in Resources */,
+				28932A8A136A0E98006054CE /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
