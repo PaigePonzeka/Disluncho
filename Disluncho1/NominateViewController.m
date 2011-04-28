@@ -121,7 +121,7 @@
 
     return ([currentRestaurantsArray count]+1); //set the rows one cell largers for Skip Nomination Option
 }
-/*set the height of the rows */
+/* set the height of the rows */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 55;
@@ -135,25 +135,25 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    //add the arrow to the cell
+    // add the arrow to the cell
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     
     if(indexPath.row > ([currentRestaurantsArray count]-1))
     {
-        //set the last cell with "skip Nomination Option"
+        // set the last cell with "skip Nomination Option"
         [cell.textLabel setText:@"Skip nomination"];
     }
     else
     {
         // Add the Destination Title
         [cell.textLabel setText:[currentRestaurantsArray objectAtIndex:indexPath.row]];
-        //add Subtitle (Last visit to the resturant)
+        // add Subtitle (Last visit to the resturant)
         cell.detailTextLabel.text=@"Last visit 2 days ago";
         cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
         
        
-        //Add Destination Image Icon
+        // Add Destination Image Icon
         UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
         cell.imageView.image = theImage;
     }

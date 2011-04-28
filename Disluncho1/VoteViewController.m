@@ -130,6 +130,11 @@
     // Return the number of rows in the section.
     return [nomineesArray count];
 }
+/* set the height of the rows */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -137,12 +142,19 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    
+        
     // Configure the cell...
     [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
     
+    // add Subtitle (Last visit to the resturant)
+    cell.detailTextLabel.text=@"Last visit 2 days ago";
+    cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
+    
+    // Add Destination Image Icon
+    UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
+    cell.imageView.image = theImage;
     return cell;
 }
 
