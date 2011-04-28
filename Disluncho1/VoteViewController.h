@@ -10,8 +10,13 @@
 #import "WinnerViewController.h"
 
 @interface VoteViewController : UITableViewController {
-     NSMutableArray *nomineesArray;
+    NSMutableArray *nomineesArray;
+    int votes; //temporary value for votes 
+    int userTotalVotes; //total votes user has left to spend
+    int maxTotalVotes; //total votes user can spend
 }
 @property (nonatomic, retain) NSMutableArray *nomineesArray;
-
+//@property (nonatomic, retain) int votes;
+-(NSString *) VoteChanged;
+-(void) setNavTitle;
 @end

@@ -11,7 +11,7 @@
 
 @implementation VoteViewController
 @synthesize nomineesArray;
-
+//@synthesize votes;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -39,11 +39,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    maxTotalVotes = 5;
+    userTotalVotes = maxTotalVotes; //intialze the players spending points
+    votes=0;
     if(true) //if everyone is done nominating
     {
-        //show the regular vote screen
-        self.title =@"Award 3 Points";
+        
+        //show the regular vote screen (set based on total number of votes available to the user)
+        //NSString *title =[NSString stringWithFormat:@"Award %i Points",userTotalVotes];
+        //self.title =title;
+        self.setNavTitle;
         
         //intialize the nominees list
         //intialize the nomineesArray (the array of resturants nominated in the current vote)
@@ -162,32 +167,57 @@
     //create custom Accessory View
     UIView *voteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 55)];
     
-    //create num of votes label
-    UILabel *voteCount = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
-    voteCount.text = @"3";
-    voteCount.textAlignment =UITextAlignmentCenter;
-    voteCount.backgroundColor = [UIColor grayColor];
-    voteCount.textColor =[UIColor whiteColor];
-    voteCount.font=[UIFont fontWithName:@"Helvetica Bold" size:12];
-    voteCount.layer.cornerRadius= 4;
+    if(votes!=0) //Only show the label if the eatery has any votes
+    {
+        //create num of votes label
+        UILabel *voteCount;
+        voteCount = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
+        NSString *vote = [NSString stringWithFormat:@"%i",votes];
+        voteCount.text = vote;
+        voteCount.textAlignment =UITextAlignmentCenter;
+        voteCount.backgroundColor = [UIColor grayColor];
+        voteCount.textColor =[UIColor whiteColor];
+        voteCount.font=[UIFont fontWithName:@"Helvetica Bold" size:12];
+        voteCount.layer.cornerRadius= 4;
+        [voteView addSubview:voteCount];
+    }
 
     
     //create custom upVote button
     UIButton *upVote = [UIButton buttonWithType:UIButtonTypeCustom];
-    [upVote addTarget:self action:@selector(voteAdded:) forControlEvents:UIControlEventTouchUpInside];
+    [upVote addTarget:self action:@selector(votedUp:) forControlEvents:UIControlEventTouchUpInside];
     upVote.frame = CGRectMake(35, 10, 30, 30);
     UIImage *addImage = [UIImage imageNamed:@"default_add.png"]; 
     [upVote setImage:addImage forState:UIControlStateNormal];
-
+    //if the user has not votes left - disable the add buttom
+    if(userTotalVotes <= 0)
+    {
+        upVote.enabled = NO;
+        
+    }
+    else
+    {
+        upVote.enabled = YES;
+    }
     
     //create custom downVote button
     UIButton *downVote = [UIButton buttonWithType:UIButtonTypeCustom];
+    [downVote addTarget:self action:@selector(votedDown:) forControlEvents:UIControlEventTouchUpInside];
     downVote.frame = CGRectMake(65, 10, 30, 30);
     UIImage *downImage = [UIImage imageNamed:@"default_remove.png"]; 
     [downVote setImage:downImage forState:UIControlStateNormal];
+    if(userTotalVotes == maxTotalVotes)
+    {
+        downVote.enabled = NO;
+    }
+    else
+    {
+        downVote.enabled = YES;
+    }
+
     
     // add all to a view
-    [voteView addSubview:voteCount];
+    
     [voteView addSubview:upVote];
     [voteView addSubview:downVote];
     
@@ -197,50 +227,74 @@
     [voteView release];
         return cell;
 }
+-(NSString *) VoteChanged
+{
+    votes+=1;
+    int voted=(votes);
+    NSString *string = [NSString stringWithFormat:@"%i",voted];
+    return string;
+}
 /*event called for the add vote button*/
--(void) voteAdded: (id)sender
+-(void) votedUp: (id)sender
 {
+       //get the indexPath of the currently selected cell
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+   // UITableViewCell *selectedCell = [self tableView:tableview cellForRowAtIndexPath:indexPath];
+  //  UITableViewCell *cell = (UITableViewCell *)[(UITableView *)self.view cellForRowAtIndexPath:indexPath];
 
-    NSLog(@"PRESSED");
+    //its index will be  indexPath.row
+    NSLog(@"You Added a Vote to Row: %d", indexPath.row);
+    /*
+     Put in the code to increase the votes for the eatery
+     */
+    votes++;
+    userTotalVotes --; //remove the users vote
+    self.setNavTitle;
+    
+    //reload the table data
+    [self.tableView reloadData];
+    
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+/*event called for the remove Vote button*/
+-(void) votedDown: (id)sender
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+    //get the indexPath of the currently selected cell
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+    
+    //its index will be indexPath.row
+    NSLog(@"You Removed a Vote from Row: %d", indexPath.row);
+    
+    /*
+     put in the code to reduce the votes for the eatery
+     */
+    votes --;
+    userTotalVotes ++; //increase the users vote
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    self.setNavTitle;
+    //reload the table data
+    [self.tableView reloadData];
 }
-*/
+/*sets the string for the navigationbar title based on the current users points */
+-(void) setNavTitle
+{
+    NSString *title;
+    if(userTotalVotes==1) //if 1 vote left used point
+    {
+        title =[NSString stringWithFormat:@"Award %i Point",userTotalVotes];
+    }
+    else if(userTotalVotes<=0)
+    {
+        title =@"No Votes Left :-(";
+    }
+    else
+    {
+        title =[NSString stringWithFormat:@"Award %i Points",userTotalVotes];
+    }
+   
+    //set the title
+    self.title=title;
+}
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
