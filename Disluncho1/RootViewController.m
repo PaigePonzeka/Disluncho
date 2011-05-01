@@ -8,7 +8,12 @@
 
 #import "RootViewController.h"
 
+
+
+
 @implementation RootViewController
+@synthesize root;
+
 
 - (void)viewDidLoad
 {
@@ -45,6 +50,12 @@
     //push Groups View controller to the front
     GroupsViewController *groupview = [[GroupsViewController alloc] initWithNibName:@"GroupsViewController" bundle:nil];
     [self.navigationController pushViewController:groupview animated:YES];
+}
+/* makes keyboard disappear on enter */
+-(BOOL)textFieldShouldReturn:(UITextField *)theTextField
+{
+	[theTextField resignFirstResponder];
+	return TRUE;
 }
 /*
  // Override to allow orientations other than the default portrait orientation.

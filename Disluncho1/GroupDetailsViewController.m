@@ -11,6 +11,9 @@
 
 @implementation GroupDetailsViewController
 @synthesize groupMembersArray;
+@synthesize root;
+
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

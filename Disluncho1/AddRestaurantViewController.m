@@ -10,6 +10,7 @@
 
 
 @implementation AddRestaurantViewController
+@synthesize root;
 
 
 - (void)dealloc

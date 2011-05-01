@@ -10,6 +10,7 @@
 
 
 @implementation AddGroupViewController
+@synthesize root;
 
 
 - (void)dealloc

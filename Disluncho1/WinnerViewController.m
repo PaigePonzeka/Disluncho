@@ -11,6 +11,9 @@
 
 @implementation WinnerViewController
 @synthesize nomineesArray;
+@synthesize root;
+
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

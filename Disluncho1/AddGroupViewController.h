@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Disluncho1AppDelegate.h"
 
 
 @interface AddGroupViewController : UIViewController {
-    
+	Disluncho1AppDelegate *root;
+
 }
+@property (nonatomic, retain) Disluncho1AppDelegate *root;
 
 @end

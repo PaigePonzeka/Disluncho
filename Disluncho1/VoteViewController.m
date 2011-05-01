@@ -11,6 +11,7 @@
 
 @implementation VoteViewController
 @synthesize nomineesArray;
+@synthesize root;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

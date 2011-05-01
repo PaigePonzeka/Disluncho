@@ -10,10 +10,17 @@
 
 @interface Disluncho1AppDelegate : NSObject <UIApplicationDelegate> {
 
+	//local storage of signin information
+	int UserUNID;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+
+@property int UserUNID;
+
+-(NSMutableArray *) sendAndRetrieve:(NSString *)parameters;
+-(void) printResults:(NSMutableArray *)results;
 
 @end

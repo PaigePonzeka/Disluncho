@@ -12,6 +12,9 @@
 @implementation NominateViewController
 
 @synthesize currentRestaurantsArray;
+@synthesize root;
+
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

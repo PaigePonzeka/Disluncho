@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "GroupsViewController.h"
+#import "Disluncho1AppDelegate.h"
 
 @interface RootViewController : UIViewController {
+	Disluncho1AppDelegate *root;
 
 }
+@property (nonatomic, retain) Disluncho1AppDelegate *root;
 
 
 @end

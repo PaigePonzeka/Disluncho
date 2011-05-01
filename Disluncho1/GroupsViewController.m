@@ -11,6 +11,8 @@
 
 @implementation GroupsViewController
 @synthesize usersGroupsArray;
+@synthesize root;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -44,14 +46,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	
+	//set up pointer to the root
+	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+	self.title = @"Groups";
+	
+	
+	//index variables for sql results
+	GROUPNAME = 0;
+	GROUPID = 1;
+	
+	//get all users from database --- later perhaps just users that have email/phone# in your contacts
+	NSString* allUserGroups = [NSString stringWithString:@"action=LIST_USER_GROUPS"];
+	NSMutableArray* userGroups = [root sendAndRetrieve:allUserGroups];
+	
+    //load the usernames
+   usersGroupsArray = [[NSMutableArray alloc] initWithCapacity:3];	
+	for(int group = 0; group < [userGroups count]; group++){
+	    [usersGroupsArray addObject:[[userGroups objectAtIndex:group] objectAtIndex:GROUPNAME] ];
+	}
+	[usersGroupsArray retain];
 
-    self.title = @"Groups";
 
-    //set the logged in users groups
-    usersGroupsArray = [[NSMutableArray alloc] initWithCapacity:3];
-    [usersGroupsArray addObject:@"Disluncho"];
-    [usersGroupsArray addObject:@"Sleepover"];
-    [usersGroupsArray retain];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

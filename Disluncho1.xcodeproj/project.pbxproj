@@ -520,6 +520,7 @@
 				28031C17136728BE006A76F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28031C18136728BE006A76F6 /* Build configuration list for PBXNativeTarget "Disluncho1Tests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +529,7 @@
 				28031C1A136728BE006A76F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

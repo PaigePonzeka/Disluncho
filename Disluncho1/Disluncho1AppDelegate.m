@@ -15,6 +15,9 @@
 
 @synthesize navigationController=_navigationController;
 
+@synthesize UserUNID;
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -23,6 +26,82 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+/*
+ *will return 2D array of results[row,field] 
+ *must send parameters as (@"action=____&otherParamName=___& ...")
+ *all queries are therefore created and stored in the php file and called by their action= parameter
+ *
+ */
+-(NSMutableArray *) sendAndRetrieve:(NSString *)parameters
+{
+	//set up urlRequest
+	NSData *parametersData = [parameters dataUsingEncoding:NSISOLatin1StringEncoding allowLossyConversion:NO];
+	NSMutableURLRequest *urlRequest = [[[NSMutableURLRequest alloc] 
+										initWithURL:[NSURL URLWithString:@"http://ponzeka.com/iphone_disluncho/disluncho_test.php"]]
+									   autorelease];
+	[urlRequest setHTTPMethod:@"POST"];
+	[urlRequest setHTTPBody:parametersData];
+	
+	//variables to store retrieved data
+	NSData *urlData; 
+	NSURLResponse *response; 
+	NSError *error;
+	
+	//connect to url and get response
+	urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error]; 
+	
+	//check for errors
+	if(!urlData) {
+		NSLog(@"Connection Failed!");
+		NSMutableArray *returnValues = [NSMutableArray arrayWithCapacity:0];
+		return returnValues;
+	}
+	//turn response into String stripped of \n characters
+	NSString *urlString = [[[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding] 
+						   stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]] ; 
+	
+	//make string into 2D array [rows, fields]
+	NSMutableArray *returnValues = [NSMutableArray arrayWithCapacity:100];
+	
+	[returnValues setArray:[urlString componentsSeparatedByString:@"|"]];
+	for(int row=0; row< [returnValues count]; row++){
+		[returnValues replaceObjectAtIndex:row withObject:
+		 [[returnValues objectAtIndex:row] componentsSeparatedByString:@","]];
+	}
+	
+	//Array of size [1,1] will be "" if there was no results, remove blank object for logic
+	NSString* string = [NSString stringWithString:[[returnValues objectAtIndex:0]objectAtIndex:0]];
+	if (NSOrderedSame == [string compare:@""]){
+		[returnValues removeLastObject];
+		NSLog(@"return arry of size [0,0] - NO RESULTS");
+	}
+	else{
+		//print out return string size, row and fields
+		[self printResults:returnValues];
+	}
+	
+	return returnValues;
+
+}
+
+/*
+ *	prints out the result array to Log 
+ */
+-(void)printResults:(NSMutableArray*)results{
+	NSLog(@"returned array of size = [ %i , %i ]\n",[results count], [[results objectAtIndex:0]count]);
+	for(int j = 0; j<[results count]; j++){
+		NSString* fields = [NSString  stringWithString:@""];
+		for(int k = 0; k<[[results objectAtIndex:0]count]; k++){
+			fields = [fields stringByAppendingString:[@"[" stringByAppendingString:
+													  [[[results objectAtIndex:j]objectAtIndex:k] 
+													   stringByAppendingString:@"]"]]];
+		}
+		NSLog(@"[row #%i]- %@ ",j,fields);
+	}
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

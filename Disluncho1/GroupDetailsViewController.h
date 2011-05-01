@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Disluncho1AppDelegate.h"
 
 
 @interface GroupDetailsViewController : UITableViewController {
      NSMutableArray *groupMembersArray;
+	Disluncho1AppDelegate *root;
+
 }
 @property (nonatomic, retain) NSMutableArray *groupMembersArray;
+@property (nonatomic, retain) Disluncho1AppDelegate *root;
+
 @end

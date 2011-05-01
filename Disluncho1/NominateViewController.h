@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "VoteViewController.h"
 #import "AddRestaurantViewController.h"
+#import "Disluncho1AppDelegate.h"
+
 
 @interface NominateViewController : UITableViewController {
      NSMutableArray *currentRestaurantsArray;
+	Disluncho1AppDelegate *root;
+
 }
 @property (nonatomic, retain) NSMutableArray *currentRestaurantsArray;
+@property (nonatomic, retain) Disluncho1AppDelegate *root;
+
 @end
