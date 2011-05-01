@@ -13,6 +13,7 @@
 @synthesize nomineesArray;
 @synthesize root;
 
+//@synthesize votes;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -40,11 +41,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    if(true) //if everyone is done nominating
+    maxTotalVotes = 5;
+    userTotalVotes = maxTotalVotes; //intialze the players spending points
+    votes=0;
+    wait_for_nominations = NO; //the current state of the voting process
+    
+    if(!wait_for_nominations) //if everyone is done nominating
     {
-        //show the regular vote screen
-        self.title =@"Award 3 Points";
+        
+        //show the regular vote screen (set based on total number of votes available to the user)
+        //NSString *title =[NSString stringWithFormat:@"Award %i Points",userTotalVotes];
+        //self.title =title;
+        self.setNavTitle;
         
         //intialize the nominees list
         //intialize the nomineesArray (the array of resturants nominated in the current vote)
@@ -64,8 +72,14 @@
     }
     else //someone still hasnt nominated (or skipped) 
     {
+        NSLog(@"Waiting for Nominations");
         //show the "waiting" screen
         self.title = @"Waiting on ..."; 
+        delayedUsersArray = [[NSMutableArray alloc] init];
+        [delayedUsersArray addObject:@"Jack Cheng"];
+        [delayedUsersArray addObject:@"Mike Potter"];
+        [delayedUsersArray addObject:@"Jason Roos"];
+        [delayedUsersArray retain];
         
     }
     // Uncomment the following line to preserve selection between presentations.
@@ -128,8 +142,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     // Return the number of rows in the section.
-    return [nomineesArray count];
+    if(!wait_for_nominations) //everyone has nominated a location
+    {
+        return [nomineesArray count];
+    }
+    else //we are still waiting for some nominees
+    {   
+        return [delayedUsersArray count];
+    }
+}
+/* set the height of the rows */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -138,58 +165,180 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    // Configure the cell...
-    [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
-    
+    //disable selection view for this cell
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if(!wait_for_nominations) //everyone has nominated a location
+    {
+        // Configure the cell...
+        [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
+        
+        
+       
+        // add Subtitle (Last visit to the resturant)
+        cell.detailTextLabel.text=@"Last visit 2 days ago";
+        cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
+        
+        // Add Destination Image Icon
+        UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
+        cell.imageView.image = theImage;
+        
+        //create custom Accessory View
+        UIView *voteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 55)];
+        
+        if(votes!=0) //Only show the label if the eatery has any votes
+        {
+            //create num of votes label
+            UILabel *voteCount;
+            voteCount = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
+            NSString *vote = [NSString stringWithFormat:@"%i",votes];
+            voteCount.text = vote;
+            voteCount.textAlignment =UITextAlignmentCenter;
+            voteCount.backgroundColor = [UIColor grayColor];
+            voteCount.textColor =[UIColor whiteColor];
+            voteCount.font=[UIFont fontWithName:@"Helvetica Bold" size:12];
+            voteCount.layer.cornerRadius= 4;
+            [voteView addSubview:voteCount];
+        }
+
+        
+        //create custom upVote button
+        UIButton *upVote = [UIButton buttonWithType:UIButtonTypeCustom];
+        [upVote addTarget:self action:@selector(votedUp:) forControlEvents:UIControlEventTouchUpInside];
+        upVote.frame = CGRectMake(35, 10, 30, 30);
+        UIImage *addImage = [UIImage imageNamed:@"default_add.png"]; 
+        [upVote setImage:addImage forState:UIControlStateNormal];
+        //if the user has not votes left - disable the add buttom
+        if(userTotalVotes <= 0)
+        {
+            upVote.enabled = NO;
+            
+        }
+        else
+        {
+            upVote.enabled = YES;
+        }
+        
+        //create custom downVote button
+        UIButton *downVote = [UIButton buttonWithType:UIButtonTypeCustom];
+        [downVote addTarget:self action:@selector(votedDown:) forControlEvents:UIControlEventTouchUpInside];
+        downVote.frame = CGRectMake(65, 10, 30, 30);
+        UIImage *downImage = [UIImage imageNamed:@"default_remove.png"]; 
+        [downVote setImage:downImage forState:UIControlStateNormal];
+        if(userTotalVotes == maxTotalVotes)
+        {
+            downVote.enabled = NO;
+        }
+        else
+        {
+            downVote.enabled = YES;
+        }
+
+        
+        // add all to a view
+        
+        [voteView addSubview:upVote];
+        [voteView addSubview:downVote];
+        
+        //add the voteView to the cell
+            cell.accessoryView = voteView;
+        [voteView release];
+    }
+    else //still waiting for some nominations set the user's we're waiting for
+    {
+        // Configure the cell...
+        [cell.textLabel setText:[delayedUsersArray objectAtIndex:indexPath.row]];
+        
+        //get the users icon and set that to the image view
+        // Add Destination Image Icon
+        UIImage* userIcon = [UIImage imageNamed:@"default_restuarant.png"];
+        cell.imageView.image = userIcon;
+
+        //add the loading image to the accessory view
+        UIActivityIndicatorView *waitingIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        waitingIndicator.frame = CGRectMake(0.0, 0.0, 20, 20);
+        waitingIndicator.center = self.view.center;
+        [waitingIndicator startAnimating];
+        cell.accessoryView= waitingIndicator;
+   
+    }
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(NSString *) VoteChanged
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    votes+=1;
+    int voted=(votes);
+    NSString *string = [NSString stringWithFormat:@"%i",voted];
+    return string;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+/*event called for the add vote button*/
+-(void) votedUp: (id)sender
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+       //get the indexPath of the currently selected cell
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+   // UITableViewCell *selectedCell = [self tableView:tableview cellForRowAtIndexPath:indexPath];
+  //  UITableViewCell *cell = (UITableViewCell *)[(UITableView *)self.view cellForRowAtIndexPath:indexPath];
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+    //its index will be  indexPath.row
+    NSLog(@"You Added a Vote to Row: %d", indexPath.row);
+    /*
+     Put in the code to increase the votes for the eatery
+     */
+    votes++;
+    userTotalVotes --; //remove the users vote
+    self.setNavTitle;
+    
+    //reload the table data
+    [self.tableView reloadData];
+    
 }
-*/
+/*event called for the remove Vote button*/
+-(void) votedDown: (id)sender
+{
+    //get the indexPath of the currently selected cell
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+    
+    //its index will be indexPath.row
+    NSLog(@"You Removed a Vote from Row: %d", indexPath.row);
+    
+    /*
+     put in the code to reduce the votes for the eatery
+     */
+    votes --;
+    userTotalVotes ++; //increase the users vote
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    self.setNavTitle;
+    //reload the table data
+    [self.tableView reloadData];
 }
-*/
+/*sets the string for the navigationbar title based on the current users points */
+-(void) setNavTitle
+{
+    NSString *title;
+    if(userTotalVotes==1) //if 1 vote left used point
+    {
+        title =[NSString stringWithFormat:@"Award %i Point",userTotalVotes];
+    }
+    else if(userTotalVotes<=0)
+    {
+        title =@"No Votes Left :-(";
+    }
+    else
+    {
+        title =[NSString stringWithFormat:@"Award %i Points",userTotalVotes];
+    }
+   
+    //set the title
+    self.title=title;
+}
+
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Just Selected %d", indexPath.row);
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

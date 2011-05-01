@@ -93,8 +93,6 @@
 /*Selected when User wants to add a new group to the Group list*/
 - (void)addNewGroup:(UIBarButtonItem*)button {
     NSLog(@"Adding New Group");
-	//[usersGroupsArray addObject:@"New Group"];
-    //AddGroupViewController addGroup =
      AddGroupViewController *addGroup = [[AddGroupViewController alloc] initWithNibName:@"AddGroupViewController" bundle:nil];
     [self.navigationController pushViewController:addGroup animated:YES];
     
@@ -145,6 +143,11 @@
     // Return the number of rows in the section.
     return [usersGroupsArray count];
 }
+/*set the height of the rows */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -152,15 +155,21 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+       // Configure the cell
+    //add the arrow to the cell
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    // Configure the cell
+    //add the user group name to the cell
     [cell.textLabel setText:[usersGroupsArray objectAtIndex:indexPath.row]];
+    //add the group image to the cell
+    NSString *path = @"default_restuarant.png";
+    UIImage *theImage = [UIImage imageNamed:path]; 
+    cell.imageView.image = theImage;
+    
     return cell;
 
-    
-    return cell;
 }
 /*When a user edits the table make sure to also remove the group name from the users list*/
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

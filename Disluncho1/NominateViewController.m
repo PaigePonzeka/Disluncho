@@ -59,6 +59,7 @@
     self.navigationItem.rightBarButtonItem = addButton;
     [addButton release];
 
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -123,77 +124,64 @@
 
     return ([currentRestaurantsArray count]+1); //set the rows one cell largers for Skip Nomination Option
 }
+/* set the height of the rows */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+    // add the arrow to the cell
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    
     if(indexPath.row > ([currentRestaurantsArray count]-1))
     {
-        //set the last cell with "skip Nomination Option"
-        [cell.textLabel setText:@"Skip Nomination"];
+        // set the last cell with "skip Nomination Option"
+        [cell.textLabel setText:@"Skip nomination"];
     }
     else
     {
-        // Configure the cell
+        // Add the Destination Title
         [cell.textLabel setText:[currentRestaurantsArray objectAtIndex:indexPath.row]];
+        // add Subtitle (Last visit to the resturant)
+        cell.detailTextLabel.text=@"Last visit 2 days ago";
+        cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
+        
+       
+        // Add Destination Image Icon
+        UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
+        cell.imageView.image = theImage;
     }
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    //save selected row
-    NSString *selected = [currentRestaurantsArray objectAtIndex:indexPath.row];
-    NSLog(@"You Nominated %@", selected);
-    
+    /*If the User did not select "Skip Nomination" go to the next screen*/
+    if(indexPath.row < ([currentRestaurantsArray count] -1))
+    {
+        //save selected row
+        NSString *selected = [currentRestaurantsArray objectAtIndex:indexPath.row];
+        NSLog(@"You Nominated %@", selected);
+
+    }
+    else
+    {
+        NSLog(@"You skipped Nomination Process");
+    }
+       
 
     //push the Vote table view screen
     VoteViewController *voteview = [[VoteViewController alloc] initWithNibName:@"VoteViewController" bundle:nil];
