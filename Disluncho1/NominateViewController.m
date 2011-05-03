@@ -170,7 +170,7 @@
         
        
         // Add Destination Image Icon
-        UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
+        UIImage* theImage = [UIImage imageNamed:@"default_eatery.png"];
         cell.imageView.image = theImage;
     }
     

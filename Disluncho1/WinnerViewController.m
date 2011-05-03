@@ -163,7 +163,7 @@
     voteCount.font=[UIFont fontWithName:@"Helvetica Bold" size:12];
     voteCount.layer.cornerRadius= 4;
     // Add Destination Image Icon
-    UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
+    UIImage* theImage = [UIImage imageNamed:@"default_eatery.png"];
         if(!waiting_for_votes){ //all votes are finished so set the fade look for everyone but the winner
             if(indexPath.row!=0) //these are the losers - faded
             {
