@@ -12,6 +12,7 @@
 @implementation NominateViewController
 
 @synthesize currentRestaurantsArray;
+@synthesize currentRestaurants;
 @synthesize root;
 
 
@@ -40,18 +41,31 @@
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
-{
+{	
     [super viewDidLoad];
+	
+	PLACENAME = 1;
+	PLACEUNID = 0;
+	//set up pointer to the root
+	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
+	
     //set the tab bar title
     self.title = @"Nominate";
     
+	//grab all resturants the group has ever nominated
+	NSString *currentResturantParams = [[[NSString stringWithString:@"action=LIST_GROUP_PLACES"] 
+										stringByAppendingString:@"&group="]
+										 stringByAppendingString:[NSString stringWithFormat:@"%i",[root GroupUNID]]];
+	currentRestaurants = [root sendAndRetrieve:currentResturantParams];
+	
+	
     //intialize the nomineesArray (the array of resturants nominated in the current vote)
-    currentRestaurantsArray = [[NSMutableArray alloc] init];
-    [currentRestaurantsArray addObject:@"Chipotle"];
-    [currentRestaurantsArray addObject:@"Qdoba"];
-    [currentRestaurantsArray addObject:@"Fancy Food"];
-    [currentRestaurantsArray addObject:@"Street Meat"];
+    currentRestaurantsArray = [[NSMutableArray alloc] initWithCapacity:[currentRestaurants count]];
+	for(int place=0; place < [currentRestaurants count];place++){
+		[currentRestaurantsArray addObject:[[currentRestaurants objectAtIndex:place]objectAtIndex:PLACENAME]];
+	}
     [currentRestaurantsArray retain];
+	[currentRestaurants retain];
     
     
     //display an add button for this view controller
@@ -141,8 +155,7 @@
     // add the arrow to the cell
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    
-    if(indexPath.row > ([currentRestaurantsArray count]-1))
+    if((indexPath.row > ([currentRestaurantsArray count]-1))||([currentRestaurantsArray count]==0))
     {
         // set the last cell with "skip Nomination Option"
         [cell.textLabel setText:@"Skip nomination"];
@@ -170,9 +183,18 @@
 {
     
     /*If the User did not select "Skip Nomination" go to the next screen*/
-    if(indexPath.row < ([currentRestaurantsArray count] -1))
+    if(indexPath.row < ([currentRestaurants count]))
     {
-        //save selected row
+		//adds the nomination to the database
+		NSString *nominateParams =[[[[[[[NSString stringWithString:@"action=NOMINATE"] 
+									stringByAppendingString:@"&round="]
+									stringByAppendingString:[NSString stringWithFormat:@"%i",[root RoundUNID]]]
+									stringByAppendingString:@"&place="]
+									stringByAppendingString:[NSString stringWithFormat:@"%i",[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACEUNID]]]
+									stringByAppendingString:@"&user="]
+									stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
+		NSMutableArray *nomination = [root sendAndRetrieve:nominateParams];
+		[nomination release];
         NSString *selected = [currentRestaurantsArray objectAtIndex:indexPath.row];
         NSLog(@"You Nominated %@", selected);
 

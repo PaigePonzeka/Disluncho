@@ -41,6 +41,9 @@
 {
     [super viewDidLoad];
     
+	//set up pointer to the root
+	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
+	
     self.title = @"Add A Group";    //display an add button for this view controller
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneWithGroup)];
     self.navigationItem.rightBarButtonItem = doneButton;

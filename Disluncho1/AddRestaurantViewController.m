@@ -31,6 +31,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	
+	//set up pointer to the root
+	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
+	
     self.title = @"Add Restaurant";    //display an add button for this view controller
 
     // Uncomment the following line to preserve selection between presentations.

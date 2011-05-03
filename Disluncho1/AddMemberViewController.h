@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Disluncho1AppDelegate.h"
 
 @interface AddMemberViewController : UIViewController {
     IBOutlet UITextField *member_email;
+	Disluncho1AppDelegate *root;
 }
 
 @end

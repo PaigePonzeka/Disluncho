@@ -16,10 +16,14 @@
 @synthesize navigationController=_navigationController;
 
 @synthesize UserUNID;
+@synthesize GroupUNID;
+@synthesize RoundUNID;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	
+	UserUNID = 1;
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
     self.window.rootViewController = self.navigationController;

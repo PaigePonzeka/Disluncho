@@ -12,13 +12,17 @@
 
 	//local storage of signin information
 	int UserUNID;
+	int GroupUNID;
+	int RoundUNID;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
-@property int UserUNID;
+@property (nonatomic,assign) int UserUNID;
+@property (nonatomic,assign) int GroupUNID;
+@property (nonatomic,assign) int RoundUNID;
 
 -(NSMutableArray *) sendAndRetrieve:(NSString *)parameters;
 -(void) printResults:(NSMutableArray *)results;

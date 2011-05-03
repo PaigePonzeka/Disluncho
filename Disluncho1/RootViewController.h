@@ -12,7 +12,7 @@
 
 @interface RootViewController : UIViewController {
 	Disluncho1AppDelegate *root;
-
+	int USERUNID;
     IBOutlet UITextField *login_name;
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;

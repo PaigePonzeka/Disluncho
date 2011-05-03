@@ -42,6 +42,9 @@
 {
     [super viewDidLoad];
 
+	//set up pointer to the root
+	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
+	
     // remove the back button
     self.navigationItem.hidesBackButton = YES;
     

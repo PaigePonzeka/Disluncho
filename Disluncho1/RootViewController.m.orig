@@ -12,19 +12,17 @@
 
 
 @implementation RootViewController
+<<<<<<< HEAD
 @synthesize root;
-//@synthesize login_name=_login_name;
 
+=======
+//@synthesize login_name=_login_name;
+>>>>>>> c80806ad79e4ff6f58ca86ac726b520ac826f73b
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-	//set up pointer to the root
-	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
-	
-	USERUNID = 0;
-	
+    
     //change the navigation bar title 
     self.title = @"Register";
     
@@ -62,23 +60,9 @@
 -(void) registerUser:(UIBarButtonItem*)button
 {
     NSLog(@"Register User");
-	//commented out for testing purposes to easily just set useruid
-	/*NSString *loginParams = [[[NSString stringWithString:@"action=LOGIN"]
-							   stringByAppendingString:@"&email=%@",email.text]
-							 stringByAppendingFormat:@"&username=%@",username.text];
-	NSMutableArray *login = [root sendAndRetrieve:loginParams];
-	
-	if([login count]==0){
-		//some sort of error message
-	}
-	else {
-		[root setUserUNID:[[login objectAtIndex:0]objectAtIndex:USERUNID]];
-*/
-		//push Groups View controller to the front
-		GroupsViewController *groupview = [[GroupsViewController alloc] initWithNibName:@"GroupsViewController" bundle:nil];
-		[self.navigationController pushViewController:groupview animated:YES];
-	//}
-
+    //push Groups View controller to the front
+    GroupsViewController *groupview = [[GroupsViewController alloc] initWithNibName:@"GroupsViewController" bundle:nil];
+    [self.navigationController pushViewController:groupview animated:YES];
 }
 /* makes keyboard disappear on enter */
 -(BOOL)textFieldShouldReturn:(UITextField *)theTextField

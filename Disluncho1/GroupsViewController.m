@@ -11,7 +11,9 @@
 
 @implementation GroupsViewController
 @synthesize usersGroupsArray;
+@synthesize usersGroups;
 @synthesize root;
+@synthesize GROUPID;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -54,19 +56,22 @@
 	
 	
 	//index variables for sql results
-	GROUPNAME = 0;
-	GROUPID = 1;
+	GROUPNAME = 1;
+	GROUPID = 0;
+	ROUNDID = 0;
 	
 	//get all users from database --- later perhaps just users that have email/phone# in your contacts
-	NSString* allUserGroups = [NSString stringWithString:@"action=LIST_USER_GROUPS"];
-	NSMutableArray* userGroups = [root sendAndRetrieve:allUserGroups];
+	NSString* usersGroupsParams = [[[NSString stringWithString:@"action=LIST_USER_GROUPS"]
+								stringByAppendingString:@"&user="]stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
+	usersGroups = [root sendAndRetrieve:usersGroupsParams];
 	
     //load the usernames
    usersGroupsArray = [[NSMutableArray alloc] initWithCapacity:3];	
-	for(int group = 0; group < [userGroups count]; group++){
-	    [usersGroupsArray addObject:[[userGroups objectAtIndex:group] objectAtIndex:GROUPNAME] ];
+	for(int group = 0; group < [usersGroups count]; group++){
+	    [usersGroupsArray addObject:[[usersGroups objectAtIndex:group] objectAtIndex:GROUPNAME] ];
 	}
 	[usersGroupsArray retain];
+	[usersGroups retain];
 
 
 
@@ -242,7 +247,27 @@
     else //table is not being edited behave normally
     {
         // Navigation logic may go here. Create and push another view controller.
-        //save selected row
+       
+		//save selected row
+		[root setGroupUNID: [[[usersGroups objectAtIndex:indexPath.row] objectAtIndex:GROUPID] intValue]];
+
+		//check to see if there is an open round
+		NSString *openRoundsParams = [[NSString stringWithString:@"action=LIST_OPEN_ROUNDS&group="]
+									  stringByAppendingString:[NSString stringWithFormat:@"%i",[root GroupUNID]]];
+		NSMutableArray *openRounds = [root sendAndRetrieve:openRoundsParams];
+		
+		//there are no open rounds so make one		
+		if([openRounds count]==0){
+			openRoundsParams = [[[openRoundsParams stringByReplacingOccurrencesOfString:@"LIST_OPEN_ROUNDS" withString:@"MAKE_OPEN_ROUND"]
+								stringByAppendingString:@"&user="] stringByAppendingString:[NSString stringWithFormat:@"@%i",[root UserUNID]]];
+			openRounds = [root sendAndRetrieve:openRoundsParams];
+		}
+		
+		//set what round they will be voting in
+		[root setRoundUNID:[[[openRounds objectAtIndex:0] objectAtIndex:ROUNDID]  intValue]];
+		
+		
+		
         NSString *selected = [usersGroupsArray objectAtIndex:indexPath.row];
         NSLog(@"You Selected %@", selected);
         
