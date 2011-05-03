@@ -19,7 +19,7 @@
 	if((UIButton *) sender == choosePhotoBtn) {
 		picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
 	} else {
-		picker.sourceType = UIIUIImagePickerControllerSourceTypeCamera;
+		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
 	}
     
 	[self presentModalViewController:picker animated:YES];
