@@ -46,6 +46,8 @@
 		28932A86136A0E46006054CE /* icon in Resources */ = {isa = PBXBuildFile; fileRef = 28932A85136A0E46006054CE /* icon */; };
 		28932A8A136A0E98006054CE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28932A89136A0E98006054CE /* icon.png */; };
 		28932A8C136A10D7006054CE /* AddGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28932A8B136A10D6006054CE /* AddGroupViewController.xib */; };
+		28CA88E91370B474006302F8 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CA88E71370B474006302F8 /* PhotoViewController.m */; };
+		28CA88EA1370B474006302F8 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CA88E81370B474006302F8 /* PhotoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,9 @@
 		28932A85136A0E46006054CE /* icon */ = {isa = PBXFileReference; lastKnownFileType = file; path = icon; sourceTree = "<group>"; };
 		28932A89136A0E98006054CE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 		28932A8B136A10D6006054CE /* AddGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddGroupViewController.xib; path = Disluncho1.xcodeproj/AddGroupViewController.xib; sourceTree = SOURCE_ROOT; };
+		28CA88E61370B474006302F8 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		28CA88E71370B474006302F8 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		28CA88E81370B474006302F8 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +193,9 @@
 				28031C3F1367578D006A76F6 /* AddGroupViewController.h */,
 				28031C401367578D006A76F6 /* AddGroupViewController.m */,
 				28031C4513675D37006A76F6 /* AddRestaurantViewController.m */,
+				28CA88E61370B474006302F8 /* PhotoViewController.h */,
+				28CA88E71370B474006302F8 /* PhotoViewController.m */,
+				28CA88E81370B474006302F8 /* PhotoViewController.xib */,
 				28031C4413675D37006A76F6 /* AddRestaurantViewController.h */,
 				28932A80136A0DA6006054CE /* AddMemberViewController.h */,
 				28932A81136A0DA7006054CE /* AddMemberViewController.m */,
@@ -332,6 +340,7 @@
 				28932A8C136A10D7006054CE /* AddGroupViewController.xib in Resources */,
 				2847E8BB13708AB5001E333F /* default_group.png in Resources */,
 				2847E8BE13708B41001E333F /* default_eatery.png in Resources */,
+				28CA88EA1370B474006302F8 /* PhotoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +387,7 @@
 				28031C4713675D38006A76F6 /* AddRestaurantViewController.m in Sources */,
 				28031C4C1367647D006A76F6 /* GroupDetailsViewController.m in Sources */,
 				28932A83136A0DA8006054CE /* AddMemberViewController.m in Sources */,
+				28CA88E91370B474006302F8 /* PhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

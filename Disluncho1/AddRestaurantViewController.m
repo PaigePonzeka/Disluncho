@@ -37,6 +37,7 @@
 	
     self.title = @"Add Restaurant";    //display an add button for this view controller
 
+    eatery_name.borderStyle = UITextBorderStyleRoundedRect;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
