@@ -147,10 +147,11 @@
     NSLog(@"Vote Finished");
     
     //save the results of the current table
-	NSString *voteParams;
+	//NSString *voteParams;
 	NSMutableArray *vote;
 	for(int place = 0 ;place < [nomineesArray count];place++){
-		voteParams = [[[[[[NSString stringWithString:@"action=VOTE"]
+        //adds the nomination to the database
+		NSString *voteParams = [[[[[[NSString stringWithString:@"action=VOTE"]
 									stringByAppendingFormat:@"&user=%i",[root UserUNID]]
 									stringByAppendingFormat:@"&round=%i",[root RoundUNID]]
 									stringByAppendingString:@"&place="]
@@ -221,7 +222,7 @@
         cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
         
         // Add Destination Image Icon
-        UIImage* theImage = [UIImage imageNamed:@"default_restuarant.png"];
+        UIImage* theImage = [UIImage imageNamed:@"default_eatery.png"];
         cell.imageView.image = theImage;
         
         //create custom Accessory View

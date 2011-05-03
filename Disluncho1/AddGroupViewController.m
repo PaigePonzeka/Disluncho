@@ -142,11 +142,13 @@
     {
         UIView *modalView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 100)] autorelease];
         
-        
-        UIImageView *myImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        [myImage setImage:[UIImage imageNamed:@"default_restuarant.png"]];
-        //myImage.opaque = YES; // explicitly opaque for performance
-        [modalView addSubview:myImage];
+        UIButton *add_photo = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+       add_photo.frame = CGRectMake(0, 0, 100, 100);
+        [add_photo setTitle:@"Add Photo" forState:UIControlStateNormal];
+       // add_photo.buttonType =UIButtonTypeRoundedRect ;
+       // [add_photo buttonType=];
+       // add_photo.borderStyle = UITextBorderStyleRoundedRect;
+        [modalView addSubview:add_photo];
         
         UITextField *groupName= [[UITextField alloc] initWithFrame:CGRectMake(100, 0, 300, 100)];
         groupName.text = @"Name";

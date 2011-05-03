@@ -12,6 +12,7 @@
 
 @interface AddRestaurantViewController : UIViewController {
 	Disluncho1AppDelegate *root;
+    IBOutlet UITextField *eatery_name;
 
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
