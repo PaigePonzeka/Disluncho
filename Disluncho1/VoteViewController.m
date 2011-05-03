@@ -154,7 +154,7 @@
 									stringByAppendingFormat:@"&user=%i",[root UserUNID]]
 									stringByAppendingFormat:@"&round=%i",[root RoundUNID]]
 									stringByAppendingString:@"&place="]
-									stringByAppendingString:[[nomineesArray objectAtIndex:place]objectAtIndex:PLACEUNID]]
+									stringByAppendingString:[[nominees objectAtIndex:place]objectAtIndex:PLACEUNID]]
 									stringByAppendingFormat:@"&count=%i",[[nomineesVotes objectAtIndex:place]intValue]];
 		vote = [root sendAndRetrieve:voteParams];
         
