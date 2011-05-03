@@ -65,7 +65,7 @@
         //show the regular vote screen (set based on total number of votes available to the user)
         //NSString *title =[NSString stringWithFormat:@"Award %i Points",userTotalVotes];
         //self.title =title;
-        self.setNavTitle;
+        [self setNavTitle];
         
 		
 		//get all the nominated resturants for this round
@@ -157,13 +157,13 @@
 									stringByAppendingString:[[nomineesArray objectAtIndex:place]objectAtIndex:PLACEUNID]]
 									stringByAppendingFormat:@"&count=%i",[[nomineesVotes objectAtIndex:place]intValue]];
 		vote = [root sendAndRetrieve:voteParams];
-								
+        
 	
 	}
     //navigate to the winnerViewController to see the results
     WinnerViewController *winnerview = [[WinnerViewController alloc] initWithNibName:@"WinnerViewController" bundle:nil];
     [self.navigationController pushViewController:winnerview animated:YES];
-
+    [winnerview release];
     
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -329,7 +329,7 @@
 	upvote++;
     [nomineesVotes replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithInt: upvote]];
     userTotalVotes --; //remove the users vote
-    self.setNavTitle;
+    [self setNavTitle];
     
     //reload the table data
     [self.tableView reloadData];
@@ -353,7 +353,8 @@
  
     userTotalVotes ++; //increase the users vote
 
-    self.setNavTitle;
+   
+    [self setNavTitle];
     //reload the table data
     [self.tableView reloadData];
 }

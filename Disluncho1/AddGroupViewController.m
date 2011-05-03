@@ -227,6 +227,7 @@
         // navigate to the AddMewmeberViewController to see the results
         AddMemberViewController *memberView = [[AddMemberViewController alloc] initWithNibName:@"AddMemberViewController" bundle:nil];
         [self.navigationController pushViewController:memberView animated:NO];
+        [memberView release];
     }
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

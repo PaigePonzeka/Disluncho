@@ -194,7 +194,7 @@
 									stringByAppendingString:@"&user="]
 									stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
 		NSMutableArray *nomination = [root sendAndRetrieve:nominateParams];
-		[nomination release];
+        [nomination release];
         NSString *selected = [currentRestaurantsArray objectAtIndex:indexPath.row];
         NSLog(@"You Nominated %@", selected);
 
@@ -208,7 +208,6 @@
     //push the Vote table view screen
     VoteViewController *voteview = [[VoteViewController alloc] initWithNibName:@"VoteViewController" bundle:nil];
     [self.navigationController pushViewController:voteview animated:YES];
-    
 
     // Navigation logic may go here. Create and push another view controller.
     /*

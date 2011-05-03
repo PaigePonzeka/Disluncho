@@ -66,7 +66,8 @@
 						   stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]] ; 
 	
 	//make string into 2D array [rows, fields]
-	NSMutableArray *returnValues = [NSMutableArray arrayWithCapacity:100];
+    NSMutableArray *returnValues = [[NSMutableArray alloc] initWithCapacity:100];
+	
 	
 	[returnValues setArray:[urlString componentsSeparatedByString:@"|"]];
 	for(int row=0; row< [returnValues count]; row++){

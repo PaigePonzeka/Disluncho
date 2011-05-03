@@ -135,6 +135,7 @@
         button.frame = CGRectMake(100, 0, 200.0, 100.0); // position in the parent view and set the size of the button
         [button setTitle:@"Disrupto" forState:UIControlStateNormal];
         [modalView addSubview: button];
+        
         // add targets and actions
        // [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
         return modalView;
