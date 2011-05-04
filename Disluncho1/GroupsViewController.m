@@ -93,7 +93,7 @@
     NSLog(@"Adding New Group");
      AddGroupViewController *addGroup = [[AddGroupViewController alloc] initWithNibName:@"AddGroupViewController" bundle:nil];
     [self.navigationController pushViewController:addGroup animated:YES];
-    
+    [addGroup release];
 	
 }
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -178,7 +178,6 @@
 		NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_GROUP_MEMBER&member=%i",
 										[root UserUNID]];
 		deleteMember = [root sendAndRetrieve:deleteMemberParams];
-		
         //make changes the to usersGroups
         [usersGroups removeObjectAtIndex:indexPath.row];
         
@@ -251,6 +250,7 @@
         //push the nominate table view screen
         GroupDetailsViewController *groupDetailsView = [[GroupDetailsViewController alloc] initWithNibName:@"GroupDetailsViewController" bundle:nil];
         [self.navigationController pushViewController:groupDetailsView animated:YES];
+        [groupDetailsView release];
     }
     else //table is not being edited behave normally
     {
@@ -280,7 +280,7 @@
         //push the nominate table view screen
         NominateViewController *nominateview = [[NominateViewController alloc] initWithNibName:@"NominateViewController" bundle:nil];
         [self.navigationController pushViewController:nominateview animated:YES];
-
+        [nominateview release];
         /*
          <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
          // ...

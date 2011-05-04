@@ -88,7 +88,7 @@
     //push the add Restaurent View Controller
     AddRestaurantViewController *addRestaurantView = [[AddRestaurantViewController alloc] initWithNibName:@"AddRestaurantViewController" bundle:nil];
     [self.navigationController pushViewController:addRestaurantView animated:YES];
-
+    [addRestaurantView release];
 	[self.tableView reloadData];
 }
 
@@ -205,12 +205,12 @@
 								stringByAppendingFormat:@"&place=%i",place]
 								stringByAppendingFormat:@"&user=",[root UserUNID]];
 	NSMutableArray *nomination = [root sendAndRetrieve:nominateParams];
-	[nomination release];
+
 
     //push the Vote table view screen
     VoteViewController *voteview = [[VoteViewController alloc] initWithNibName:@"VoteViewController" bundle:nil];
     [self.navigationController pushViewController:voteview animated:YES];
-
+    [voteview release];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

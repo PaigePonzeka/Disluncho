@@ -135,19 +135,19 @@
         [myImage setImage:[UIImage imageNamed:@"default_group.png"]];
         //myImage.opaque = YES; // explicitly opaque for performance
         [modalView addSubview:myImage];
+        [myImage release];
         
         UIButton *button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.frame = CGRectMake(100, 0, 200.0, 100.0); // position in the parent view and set the size of the button
         [button setTitle:[[group objectAtIndex:0]objectAtIndex:0] forState:UIControlStateNormal];
         [modalView addSubview: button];
-        
         // add targets and actions
        // [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
         return modalView;
 
         //return button;
     } else {
-        UILabel *view =[[UILabel alloc] initWithFrame:CGRectMake(10.0, 20.0, 400.0, 200.0)];
+        UILabel *view =[[[UILabel alloc] initWithFrame:CGRectMake(10.0, 20.0, 400.0, 200.0)]autorelease];
         view.text = @"Members";
         view.backgroundColor =[UIColor clearColor];
         return view;

@@ -63,10 +63,10 @@
 	}
 	//turn response into String stripped of \n characters
 	NSString *urlString = [[[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding] 
-						   stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]] ; 
+						   stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]; 
 	
 	//make string into 2D array [rows, fields]
-    NSMutableArray *returnValues = [[NSMutableArray alloc] initWithCapacity:100];
+    NSMutableArray *returnValues = [[[NSMutableArray alloc] initWithCapacity:100]autorelease];
 	
 	
 	[returnValues setArray:[urlString componentsSeparatedByString:@"|"]];
@@ -119,6 +119,7 @@
 	//turn response into String stripped of \n characters
 	NSString *urlString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding]; 
 	NSLog(@"\n\t%@",urlString);
+    [urlString release];
 
 }
 

@@ -182,7 +182,7 @@
         
         //return button;
     } else {
-        UILabel *view =[[UILabel alloc] initWithFrame:CGRectMake(20.0, 20.0, 400.0, 200.0)];
+        UILabel *view =[[[UILabel alloc] initWithFrame:CGRectMake(20.0, 20.0, 400.0, 200.0)]autorelease];
         view.text = @"Members";
         view.backgroundColor =[UIColor clearColor];
         view.textColor = [UIColor grayColor];
