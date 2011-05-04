@@ -42,6 +42,8 @@
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
 	
     self.title = @"Add Restaurant";    //display an add button for this view controller
+
+    eatery_name.borderStyle = UITextBorderStyleRoundedRect;
 	eatery_name.placeholder = @"Name";
 	[eatery_name setDelegate:self];
     // Uncomment the following line to preserve selection between presentations.

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Disluncho1AppDelegate.h"
 #import "AddMemberViewController.h"
+#import "PhotoViewController.h"
 
 @interface AddGroupViewController : UITableViewController <UITextFieldDelegate>{
     IBOutlet UITextField *add_group_name;
@@ -16,6 +17,7 @@
     NSMutableArray *groupMembersArray;
 
 	Disluncho1AppDelegate *root;
+    
 
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;

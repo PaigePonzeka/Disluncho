@@ -167,9 +167,7 @@
         UIButton *add_photo = [UIButton buttonWithType:UIButtonTypeRoundedRect];
        add_photo.frame = CGRectMake(0, 0, 100, 100);
         [add_photo setTitle:@"Add Photo" forState:UIControlStateNormal];
-       // add_photo.buttonType =UIButtonTypeRoundedRect ;
-       // [add_photo buttonType=];
-       // add_photo.borderStyle = UITextBorderStyleRoundedRect;
+        [add_photo addTarget:self action:@selector(addPhoto) forControlEvents:UIControlEventTouchUpInside];
         [modalView addSubview:add_photo];
         
         add_group_name= [[UITextField alloc] initWithFrame:CGRectMake(100, 0, 300, 100)];
@@ -190,6 +188,14 @@
         view.textColor = [UIColor grayColor];
         return view;
     }
+}
+-(void) addPhoto
+{
+    NSLog(@"Changing to Add Photo Screen");
+    //switch to the add photo screen
+    PhotoViewController *photoAdder = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
+    [self.navigationController pushViewController:photoAdder animated:YES];
+    [photoAdder release];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -268,5 +274,6 @@
      [detailViewController release];
      */
 }
+
 
 @end
