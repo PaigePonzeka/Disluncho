@@ -10,11 +10,8 @@
 
 
 @implementation VoteViewController
-@synthesize nomineesArray;
 @synthesize nominees;
-@synthesize delayedUsersArray;
 @synthesize delayedUsers;
-@synthesize nomineesVotes;
 @synthesize root;
 
 //@synthesize votes;
@@ -51,17 +48,41 @@
 	USERUNID = 0;
 	PLACENAME = 1;
 	PLACEUNID = 0;
+	VOTES = 3;
+	NSMutableArray *maxVotes;
+	NSString *maxVotesParams = [[[NSString stringWithString:@"action=GET_MEMBER_POINTS"]
+								 stringByAppendingFormat:@"&user=%i",[root UserUNID]]							
+								stringByAppendingFormat:@"&group=%i",[root GroupUNID]];
+	maxVotes = [root sendAndRetrieve:maxVotesParams];
+	maxTotalVotes = [[[maxVotes objectAtIndex:0] objectAtIndex:0] intValue];
+	
+	//keep this for now until we have good data to bring down points
     maxTotalVotes = 5;
-    userTotalVotes = maxTotalVotes; //intialze the players spending points
+    
+	userTotalVotes = maxTotalVotes; //intialze the players spending points
 	
 	NSString *delayedUsersParams = [[NSString stringWithString:@"action=GET_DELAYED_MEMBERS&round="] 
 											 stringByAppendingString:[NSString stringWithFormat:@"%i",[root RoundUNID]]];
 	delayedUsers = [root sendAndRetrieve:delayedUsersParams];
-    wait_for_nominations = NO;//([delayedUsers count] != 0); //the current state of the voting process
+	wait_for_nominations =([delayedUsers count] != 0); //the current state of the voting process
+    //wait_for_nominations = NO;
     
-    if(!wait_for_nominations) //if everyone is done nominating
+    if(wait_for_nominations)//someone still hasnt nominated (or skipped) 
     {
-        
+        NSLog(@"Waiting for Nominations");
+        //show the "waiting" screen
+        self.title = @"Waiting on ..."; 
+
+		[delayedUsers retain];
+
+    }
+	else if(userTotalVotes ==0)//user cannot vote they have no points
+	{ 
+		/* insert some code to give them an "I'm sorry" screen or something*/
+	}
+    else //if everyone is done nominating
+    {
+		
         //show the regular vote screen (set based on total number of votes available to the user)
         //NSString *title =[NSString stringWithFormat:@"Award %i Points",userTotalVotes];
         //self.title =title;
@@ -70,22 +91,17 @@
 		
 		//get all the nominated resturants for this round
 		NSString *nomineesParams = [[NSString stringWithString:@"action=LIST_PLACES_NOMINATED&round="] 
-										stringByAppendingString:[NSString stringWithFormat:@"%i",[root RoundUNID]]];
+									stringByAppendingString:[NSString stringWithFormat:@"%i",[root RoundUNID]]];
 		nominees = [root sendAndRetrieve:nomineesParams];
-		nomineesVotes = [NSMutableArray arrayWithCapacity:[nominees count]];
 		
         //intialize the nominees list
-        //intialize the nomineesArray (the array of resturants nominated in the current vote)
-        nomineesArray = [[NSMutableArray alloc] init];
+        //intialize the nominees (the array of resturants nominated in the current vote)
 		
 		for(int place = 0; place < [nominees count];place++){
-			[nomineesArray addObject:[[nominees objectAtIndex:place]objectAtIndex:PLACENAME]];
-			[nomineesVotes addObject:[NSNumber numberWithInt:0]];
+			[[nominees objectAtIndex:place] addObject:[NSNumber numberWithInt:0]];
 		}
-        [nomineesArray retain];
-		[nomineesVotes retain];
 		[nominees retain];
-
+		
         //remove the back button
         self.navigationItem.hidesBackButton = YES;
         
@@ -93,22 +109,7 @@
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(finishVoteGroup:)];
         self.navigationItem.rightBarButtonItem = doneButton;
         [doneButton release];
-
-    }
-    else //someone still hasnt nominated (or skipped) 
-    {
-        NSLog(@"Waiting for Nominations");
-        //show the "waiting" screen
-        self.title = @"Waiting on ..."; 
-        delayedUsersArray = [[NSMutableArray alloc] init];
-        for(int user = 0; user< [delayedUsers count];user++){
-			[delayedUsersArray addObject:[[delayedUsers objectAtIndex:user]objectAtIndex:USERNAME]];
-		}
 		
-        [delayedUsersArray retain];
-		[delayedUsers retain];
-
-        
     }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -149,18 +150,43 @@
     //save the results of the current table
 	//NSString *voteParams;
 	NSMutableArray *vote;
-	for(int place = 0 ;place < [nomineesArray count];place++){
+	NSMutableArray *update;
+	for(int place = 0 ;place < [nominees count];place++){
         //adds the nomination to the database
 		NSString *voteParams = [[[[[[NSString stringWithString:@"action=VOTE"]
 									stringByAppendingFormat:@"&user=%i",[root UserUNID]]
 									stringByAppendingFormat:@"&round=%i",[root RoundUNID]]
 									stringByAppendingString:@"&place="]
 									stringByAppendingString:[[nominees objectAtIndex:place]objectAtIndex:PLACEUNID]]
-									stringByAppendingFormat:@"&count=%i",[[nomineesVotes objectAtIndex:place]intValue]];
+									stringByAppendingFormat:@"&count=%i",[[[nominees objectAtIndex:place]objectAtIndex:VOTES ]intValue]];
 		vote = [root sendAndRetrieve:voteParams];
         
-	
 	}
+	
+	//update the user's points
+	NSString *updateParams = [[[[NSString stringWithString:@"action=UPDATE_MEMBER_POINTS"]
+								stringByAppendingFormat:@"&user=%i",[root UserUNID]]
+							   stringByAppendingFormat:@"&group=%i",[root GroupUNID]]
+							  stringByAppendingFormat:@"&count=%i",userTotalVotes];
+	update = [root sendAndRetrieve:updateParams];
+	
+	//see if everyone has voted
+	NSMutableArray *waitingForVotes;
+	NSString *waitingForVotesParams = [[NSString stringWithString:@"action=GET_NOT_VOTED_MEMBERS"]
+									  stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
+	waitingForVotes = [root sendAndRetrieve:waitingForVotesParams];
+	
+	// set the status of voting (are we waiting for people to finish voting?)
+	if([waitingForVotes count]==0){
+	
+		//add the winner to the database and end the round
+		NSMutableArray *setWinner;
+		NSString *setWinnerParams = [[[NSString stringWithString:@"action=SET_WINNER"]
+									  stringByAppendingFormat:@"&round=%i",[root RoundUNID]]
+									 stringByAppendingFormat:@"&place=%i",[[[nominees objectAtIndex:0]objectAtIndex:PLACEUNID ] intValue]];
+		setWinner = [root sendAndRetrieve:setWinnerParams];
+	}
+	
     //navigate to the winnerViewController to see the results
     WinnerViewController *winnerview = [[WinnerViewController alloc] initWithNibName:@"WinnerViewController" bundle:nil];
     [self.navigationController pushViewController:winnerview animated:YES];
@@ -187,11 +213,11 @@
     // Return the number of rows in the section.
     if(!wait_for_nominations) //everyone has nominated a location
     {
-        return [nomineesArray count];
+        return [nominees count];
     }
     else //we are still waiting for some nominees
     {   
-        return [delayedUsersArray count];
+        return [delayedUsers count];
     }
 }
 /* set the height of the rows */
@@ -213,7 +239,7 @@
     if(!wait_for_nominations) //everyone has nominated a location
     {
         // Configure the cell...
-        [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
+        [cell.textLabel setText:[[nominees objectAtIndex:indexPath.row]objectAtIndex:PLACENAME]];
         
         
        
@@ -228,12 +254,12 @@
         //create custom Accessory View
         UIView *voteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 55)];
         
-        if([[nomineesVotes objectAtIndex:indexPath.row]intValue]!=0) //Only show the label if the eatery has any votes
+        if([[[nominees objectAtIndex:indexPath.row]objectAtIndex:VOTES ]intValue]!=0) //Only show the label if the eatery has any votes
         {
             //create num of votes label
             UILabel *voteCount;
             voteCount = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
-            NSString *vote = [NSString stringWithFormat:@"%i",[[nomineesVotes objectAtIndex:indexPath.row] intValue]];
+            NSString *vote = [NSString stringWithFormat:@"%i",[[[nominees objectAtIndex:indexPath.row] objectAtIndex:VOTES]intValue]];
             voteCount.text = vote;
             voteCount.textAlignment =UITextAlignmentCenter;
             voteCount.backgroundColor = [UIColor grayColor];
@@ -289,7 +315,7 @@
     else //still waiting for some nominations set the user's we're waiting for
     {
         // Configure the cell...
-        [cell.textLabel setText:[delayedUsersArray objectAtIndex:indexPath.row]];
+        [cell.textLabel setText:[[delayedUsers objectAtIndex:indexPath.row]objectAtIndex:USERNAME]];
         
         //get the users icon and set that to the image view
         // Add Destination Image Icon
@@ -326,9 +352,9 @@
     /*
      Put in the code to increase the votes for the eatery
      */
-	int upvote = [[nomineesVotes objectAtIndex:indexPath.row]intValue];
+	int upvote = [[[nominees objectAtIndex:indexPath.row]objectAtIndex:VOTES ]intValue];
 	upvote++;
-    [nomineesVotes replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithInt: upvote]];
+    [[nominees objectAtIndex:indexPath.row] replaceObjectAtIndex:VOTES withObject:[NSNumber numberWithInt: upvote]];
     userTotalVotes --; //remove the users vote
     [self setNavTitle];
     
@@ -348,9 +374,9 @@
     /*
      put in the code to reduce the votes for the eatery
      */
-	int upvote = [[nomineesVotes objectAtIndex:indexPath.row]intValue];
-	upvote--;
-    [nomineesVotes replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithInt: upvote]];
+	int downvote = [[[nominees objectAtIndex:indexPath.row] objectAtIndex:VOTES]intValue];
+	downvote--;
+    [[nominees objectAtIndex:indexPath.row] replaceObjectAtIndex:VOTES withObject:[NSNumber numberWithInt: downvote]];
  
     userTotalVotes ++; //increase the users vote
 

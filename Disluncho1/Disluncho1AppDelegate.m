@@ -23,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	
-	UserUNID = 1;
+	UserUNID = 3;
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
     self.window.rootViewController = self.navigationController;
@@ -89,6 +89,38 @@
 	return returnValues;
 
 }
+/*
+ *
+ *
+ */
+-(void) send:(NSString *)parameters
+{
+	//set up urlRequest
+	NSData *parametersData = [parameters dataUsingEncoding:NSISOLatin1StringEncoding allowLossyConversion:NO];
+	NSMutableURLRequest *urlRequest = [[[NSMutableURLRequest alloc] 
+										initWithURL:[NSURL URLWithString:@"http://ponzeka.com/iphone_disluncho/disluncho_test.php"]]
+									   autorelease];
+	[urlRequest setHTTPMethod:@"POST"];
+	[urlRequest setHTTPBody:parametersData];
+	
+	//variables to store retrieved data
+	NSData *urlData; 
+	NSURLResponse *response; 
+	NSError *error;
+	
+	//connect to url and get response
+	urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error]; 
+	
+	//check for errors
+	if(!urlData) {
+		NSLog(@"Connection Failed!");
+
+	}
+	//turn response into String stripped of \n characters
+	NSString *urlString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding]; 
+	NSLog(@"\n\t%@",urlString);
+
+}
 
 /*
  *	prints out the result array to Log 
@@ -105,7 +137,6 @@
 		NSLog(@"[row #%i]- %@ ",j,fields);
 	}
 }
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

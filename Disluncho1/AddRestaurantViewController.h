@@ -10,7 +10,7 @@
 #import "Disluncho1AppDelegate.h"
 
 
-@interface AddRestaurantViewController : UIViewController {
+@interface AddRestaurantViewController : UIViewController <UITextFieldDelegate>{
 	Disluncho1AppDelegate *root;
     IBOutlet UITextField *eatery_name;
 

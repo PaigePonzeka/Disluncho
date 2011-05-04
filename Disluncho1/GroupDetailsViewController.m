@@ -10,7 +10,8 @@
 
 
 @implementation GroupDetailsViewController
-@synthesize groupMembersArray;
+@synthesize groupMembers;
+@synthesize group;
 @synthesize root;
 
 
@@ -44,6 +45,9 @@
 
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
+
+	MEMBERNAME = 1;
+	MEMBERUNID = 0;
 	
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,16 +55,17 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
      self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+	//get group name
+	NSString *groupParams = [NSString stringWithFormat:@"action=LIST_GROUP_INFO&group=%i",[root GroupUNID]];
+	group = [root sendAndRetrieve:groupParams];
+	
     //set title to the name of the group
-    self.title = @"Disrupto";
+    self.title = [[group objectAtIndex:0] objectAtIndex:0];
     
-    //intialize the group members
-    //set the logged in users groups
-    groupMembersArray = [[NSMutableArray alloc] initWithCapacity:3];
-    [groupMembersArray addObject:@"Jack Cheng"];
-    [groupMembersArray addObject:@"Jason Roos"];
-    [groupMembersArray addObject:@"Mike Potter"];
-    [groupMembersArray retain];
+	
+	NSString *groupMembersParams = [NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",[root GroupUNID]];
+	groupMembers = [root sendAndRetrieve:groupMembersParams];
+	
 }
 
 - (void)viewDidUnload
@@ -106,7 +111,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return section == 0 ? 0 : [groupMembersArray count];
+    return section == 0 ? 0 : [groupMembers count];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -133,7 +138,7 @@
         
         UIButton *button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.frame = CGRectMake(100, 0, 200.0, 100.0); // position in the parent view and set the size of the button
-        [button setTitle:@"Disrupto" forState:UIControlStateNormal];
+        [button setTitle:[[group objectAtIndex:0]objectAtIndex:0] forState:UIControlStateNormal];
         [modalView addSubview: button];
         
         // add targets and actions
@@ -157,7 +162,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     // Configure the cell...
-    [cell.textLabel setText:[groupMembersArray objectAtIndex:indexPath.row]];
+    [cell.textLabel setText:[[groupMembers objectAtIndex:indexPath.row] objectAtIndex:MEMBERNAME]];
     
     return cell;
 }
@@ -178,7 +183,11 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete  the member from the group array
         /*Put in code here to save changes to the delete*/
-        [groupMembersArray removeObjectAtIndex:indexPath.row]; 
+		NSMutableArray *deleteMember;
+		NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_GROUP_MEMBER&member=%i",
+										[[[groupMembers objectAtIndex:indexPath.row]objectAtIndex:MEMBERUNID] intValue]];
+		deleteMember = [root sendAndRetrieve:deleteMemberParams];
+        [groupMembers removeObjectAtIndex:indexPath.row]; 
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];   
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {

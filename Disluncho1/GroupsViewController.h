@@ -14,7 +14,6 @@
 
 
 @interface GroupsViewController : UITableViewController {
-    NSMutableArray *usersGroupsArray;// array interface reads from
 	NSMutableArray* usersGroups;//2D name/id array of results from database
 	
 	Disluncho1AppDelegate *root;
@@ -25,7 +24,6 @@
 	int ROUNDID;
 
 }
-@property (nonatomic, retain) NSMutableArray *usersGroupsArray;
 @property (nonatomic, retain) NSMutableArray *usersGroups;
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 @property (nonatomic, assign) int GROUPID;

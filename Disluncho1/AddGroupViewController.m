@@ -44,12 +44,15 @@
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
 	
-    self.title = @"Add A Group";    //display an add button for this view controller
+	//set group to 0 so a group must be created before adding members
+	[root setGroupUNID:0];
+    
+	self.title = @"Add A Group";    //display an add button for this view controller
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneWithGroup)];
     self.navigationItem.rightBarButtonItem = doneButton;
     [doneButton release];
     
-    //his the backbutton
+    //hide the backbutton
     self.navigationItem.hidesBackButton = YES;
     
     //add cancel button
@@ -72,13 +75,32 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void) doneWithGroup
-{
-    NSLog(@"Done Adding New Group");
-   
+{	
+	NSLog(@"Added group %@",add_group_name.text);
     // save and update all the set information
-    
+   // NSString *addGroupParams = 
+	if([root GroupUNID]==0){
+		NSString *addGroupParams = [NSString stringWithFormat:@"action=ADD_GROUP&name=%@&user=%i",add_group_name.text,[root UserUNID]];
+		[root send:addGroupParams];
+		
+		/*** need to set GroupUNID here from inputed group ***/
+
+	}
+	else{
+		NSString *updateGroupParams = [NSString stringWithFormat:@"action=UPDATE_GROUP&name=%@&user=%i&group=%i",
+									   add_group_name.text,[root UserUNID],[root GroupUNID]];
+		[root send:updateGroupParams];
+		
+	}    
+	NSLog(@"Done Adding New Group");
     //pop this view off the screen (back to the previous view)
     [self.navigationController popViewControllerAnimated:YES];
+}
+/* makes keyboard disappear on enter */
+-(BOOL)textFieldShouldReturn:(UITextField *)theTextField
+{
+	[theTextField resignFirstResponder];
+	return TRUE;
 }
 - (void)viewDidUnload
 {
@@ -150,12 +172,13 @@
        // add_photo.borderStyle = UITextBorderStyleRoundedRect;
         [modalView addSubview:add_photo];
         
-        UITextField *groupName= [[UITextField alloc] initWithFrame:CGRectMake(100, 0, 300, 100)];
-        groupName.text = @"Name";
-        groupName.borderStyle = UITextBorderStyleRoundedRect;
-        groupName.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;
-        groupName.font=[UIFont fontWithName:@"Helvetica Bold" size:20];
-        [modalView addSubview: groupName];
+        add_group_name= [[UITextField alloc] initWithFrame:CGRectMake(100, 0, 300, 100)];
+        add_group_name.placeholder = @"Name";
+        add_group_name.borderStyle = UITextBorderStyleRoundedRect;
+        add_group_name.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;
+        add_group_name.font=[UIFont fontWithName:@"Helvetica Bold" size:20];
+		[add_group_name setDelegate: self];
+        [modalView addSubview: add_group_name];
         
         return modalView;
         
@@ -225,7 +248,13 @@
     // if the user selected the last row then they want to add another member push to the "add member screen"
     if(indexPath.row ==[groupMembersArray count])
     {
+		if([root GroupUNID]==0){
+			NSString *addGroupParams = [NSString stringWithFormat:@"action=ADD_GROUP&name=%@&user=%i",add_group_name.text,[root UserUNID]];
+			[root send:addGroupParams];
+		/*** need to set GroupUNID here from inputed group ***/
+		}
         NSLog(@"Adding A New Member");
+		
         // navigate to the AddMewmeberViewController to see the results
         AddMemberViewController *memberView = [[AddMemberViewController alloc] initWithNibName:@"AddMemberViewController" bundle:nil];
         [self.navigationController pushViewController:memberView animated:NO];

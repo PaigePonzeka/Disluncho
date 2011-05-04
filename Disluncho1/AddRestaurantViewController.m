@@ -25,6 +25,12 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+/* makes keyboard disappear on enter */
+-(BOOL)textFieldShouldReturn:(UITextField *)theTextField
+{
+	[theTextField resignFirstResponder];
+	return TRUE;
+}
 
 #pragma mark - View lifecycle
 
@@ -36,7 +42,8 @@
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
 	
     self.title = @"Add Restaurant";    //display an add button for this view controller
-
+	eatery_name.placeholder = @"Name";
+	[eatery_name setDelegate:self];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

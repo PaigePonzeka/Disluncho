@@ -25,6 +25,7 @@
 @property (nonatomic,assign) int RoundUNID;
 
 -(NSMutableArray *) sendAndRetrieve:(NSString *)parameters;
+-(void) send:(NSString *)parameters;
 -(void) printResults:(NSMutableArray *)results;
 
 @end

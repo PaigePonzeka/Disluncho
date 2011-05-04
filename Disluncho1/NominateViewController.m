@@ -181,29 +181,31 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	//UNID of nominated place (zero = no nomination)
+	int place =0;
     
     /*If the User did not select "Skip Nomination" go to the next screen*/
     if(indexPath.row < ([currentRestaurants count]))
     {
-		//adds the nomination to the database
-		NSString *nominateParams =[[[[[[[NSString stringWithString:@"action=NOMINATE"] 
-									stringByAppendingString:@"&round="]
-									stringByAppendingString:[NSString stringWithFormat:@"%i",[root RoundUNID]]]
-									stringByAppendingString:@"&place="]
-									stringByAppendingString:[NSString stringWithFormat:@"%i",[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACEUNID]]]
-									stringByAppendingString:@"&user="]
-									stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
-		NSMutableArray *nomination = [root sendAndRetrieve:nominateParams];
-        [nomination release];
+		//set the place to add to database
+		place = [[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACEUNID] intValue];
+	
         NSString *selected = [currentRestaurantsArray objectAtIndex:indexPath.row];
         NSLog(@"You Nominated %@", selected);
 
     }
     else
     {
+		//place will remain 0 signifying no nomination but to not wait for the user
         NSLog(@"You skipped Nomination Process");
     }
-       
+	//adds the nomination to the database
+	NSString *nominateParams =[[[[NSString stringWithString:@"action=NOMINATE"] 
+								stringByAppendingFormat:@"&round=%i",[root RoundUNID]]
+								stringByAppendingFormat:@"&place=%i",place]
+								stringByAppendingFormat:@"&user=",[root UserUNID]];
+	NSMutableArray *nomination = [root sendAndRetrieve:nominateParams];
+	[nomination release];
 
     //push the Vote table view screen
     VoteViewController *voteview = [[VoteViewController alloc] initWithNibName:@"VoteViewController" bundle:nil];

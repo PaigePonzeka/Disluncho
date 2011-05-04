@@ -45,22 +45,41 @@
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
 	
+	PLACEUNID = 0;
+	PLACENAME = 1;
+	PLACEVOTES = 2;
     // remove the back button
     self.navigationItem.hidesBackButton = YES;
+	
+	//see if everyone has voted
+	NSMutableArray *waitingForVotes;
+	NSString *waitingForVotesParams = [[NSString stringWithString:@"action=GET_NOT_VOTED_MEMBERS"]
+									  stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
+	waitingForVotes = [root sendAndRetrieve:waitingForVotesParams];
+	
+	// set the status of voting (are we waiting for people to finish voting?)
+	waiting_for_votes = ([waitingForVotes count]!=0);
+	//keep just for now until data is better for pulling this answer
+   // waiting_for_votes = NO;
     
-    // set the status of voting (are we waiting for people to finish voting?)
-    waiting_for_votes = NO;
-    
+	//tally the votes
+	NSString *nomineesParams = [[NSString stringWithString:@"action=TALLY_VOTES"]
+								stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
+	nominees = [root sendAndRetrieve:nomineesParams];
+	
     // get the nominees orders by Most votes to the least votes
     nomineesArray = [[NSMutableArray alloc] init];
-    [nomineesArray addObject:@"Qdoba"];
-    [nomineesArray addObject:@"Chipotle"];
+	for(int place = 0; place < [nominees count];place++)
+	{
+		[nomineesArray addObject:[[nominees objectAtIndex:place] objectAtIndex:PLACENAME]];
+    }
     [nomineesArray retain];
 
     if(!waiting_for_votes) // everyone has finished voting/the vote has ended
     {
         self.title = @"And The Winner is...";
-                
+        
+		
         // add a back button back to the "Groups"
         UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Groups" style:UIBarButtonItemStylePlain  target:self action:@selector(goToGroups:)];
         self.navigationItem.leftBarButtonItem = backButton;
@@ -155,7 +174,7 @@
     //create total number of votes label
     UILabel *voteCount;
     voteCount = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
-    NSString *vote = [NSString stringWithFormat:@"%i",8];
+    NSString *vote = [NSString stringWithFormat:@"%i",[[[nominees objectAtIndex:indexPath.row]objectAtIndex:PLACEVOTES]intValue ]];
     voteCount.text = vote;
     voteCount.textAlignment =UITextAlignmentCenter;
     voteCount.backgroundColor = [UIColor grayColor];

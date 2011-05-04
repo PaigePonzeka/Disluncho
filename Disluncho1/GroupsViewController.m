@@ -10,7 +10,6 @@
 
 
 @implementation GroupsViewController
-@synthesize usersGroupsArray;
 @synthesize usersGroups;
 @synthesize root;
 @synthesize GROUPID;
@@ -65,12 +64,6 @@
 								stringByAppendingString:@"&user="]stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
 	usersGroups = [root sendAndRetrieve:usersGroupsParams];
 	
-    //load the usernames
-   usersGroupsArray = [[NSMutableArray alloc] initWithCapacity:3];	
-	for(int group = 0; group < [usersGroups count]; group++){
-	    [usersGroupsArray addObject:[[usersGroups objectAtIndex:group] objectAtIndex:GROUPNAME] ];
-	}
-	[usersGroupsArray retain];
 	[usersGroups retain];
 
 
@@ -146,7 +139,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [usersGroupsArray count];
+    return [usersGroups count];
 }
 /*set the height of the rows */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -167,7 +160,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     //add the user group name to the cell
-    [cell.textLabel setText:[usersGroupsArray objectAtIndex:indexPath.row]];
+    [cell.textLabel setText:[[usersGroups objectAtIndex:indexPath.row]objectAtIndex:GROUPNAME]];
     //add the group image to the cell
     NSString *path = @"default_group.png";
     UIImage *theImage = [UIImage imageNamed:path]; 
@@ -180,8 +173,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        //make changes the to usersGroupsArray
-        [usersGroupsArray removeObjectAtIndex:indexPath.row];
+		//delete the user from the group
+		NSMutableArray *deleteMember;
+		NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_GROUP_MEMBER&member=%i",
+										[root UserUNID]];
+		deleteMember = [root sendAndRetrieve:deleteMemberParams];
+		
+        //make changes the to usersGroups
+        [usersGroups removeObjectAtIndex:indexPath.row];
         
         //remove the group list from the array
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];    
@@ -233,24 +232,29 @@
     return YES;
 }
 */
-
+/* makes keyboard disappear on enter */
+-(BOOL)textFieldShouldReturn:(UITextField *)theTextField
+{
+	[theTextField resignFirstResponder];
+	return TRUE;
+}
 
 /*When a user selected a row move to the Nominate screen but store the current selected group*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{		
+	//save selected row
+	[root setGroupUNID: [[[usersGroups objectAtIndex:indexPath.row] objectAtIndex:GROUPID] intValue]];
+	
     if(tableView.editing) //table is being edited change to the GroupDetails screen
     {
+		
         //push the nominate table view screen
         GroupDetailsViewController *groupDetailsView = [[GroupDetailsViewController alloc] initWithNibName:@"GroupDetailsViewController" bundle:nil];
         [self.navigationController pushViewController:groupDetailsView animated:YES];
     }
     else //table is not being edited behave normally
     {
-        // Navigation logic may go here. Create and push another view controller.
        
-		//save selected row
-		[root setGroupUNID: [[[usersGroups objectAtIndex:indexPath.row] objectAtIndex:GROUPID] intValue]];
-
 		//check to see if there is an open round
 		NSString *openRoundsParams = [[NSString stringWithString:@"action=LIST_OPEN_ROUNDS&group="]
 									  stringByAppendingString:[NSString stringWithFormat:@"%i",[root GroupUNID]]];
@@ -259,16 +263,17 @@
 		//there are no open rounds so make one		
 		if([openRounds count]==0){
 			openRoundsParams = [[[openRoundsParams stringByReplacingOccurrencesOfString:@"LIST_OPEN_ROUNDS" withString:@"MAKE_OPEN_ROUND"]
-								stringByAppendingString:@"&user="] stringByAppendingString:[NSString stringWithFormat:@"@%i",[root UserUNID]]];
+								stringByAppendingString:@"&user="] stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
 			openRounds = [root sendAndRetrieve:openRoundsParams];
+			NSLog(@"creating a new round\n");
 		}
 		
 		//set what round they will be voting in
 		[root setRoundUNID:[[[openRounds objectAtIndex:0] objectAtIndex:ROUNDID]  intValue]];
+		NSLog(@"entering round #%i\n",[root RoundUNID]);
+
 		
-		
-		
-        NSString *selected = [usersGroupsArray objectAtIndex:indexPath.row];
+        NSString *selected = [[usersGroups objectAtIndex:indexPath.row]objectAtIndex:GROUPNAME];
         NSLog(@"You Selected %@", selected);
         
 

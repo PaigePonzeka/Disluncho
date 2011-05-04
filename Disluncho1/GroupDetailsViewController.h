@@ -11,11 +11,15 @@
 
 
 @interface GroupDetailsViewController : UITableViewController {
-     NSMutableArray *groupMembersArray;
+	NSMutableArray *groupMembers;
+	NSMutableArray *group;
+	int MEMBERUNID;
+	int MEMBERNAME;
 	Disluncho1AppDelegate *root;
 
 }
-@property (nonatomic, retain) NSMutableArray *groupMembersArray;
+@property (nonatomic, retain) NSMutableArray *groupMembers;
+@property (nonatomic, retain) NSMutableArray *group;
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 
 @end

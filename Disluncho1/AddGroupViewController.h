@@ -10,7 +10,7 @@
 #import "Disluncho1AppDelegate.h"
 #import "AddMemberViewController.h"
 
-@interface AddGroupViewController : UITableViewController {
+@interface AddGroupViewController : UITableViewController <UITextFieldDelegate>{
     IBOutlet UITextField *add_group_name;
     
     NSMutableArray *groupMembersArray;

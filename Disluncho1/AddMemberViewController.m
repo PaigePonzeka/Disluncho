@@ -32,6 +32,12 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+/* makes keyboard disappear on enter */
+-(BOOL)textFieldShouldReturn:(UITextField *)theTextField
+{
+	[theTextField resignFirstResponder];
+	return TRUE;
+}
 
 #pragma mark - View lifecycle
 
@@ -55,6 +61,8 @@
 }
 -(void)doneWithMember
 {
+	NSString *addMemberParams = [NSString stringWithFormat:@"action=ADD_MEMBER&email=%@&group=%i",member_email.text,[root GroupUNID]];
+	[root send:addMemberParams];
         //get the email address of the new member
     NSString *new_member_email=member_email.text;
     NSLog(@"Done Adding Member with Email: %@", new_member_email);
