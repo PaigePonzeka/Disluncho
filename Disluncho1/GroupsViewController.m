@@ -48,7 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	NSLog(@"loaded");
+	NSLog(@"Loading Group View Controller");
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
     
@@ -149,6 +149,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Loading Cell");
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -162,10 +163,13 @@
     //add the user group name to the cell
     [cell.textLabel setText:[NSString stringWithString:[[usersGroups objectAtIndex:indexPath.row]objectAtIndex:GROUPNAME]]];
     //add the group image to the cell
+     NSLog(@"3");
     NSString *path = @"default_group.png";
+     NSLog(@"4");
     UIImage *theImage = [UIImage imageNamed:path]; 
+    NSLog(@"5");
     cell.imageView.image = theImage;
-    
+     NSLog(@"6");
     return cell;
 
 }

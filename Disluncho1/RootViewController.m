@@ -77,7 +77,7 @@
 		//push Groups View controller to the front
 		GroupsViewController *groupview = [[GroupsViewController alloc] initWithNibName:@"GroupsViewController" bundle:nil];
 		[self.navigationController pushViewController:groupview animated:YES];
-    [groupview release];
+        [groupview release];
 	//}
 
 }

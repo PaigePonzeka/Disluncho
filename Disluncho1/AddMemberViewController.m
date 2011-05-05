@@ -59,6 +59,17 @@
     member_email.borderStyle =UITextBorderStyleRoundedRect;
 
 }
+/*Send an email*/
+- (void) sendEmailTo:(NSString *)to {
+    NSString *body = @"A User has invited you to Disluncho, Download the App at the iTunes Store to take part...Just kidding It's currently unavailable.";
+    NSString *subject = @"Disluncho Invite";
+	NSString *mailString = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@",
+							[to stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
+							[subject stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
+							[body  stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
+}
 -(void)doneWithMember
 {
 	NSMutableArray *userFromEmail;
@@ -70,8 +81,9 @@
 		 */
 		NSLog(@"No User was found with Email: %@ <--- need to ask them to join", member_email.text);
 
-		member_email.text = @"";
 		member_email.placeholder = @"Email Address";
+        [self sendEmailTo: member_email.text];
+        member_email.text = @"";
 	}
 	else{
 		NSString *addMemberParams = [NSString stringWithFormat:@"action=ADD_MEMBER&user=%i&group=%i",
