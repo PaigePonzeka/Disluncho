@@ -10,7 +10,6 @@
 
 
 @implementation WinnerViewController
-@synthesize nominees;
 @synthesize waitingForVotes;
 @synthesize root;
 @synthesize nominees;

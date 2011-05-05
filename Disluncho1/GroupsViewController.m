@@ -169,7 +169,6 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-<<<<<<< HEAD
 		NSMutableArray *groupMembers;
 		groupMembers = [root sendAndRetrieve:[NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",
 															 [[[usersGroups objectAtIndex:indexPath.row ] objectAtIndex:GROUPID] intValue]]];
@@ -187,7 +186,7 @@
 		}
 			//make changes the to usersGroups
 			[usersGroups removeObjectAtIndex:indexPath.row];
-=======
+
 		//delete the user from the group
 		NSMutableArray *deleteMember;
 		NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_GROUP_MEMBER&member=%i",
@@ -195,7 +194,6 @@
 		deleteMember = [root sendAndRetrieve:deleteMemberParams];
         //make changes the to usersGroups
         [usersGroups removeObjectAtIndex:indexPath.row];
->>>>>>> e1d19d030f2e20563e487b6b6fb8368a7815efc5
         
 			//remove the group list from the array
 			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];    
