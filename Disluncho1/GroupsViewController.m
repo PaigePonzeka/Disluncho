@@ -15,6 +15,7 @@
 @synthesize GROUPID;
 
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -47,7 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+	NSLog(@"loaded");
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
     
@@ -58,7 +59,6 @@
 	GROUPNAME = 1;
 	GROUPID = 0;
 	ROUNDID = 0;
-	
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -94,12 +94,16 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated
-{
+{    [super viewWillAppear:animated];
+
+	NSLog(@"will appear");
 	NSString* usersGroupsParams = [[[NSString stringWithString:@"action=LIST_USER_GROUPS"]
 									stringByAppendingString:@"&user="]stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
 	usersGroups = [root sendAndRetrieve:usersGroupsParams];
-    [super viewWillAppear:animated];
+	NSLog(@"%@",[[usersGroups objectAtIndex:0]objectAtIndex:GROUPNAME]);
+	[usersGroups retain];
 	[[self tableView] reloadData];
+
 
 }
 
@@ -154,9 +158,9 @@
        // Configure the cell
     //add the arrow to the cell
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
+
     //add the user group name to the cell
-    [cell.textLabel setText:[[usersGroups objectAtIndex:indexPath.row]objectAtIndex:GROUPNAME]];
+    [cell.textLabel setText:[NSString stringWithString:[[usersGroups objectAtIndex:indexPath.row]objectAtIndex:GROUPNAME]]];
     //add the group image to the cell
     NSString *path = @"default_group.png";
     UIImage *theImage = [UIImage imageNamed:path]; 
@@ -169,7 +173,6 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-<<<<<<< HEAD
 		NSMutableArray *groupMembers;
 		groupMembers = [root sendAndRetrieve:[NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",
 															 [[[usersGroups objectAtIndex:indexPath.row ] objectAtIndex:GROUPID] intValue]]];
@@ -187,15 +190,6 @@
 		}
 			//make changes the to usersGroups
 			[usersGroups removeObjectAtIndex:indexPath.row];
-=======
-		//delete the user from the group
-		NSMutableArray *deleteMember;
-		NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_GROUP_MEMBER&member=%i",
-										[root UserUNID]];
-		deleteMember = [root sendAndRetrieve:deleteMemberParams];
-        //make changes the to usersGroups
-        [usersGroups removeObjectAtIndex:indexPath.row];
->>>>>>> e1d19d030f2e20563e487b6b6fb8368a7815efc5
         
 			//remove the group list from the array
 			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];    

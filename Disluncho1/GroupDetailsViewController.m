@@ -58,6 +58,7 @@
 	//get group name
 	NSString *groupParams = [NSString stringWithFormat:@"action=LIST_GROUP_INFO&group=%i",[root GroupUNID]];
 	group = [root sendAndRetrieve:groupParams];
+	[group retain];
 	
     //set title to the name of the group
     self.title = [[group objectAtIndex:0] objectAtIndex:0];
@@ -65,6 +66,7 @@
 	
 	NSString *groupMembersParams = [NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",[root GroupUNID]];
 	groupMembers = [root sendAndRetrieve:groupMembersParams];
+	[groupMembers retain];
 	
 }
 

@@ -13,7 +13,6 @@
 @synthesize nominees;
 @synthesize waitingForVotes;
 @synthesize root;
-@synthesize nominees;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -64,7 +63,7 @@
 	NSString *waitingForVotesParams = [[NSString stringWithString:@"action=GET_NOT_VOTED_MEMBERS"]
 									   stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
 	waitingForVotes = [root sendAndRetrieve:waitingForVotesParams];
-	
+	[waitingForVotes retain];
 	// set the status of voting (are we waiting for people to finish voting?)
 	waiting_for_votes = ([waitingForVotes count]!=0);
 	
@@ -72,6 +71,7 @@
 	NSString *nomineesParams = [[NSString stringWithString:@"action=TALLY_VOTES"]
 								stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
 	nominees = [root sendAndRetrieve:nomineesParams];
+	[nominees retain];
 	
 	//------choose between screens -----
 	if(!waiting_for_votes) // everyone has finished voting/the vote has ended

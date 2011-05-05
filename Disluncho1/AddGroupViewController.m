@@ -13,6 +13,7 @@
 
 @implementation AddGroupViewController
 @synthesize root;
+@synthesize groupMembersArray;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -63,11 +64,6 @@
 								 [root UserUNID],[root GroupUNID]];
 	[root send:addMemberParams];
 
-	//return the group members of this newly created group
-	NSString *groupMembersParams = [NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",[root GroupUNID]];
-	groupMembersArray = [root sendAndRetrieve:groupMembersParams];
-	
-	NSLog(@"created group: %i with number of members:%i",[root GroupUNID],[groupMembersArray count]);
 	
 	self.title = @"Add A Group";    //display an add button for this view controller
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneWithGroup)];
@@ -127,11 +123,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	NSLog(@"addgroup will appear");
 	//update the members array
 	NSString *groupMembersParams = [NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",[root GroupUNID]];
 	groupMembersArray = [root sendAndRetrieve:groupMembersParams];
-	
+	[groupMembersArray retain];
+	NSLog(@"editing new group: %i with number of members:%i",[root GroupUNID],[groupMembersArray count]);
     [super viewWillAppear:animated];
 	[[self tableView] reloadData];
 

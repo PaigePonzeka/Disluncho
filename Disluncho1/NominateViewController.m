@@ -87,6 +87,7 @@
 										 stringByAppendingString:@"&group="]
 										stringByAppendingString:[NSString stringWithFormat:@"%i",[root GroupUNID]]];
 	currentRestaurants = [root sendAndRetrieve:currentResturantParams];
+	[currentRestaurants retain];
 	
 	[[self tableView] reloadData];
 

@@ -24,5 +24,6 @@
 
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
+@property (nonatomic, retain) NSMutableArray *groupMembersArray;
 
 @end
