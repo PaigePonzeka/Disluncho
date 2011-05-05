@@ -85,7 +85,7 @@
     NSLog(@"Adding New Group");
      AddGroupViewController *addGroup = [[AddGroupViewController alloc] initWithNibName:@"AddGroupViewController" bundle:nil];
     [self.navigationController pushViewController:addGroup animated:YES];
-    
+    [addGroup release];
 	
 }
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -169,6 +169,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
         
+<<<<<<< HEAD
 		NSMutableArray *groupMembers;
 		groupMembers = [root sendAndRetrieve:[NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",
 															 [[[usersGroups objectAtIndex:indexPath.row ] objectAtIndex:GROUPID] intValue]]];
@@ -186,6 +187,15 @@
 		}
 			//make changes the to usersGroups
 			[usersGroups removeObjectAtIndex:indexPath.row];
+=======
+		//delete the user from the group
+		NSMutableArray *deleteMember;
+		NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_GROUP_MEMBER&member=%i",
+										[root UserUNID]];
+		deleteMember = [root sendAndRetrieve:deleteMemberParams];
+        //make changes the to usersGroups
+        [usersGroups removeObjectAtIndex:indexPath.row];
+>>>>>>> e1d19d030f2e20563e487b6b6fb8368a7815efc5
         
 			//remove the group list from the array
 			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];    
@@ -257,6 +267,7 @@
         //push the nominate table view screen
         GroupDetailsViewController *groupDetailsView = [[GroupDetailsViewController alloc] initWithNibName:@"GroupDetailsViewController" bundle:nil];
         [self.navigationController pushViewController:groupDetailsView animated:YES];
+        [groupDetailsView release];
     }
     else //table is not being edited behave normally
     {
@@ -286,7 +297,7 @@
         //push the nominate table view screen
         NominateViewController *nominateview = [[NominateViewController alloc] initWithNibName:@"NominateViewController" bundle:nil];
         [self.navigationController pushViewController:nominateview animated:YES];
-
+        [nominateview release];
         /*
          <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
          // ...

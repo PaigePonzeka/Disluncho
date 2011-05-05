@@ -268,7 +268,7 @@
         {
             //create num of votes label
             UILabel *voteCount;
-            voteCount = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
+            voteCount = [[[UILabel alloc] initWithFrame:CGRectMake(10, 15, 20, 20)]autorelease];
             NSString *vote = [NSString stringWithFormat:@"%i",[[[nominees objectAtIndex:indexPath.row] objectAtIndex:VOTES]intValue]];
             voteCount.text = vote;
             voteCount.textAlignment =UITextAlignmentCenter;

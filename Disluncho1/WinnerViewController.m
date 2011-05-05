@@ -13,7 +13,7 @@
 @synthesize nominees;
 @synthesize waitingForVotes;
 @synthesize root;
-
+@synthesize nominees;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -101,7 +101,7 @@
     // navigate to the winnerViewController to see the results
     GroupsViewController *winnerview = [[GroupsViewController alloc] initWithNibName:@"GroupsViewController" bundle:nil];
     [self.navigationController pushViewController:winnerview animated:NO];
-
+    [winnerview release];
     
 }
 - (void)viewDidUnload
