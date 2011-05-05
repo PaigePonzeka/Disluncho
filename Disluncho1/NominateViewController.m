@@ -194,7 +194,7 @@
 								stringByAppendingFormat:@"&round=%i",[root RoundUNID]]
 								stringByAppendingFormat:@"&place=%i",place]
 								stringByAppendingFormat:@"&user=",[root UserUNID]];
-	NSMutableArray *nomination = [root sendAndRetrieve:nominateParams];
+	[root sendAndRetrieve:nominateParams];
 
 
     //push the Vote table view screen

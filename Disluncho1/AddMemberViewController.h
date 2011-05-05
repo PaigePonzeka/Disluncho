@@ -13,5 +13,5 @@
     IBOutlet UITextField *member_email;
 	Disluncho1AppDelegate *root;
 }
-
+- (void) sendEmailTo:(NSString *)to;
 @end
