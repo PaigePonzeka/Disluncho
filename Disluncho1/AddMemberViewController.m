@@ -61,14 +61,29 @@
 }
 -(void)doneWithMember
 {
-	NSString *addMemberParams = [NSString stringWithFormat:@"action=ADD_MEMBER&email=%@&group=%i",member_email.text,[root GroupUNID]];
-	[root send:addMemberParams];
-        //get the email address of the new member
-    NSString *new_member_email=member_email.text;
-    NSLog(@"Done Adding Member with Email: %@", new_member_email);
+	NSMutableArray *userFromEmail;
+	userFromEmail= [root sendAndRetrieve:[NSString stringWithFormat:@"action=GET_USER&email=%@",member_email.text]];
+	NSLog(@"got the email\n");
+	if([userFromEmail count]==0){
+		/* the email does not exist in the database send the person an email to join and add them later 
+			have a pop up to tell the person that they cannot add the member now
+		 */
+		NSLog(@"No User was found with Email: %@ <--- need to ask them to join", member_email.text);
 
-    //pop this view off the screen (back to the previous view)
-    [self.navigationController popViewControllerAnimated:YES];
+		member_email.text = @"";
+		member_email.placeholder = @"Email Address";
+	}
+	else{
+		NSString *addMemberParams = [NSString stringWithFormat:@"action=ADD_MEMBER&user=%i&group=%i",
+									 [[[userFromEmail objectAtIndex:0]objectAtIndex:0]intValue ],
+									 [root GroupUNID]];
+		[root send:addMemberParams];
+			//get the email address of the new member
+		NSLog(@"Done Adding Member with Name: %@", [[userFromEmail objectAtIndex:0]objectAtIndex:1]);
+
+		//pop this view off the screen (back to the previous view)
+		[self.navigationController popViewControllerAnimated:YES];
+	}
 }
 - (void)viewDidUnload
 {

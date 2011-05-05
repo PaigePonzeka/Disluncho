@@ -13,7 +13,6 @@
 
 
 @interface NominateViewController : UITableViewController {
-	NSMutableArray *currentRestaurantsArray;//controls interface list
 	NSMutableArray *currentRestaurants;//2D array holds results from database
 
 	Disluncho1AppDelegate *root;
@@ -22,7 +21,6 @@
 	int PLACEUNID;
 	int PLACENAME;
 }
-@property (nonatomic, retain) NSMutableArray *currentRestaurantsArray;
 @property (nonatomic, retain) NSMutableArray *currentRestaurants;
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 

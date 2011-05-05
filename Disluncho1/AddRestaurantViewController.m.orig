@@ -42,51 +42,18 @@
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
 	
     self.title = @"Add Restaurant";    //display an add button for this view controller
-
-    eatery_name.borderStyle = UITextBorderStyleRoundedRect;
+<<<<<<< HEAD
 	eatery_name.placeholder = @"Name";
 	[eatery_name setDelegate:self];
-	
-	//set 
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneWithRestuarant)];
-    self.navigationItem.rightBarButtonItem = doneButton;
-    [doneButton release];
-	
+=======
+
+    eatery_name.borderStyle = UITextBorderStyleRoundedRect;
+>>>>>>> 7ec23a1502344193a7c5ef1fbed25a15062feced
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
--(void)doneWithRestuarant
-{
-	int place;	
-	//search to see if this place exists in the database (possible similar finds screen/options)
-	NSString *similarPlacesParams = [NSString stringWithFormat:@"action=GET_LIKE_PLACE&name=%@",eatery_name.text];
-	NSMutableArray *similarPlaces;
-	similarPlaces = [root sendAndRetrieve:similarPlacesParams];
-	
-	if([similarPlaces count]!=0)
-	{
-		NSLog(@"there is a similar restuarant already in the database: %@ <-- use that",[[similarPlaces objectAtIndex:0] objectAtIndex:1]);
-		place = [[[similarPlaces objectAtIndex:0] objectAtIndex:0]intValue];
-	}
-	else{
-		//add unique place to the database
-		NSString *addPlaceParams = [NSString stringWithFormat:@"action=ADD_PLACE&name=%@",eatery_name.text];
-		NSMutableArray *addPlace;
-		addPlace = [root sendAndRetrieve:addPlaceParams];
-	
-		place = [[[addPlace objectAtIndex:0] objectAtIndex:0] intValue];
-	}
-	//user who added the place nominates it for this round 
-	NSString *nominateParams = [NSString stringWithFormat:@"action=NOMINATE&user=%i&round=%i&place=%i",
-								[root UserUNID],[root RoundUNID],place];
-	[root send:nominateParams];
-	
-	//pop this view off the screen (back to the previous view)
-	[self.navigationController popViewControllerAnimated:YES];
-
 }
 
 - (void)viewDidUnload

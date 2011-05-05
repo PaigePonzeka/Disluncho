@@ -44,9 +44,31 @@
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
 	
+	MEMBERUNID = 0;
+	MEMBERNAME = 1;
+	GROUPNAME = 1;
+	GROUPUNID = 0;
+	
+	
 	//set group to 0 so a group must be created before adding members
-	[root setGroupUNID:0];
-    
+	NSString *addGroupParams = [NSString stringWithFormat:@"action=ADD_GROUP&name=%@&user=%i",@"Unnamed Group",[root UserUNID]];
+	
+	//set GroupUNID here from inputed group 
+	NSMutableArray *justInserted = [root sendAndRetrieve:addGroupParams];
+	[root setGroupUNID:[[[justInserted objectAtIndex:0]objectAtIndex:0]intValue]];
+	
+	
+	//add group creator to the member list
+	NSString *addMemberParams = [NSString stringWithFormat:@"action=ADD_MEMBER&user=%i&group=%i",
+								 [root UserUNID],[root GroupUNID]];
+	[root send:addMemberParams];
+
+	//return the group members of this newly created group
+	NSString *groupMembersParams = [NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",[root GroupUNID]];
+	groupMembersArray = [root sendAndRetrieve:groupMembersParams];
+	
+	NSLog(@"created group: %i with number of members:%i",[root GroupUNID],[groupMembersArray count]);
+	
 	self.title = @"Add A Group";    //display an add button for this view controller
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneWithGroup)];
     self.navigationItem.rightBarButtonItem = doneButton;
@@ -71,27 +93,21 @@
 }
 -(void) cancelAddGroup
 {
+	//delete the group
+	NSString *deleteGroupParams = [NSString stringWithFormat:@"action=DELETE_GROUP&group=%i",[root GroupUNID]];
+	[root send:deleteGroupParams];
+	
     //pop this view off the screen (back to the previous view)
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void) doneWithGroup
 {	
-	NSLog(@"Added group %@",add_group_name.text);
+	NSLog(@"Added name to group: %@",add_group_name.text);
     // save and update all the set information
-   // NSString *addGroupParams = 
-	if([root GroupUNID]==0){
-		NSString *addGroupParams = [NSString stringWithFormat:@"action=ADD_GROUP&name=%@&user=%i",add_group_name.text,[root UserUNID]];
-		[root send:addGroupParams];
+	NSString *updateGroupParams = [NSString stringWithFormat:@"action=UPDATE_GROUP&name=%@&group=%i",
+									   add_group_name.text,[root GroupUNID]];
+	[root send:updateGroupParams];
 		
-		/*** need to set GroupUNID here from inputed group ***/
-
-	}
-	else{
-		NSString *updateGroupParams = [NSString stringWithFormat:@"action=UPDATE_GROUP&name=%@&user=%i&group=%i",
-									   add_group_name.text,[root UserUNID],[root GroupUNID]];
-		[root send:updateGroupParams];
-		
-	}    
 	NSLog(@"Done Adding New Group");
     //pop this view off the screen (back to the previous view)
     [self.navigationController popViewControllerAnimated:YES];
@@ -111,12 +127,20 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	NSLog(@"addgroup will appear");
+	//update the members array
+	NSString *groupMembersParams = [NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",[root GroupUNID]];
+	groupMembersArray = [root sendAndRetrieve:groupMembersParams];
+	
     [super viewWillAppear:animated];
+	[[self tableView] reloadData];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewDidAppear:animated];	
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -189,6 +213,7 @@
         return view;
     }
 }
+
 -(void) addPhoto
 {
     NSLog(@"Changing to Add Photo Screen");
@@ -199,6 +224,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	NSLog(@"updating tables");
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -214,7 +240,7 @@
     else
     {
         // Configure the cell...
-        [cell.textLabel setText:[groupMembersArray objectAtIndex:indexPath.row]];
+        [cell.textLabel setText:[[groupMembersArray objectAtIndex:indexPath.row]objectAtIndex:MEMBERNAME]];
    
     }
         
@@ -235,8 +261,13 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete  the member from the group array
-        /* Put in code here to save changes to the delete*/
+       
+		// Delete the member from database
+		NSString *deleteMember = [NSString stringWithFormat:@"action=DELETE_MEMBER&member=%i",
+								  [[[groupMembersArray objectAtIndex:indexPath.row]objectAtIndex:MEMBERUNID]intValue]];
+		[root send:deleteMember];
+		
+		// Delete  the member from the group array
         [groupMembersArray removeObjectAtIndex:indexPath.row]; 
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];   
     }   
@@ -254,12 +285,8 @@
     // if the user selected the last row then they want to add another member push to the "add member screen"
     if(indexPath.row ==[groupMembersArray count])
     {
-		if([root GroupUNID]==0){
-			NSString *addGroupParams = [NSString stringWithFormat:@"action=ADD_GROUP&name=%@&user=%i",add_group_name.text,[root UserUNID]];
-			[root send:addGroupParams];
-		/*** need to set GroupUNID here from inputed group ***/
-		}
         NSLog(@"Adding A New Member");
+		
 		
         // navigate to the AddMewmeberViewController to see the results
         AddMemberViewController *memberView = [[AddMemberViewController alloc] initWithNibName:@"AddMemberViewController" bundle:nil];

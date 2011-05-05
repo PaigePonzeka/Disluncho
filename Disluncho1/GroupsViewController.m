@@ -59,14 +59,6 @@
 	GROUPID = 0;
 	ROUNDID = 0;
 	
-	//get all users from database --- later perhaps just users that have email/phone# in your contacts
-	NSString* usersGroupsParams = [[[NSString stringWithString:@"action=LIST_USER_GROUPS"]
-								stringByAppendingString:@"&user="]stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
-	usersGroups = [root sendAndRetrieve:usersGroupsParams];
-	
-	[usersGroups retain];
-
-
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -103,8 +95,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	NSString* usersGroupsParams = [[[NSString stringWithString:@"action=LIST_USER_GROUPS"]
+									stringByAppendingString:@"&user="]stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
+	usersGroups = [root sendAndRetrieve:usersGroupsParams];
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
+	[[self tableView] reloadData];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -173,19 +169,29 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-		//delete the user from the group
-		NSMutableArray *deleteMember;
-		NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_GROUP_MEMBER&member=%i",
-										[root UserUNID]];
-		deleteMember = [root sendAndRetrieve:deleteMemberParams];
-		
-        //make changes the to usersGroups
-        [usersGroups removeObjectAtIndex:indexPath.row];
+		NSMutableArray *groupMembers;
+		groupMembers = [root sendAndRetrieve:[NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",
+															 [[[usersGroups objectAtIndex:indexPath.row ] objectAtIndex:GROUPID] intValue]]];
+		if([groupMembers count]==1)//last member left so delete the whole group
+		{
+			[root send:[NSString stringWithFormat:@"action=DELETE_GROUP&group=%i",
+						[[[usersGroups objectAtIndex:indexPath.row ] objectAtIndex:GROUPID] intValue]]];
+		}
+		else{
+			//delete the user from the group
+			NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_GROUP_MEMBER&user=%i&group=%i",
+										[root UserUNID],[[[usersGroups objectAtIndex:indexPath.row ] objectAtIndex:GROUPID] intValue]];
+			NSLog(@"%@\n",deleteMemberParams);
+			[root send:deleteMemberParams];
+		}
+			//make changes the to usersGroups
+			[usersGroups removeObjectAtIndex:indexPath.row];
         
-        //remove the group list from the array
-		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];    
+			//remove the group list from the array
+			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];    
 		
-		//[self.tableView reloadData];
+			//[self.tableView reloadData];
+		
 	}
 	if (editingStyle == UITableViewCellEditingStyleInsert) {
 	}

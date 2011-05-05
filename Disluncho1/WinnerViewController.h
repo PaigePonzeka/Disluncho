@@ -12,8 +12,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface WinnerViewController : UITableViewController {
-    NSMutableArray *nomineesArray;
     NSMutableArray *nominees;
+    NSMutableArray *waitingForVotes;
 	Disluncho1AppDelegate *root;
 	
 	int PLACEUNID;
@@ -22,8 +22,10 @@
 
     BOOL waiting_for_votes;
 }
-@property (nonatomic, retain) NSMutableArray *nomineesArray;
 @property (nonatomic, retain) NSMutableArray *nominees;
+@property (nonatomic, retain) NSMutableArray *waitingForVotes;
+
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
+-(void)checkForVotingDone;
 
 @end

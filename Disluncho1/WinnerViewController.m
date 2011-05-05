@@ -10,7 +10,8 @@
 
 
 @implementation WinnerViewController
-@synthesize nomineesArray;
+@synthesize nominees;
+@synthesize waitingForVotes;
 @synthesize root;
 
 
@@ -51,31 +52,29 @@
     // remove the back button
     self.navigationItem.hidesBackButton = YES;
 	
-	//see if everyone has voted
-	NSMutableArray *waitingForVotes;
+	// Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+-(void)checkForVotingDone
+{
+	//get members who have not voted yet in this round
 	NSString *waitingForVotesParams = [[NSString stringWithString:@"action=GET_NOT_VOTED_MEMBERS"]
-									  stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
+									   stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
 	waitingForVotes = [root sendAndRetrieve:waitingForVotesParams];
 	
 	// set the status of voting (are we waiting for people to finish voting?)
 	waiting_for_votes = ([waitingForVotes count]!=0);
-	//keep just for now until data is better for pulling this answer
-   // waiting_for_votes = NO;
-    
+	
 	//tally the votes
 	NSString *nomineesParams = [[NSString stringWithString:@"action=TALLY_VOTES"]
 								stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
 	nominees = [root sendAndRetrieve:nomineesParams];
 	
-    // get the nominees orders by Most votes to the least votes
-    nomineesArray = [[NSMutableArray alloc] init];
-	for(int place = 0; place < [nominees count];place++)
-	{
-		[nomineesArray addObject:[[nominees objectAtIndex:place] objectAtIndex:PLACENAME]];
-    }
-    [nomineesArray retain];
-
-    if(!waiting_for_votes) // everyone has finished voting/the vote has ended
+	//------choose between screens -----
+	if(!waiting_for_votes) // everyone has finished voting/the vote has ended
     {
         self.title = @"And The Winner is...";
         
@@ -84,20 +83,15 @@
         UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Groups" style:UIBarButtonItemStylePlain  target:self action:@selector(goToGroups:)];
         self.navigationItem.leftBarButtonItem = backButton;
         [backButton release];
-
+		
     }
     else // some one is still voting show the "tallying votes screen"
     {
         // user waits here until the voting process has complete
         self.title = @"Tallying Votes...";
         self.navigationItem.hidesBackButton = YES;
-
+		
     }
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 -(void)goToGroups:(UIBarButtonItem*)button
 {
@@ -119,6 +113,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	if(waiting_for_votes)[self checkForVotingDone];
+	
+	[[self tableView] reloadData];
     [super viewWillAppear:animated];
 }
 
@@ -154,7 +151,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [nomineesArray count];
+    return [nominees count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -197,7 +194,7 @@
    
     cell.imageView.image = theImage;
     // Configure the cell title...
-    [cell.textLabel setText:[nomineesArray objectAtIndex:indexPath.row]];
+    [cell.textLabel setText:[[nominees objectAtIndex:indexPath.row]objectAtIndex:PLACENAME]];
     cell.accessoryView = voteCount;
     
 

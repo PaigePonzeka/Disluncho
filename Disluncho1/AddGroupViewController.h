@@ -13,10 +13,13 @@
 
 @interface AddGroupViewController : UITableViewController <UITextFieldDelegate>{
     IBOutlet UITextField *add_group_name;
-    
     NSMutableArray *groupMembersArray;
 
 	Disluncho1AppDelegate *root;
+	int MEMBERUNID;
+	int MEMBERNAME;
+	int GROUPUNID;
+	int GROUPNAME;
     
 
 }

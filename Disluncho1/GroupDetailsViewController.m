@@ -184,7 +184,7 @@
         // Delete  the member from the group array
         /*Put in code here to save changes to the delete*/
 		NSMutableArray *deleteMember;
-		NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_GROUP_MEMBER&member=%i",
+		NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_MEMBER&member=%i",
 										[[[groupMembers objectAtIndex:indexPath.row]objectAtIndex:MEMBERUNID] intValue]];
 		deleteMember = [root sendAndRetrieve:deleteMemberParams];
         [groupMembers removeObjectAtIndex:indexPath.row]; 

@@ -11,7 +11,6 @@
 
 @implementation NominateViewController
 
-@synthesize currentRestaurantsArray;
 @synthesize currentRestaurants;
 @synthesize root;
 
@@ -52,22 +51,6 @@
     //set the tab bar title
     self.title = @"Nominate";
     
-	//grab all resturants the group has ever nominated
-	NSString *currentResturantParams = [[[NSString stringWithString:@"action=LIST_GROUP_PLACES"] 
-										stringByAppendingString:@"&group="]
-										 stringByAppendingString:[NSString stringWithFormat:@"%i",[root GroupUNID]]];
-	currentRestaurants = [root sendAndRetrieve:currentResturantParams];
-	
-	
-    //intialize the nomineesArray (the array of resturants nominated in the current vote)
-    currentRestaurantsArray = [[NSMutableArray alloc] initWithCapacity:[currentRestaurants count]];
-	for(int place=0; place < [currentRestaurants count];place++){
-		[currentRestaurantsArray addObject:[[currentRestaurants objectAtIndex:place]objectAtIndex:PLACENAME]];
-	}
-    [currentRestaurantsArray retain];
-	[currentRestaurants retain];
-    
-    
     //display an add button for this view controller
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewNomination:)];
     self.navigationItem.rightBarButtonItem = addButton;
@@ -83,7 +66,6 @@
 /*Selected when User wants to add a new Nomination to the Nomination list*/
 - (void)addNewNomination:(UIBarButtonItem*)button {
     NSLog(@"Adding New Nominee");
-	//[currentRestaurantsArray addObject:@"New Resturant"];
     
     //push the add Restaurent View Controller
     AddRestaurantViewController *addRestaurantView = [[AddRestaurantViewController alloc] initWithNibName:@"AddRestaurantViewController" bundle:nil];
@@ -101,6 +83,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	NSString *currentResturantParams = [[[NSString stringWithString:@"action=LIST_GROUP_PLACES"] 
+										 stringByAppendingString:@"&group="]
+										stringByAppendingString:[NSString stringWithFormat:@"%i",[root GroupUNID]]];
+	currentRestaurants = [root sendAndRetrieve:currentResturantParams];
+	
+	[[self tableView] reloadData];
+
     [super viewWillAppear:animated];
 }
 
@@ -112,6 +101,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+	
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -136,7 +126,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return ([currentRestaurantsArray count]+1); //set the rows one cell largers for Skip Nomination Option
+    return ([currentRestaurants count]+1); //set the rows one cell largers for Skip Nomination Option
 }
 /* set the height of the rows */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -155,7 +145,7 @@
     // add the arrow to the cell
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    if((indexPath.row > ([currentRestaurantsArray count]-1))||([currentRestaurantsArray count]==0))
+    if((indexPath.row > ([currentRestaurants count]-1))||([currentRestaurants count]==0))
     {
         // set the last cell with "skip Nomination Option"
         [cell.textLabel setText:@"Skip nomination"];
@@ -163,7 +153,7 @@
     else
     {
         // Add the Destination Title
-        [cell.textLabel setText:[currentRestaurantsArray objectAtIndex:indexPath.row]];
+        [cell.textLabel setText:[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACENAME]];
         // add Subtitle (Last visit to the resturant)
         cell.detailTextLabel.text=@"Last visit 2 days ago";
         cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
@@ -190,7 +180,7 @@
 		//set the place to add to database
 		place = [[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACEUNID] intValue];
 	
-        NSString *selected = [currentRestaurantsArray objectAtIndex:indexPath.row];
+        NSString *selected = [[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACENAME];
         NSLog(@"You Nominated %@", selected);
 
     }

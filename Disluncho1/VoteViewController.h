@@ -35,4 +35,5 @@
 //@property (nonatomic, retain) int votes;
 -(NSString *) VoteChanged;
 -(void) setNavTitle;
+
 @end
