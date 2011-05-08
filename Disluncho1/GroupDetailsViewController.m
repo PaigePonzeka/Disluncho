@@ -183,13 +183,16 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete  the member from the group array
-        /*Put in code here to save changes to the delete*/
-		NSMutableArray *deleteMember;
+        
+		// Delete  the member from the database
 		NSString *deleteMemberParams = [NSString stringWithFormat:@"action=DELETE_MEMBER&member=%i",
 										[[[groupMembers objectAtIndex:indexPath.row]objectAtIndex:MEMBERUNID] intValue]];
-		deleteMember = [root sendAndRetrieve:deleteMemberParams];
+		[root send:deleteMemberParams];
+		
+		//delete member from local array
         [groupMembers removeObjectAtIndex:indexPath.row]; 
+		
+		//delete member from tableview
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];   
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {

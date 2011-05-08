@@ -180,9 +180,8 @@
     {
 		//set the place to add to database
 		place = [[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACEUNID] intValue];
-	
-        NSString *selected = [[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACENAME];
-        NSLog(@"You Nominated %@", selected);
+		
+		NSLog(@"You Nominated %@",[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACENAME]);
 
     }
     else
@@ -191,11 +190,11 @@
         NSLog(@"You skipped Nomination Process");
     }
 	//adds the nomination to the database
-	NSString *nominateParams =[[[[NSString stringWithString:@"action=NOMINATE"] 
+	NSString *nominateParams =[[[[NSString stringWithString:@"action=ADD_NOMINATION"] 
 								stringByAppendingFormat:@"&round=%i",[root RoundUNID]]
 								stringByAppendingFormat:@"&place=%i",place]
 								stringByAppendingFormat:@"&user=",[root UserUNID]];
-	[root sendAndRetrieve:nominateParams];
+	[root send:nominateParams];
 
 
     //push the Vote table view screen

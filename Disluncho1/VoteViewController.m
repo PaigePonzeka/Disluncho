@@ -79,10 +79,11 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated
-{
+{    [super viewWillAppear:animated];
+
 	//get the members that havnt nominated yet
-	NSString *delayedUsersParams = [[NSString stringWithString:@"action=GET_DELAYED_MEMBERS&round="] 
-									stringByAppendingString:[NSString stringWithFormat:@"%i",[root RoundUNID]]];
+	NSString *delayedUsersParams = [[NSString stringWithString:@"action=GET_DELAYED_MEMBERS"] 
+									stringByAppendingString:[NSString stringWithFormat:@"&round=%i",[root RoundUNID]]];
 	delayedUsers = [root sendAndRetrieve:delayedUsersParams];
 	
 	//the current state of the voting process
@@ -106,8 +107,7 @@
     {
 		
         //show the regular vote screen (set based on total number of votes available to the user)
-        //NSString *title =[NSString stringWithFormat:@"Award %i Points",userTotalVotes];
-        //self.title =title;
+
         [self setNavTitle];
         
 		
@@ -116,9 +116,7 @@
 									stringByAppendingString:[NSString stringWithFormat:@"%i",[root RoundUNID]]];
 		nominees = [root sendAndRetrieve:nomineesParams];
 		
-        //intialize the nominees list
-        //intialize the nominees (the array of resturants nominated in the current vote)
-		
+        //add a VOTES field to each nominee row
 		for(int place = 0; place < [nominees count];place++){
 			[[nominees objectAtIndex:place] addObject:[NSNumber numberWithInt:0]];
 		}
@@ -137,7 +135,6 @@
 	//reload the data
 	[[self tableView] reloadData];
 
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -158,8 +155,6 @@
     NSLog(@"Vote Finished");
     
     //save the results of the current table
-	//NSString *voteParams;
-	NSMutableArray *vote;
 	NSMutableArray *update;
 	for(int place = 0 ;place < [nominees count];place++){
         //adds the nomination to the database
@@ -169,7 +164,7 @@
 									stringByAppendingString:@"&place="]
 									stringByAppendingString:[[nominees objectAtIndex:place]objectAtIndex:PLACEUNID]]
 									stringByAppendingFormat:@"&count=%i",[[[nominees objectAtIndex:place]objectAtIndex:VOTES ]intValue]];
-		vote = [root sendAndRetrieve:voteParams];
+		[root send:voteParams];
         
 	}
 	

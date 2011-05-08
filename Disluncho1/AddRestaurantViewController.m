@@ -80,7 +80,7 @@
 		place = [[[addPlace objectAtIndex:0] objectAtIndex:0] intValue];
 	}
 	//user who added the place nominates it for this round 
-	NSString *nominateParams = [NSString stringWithFormat:@"action=NOMINATE&user=%i&round=%i&place=%i",
+	NSString *nominateParams = [NSString stringWithFormat:@"action=ADD_NOMINATION&user=%i&round=%i&place=%i",
 								[root UserUNID],[root RoundUNID],place];
 	[root send:nominateParams];
 	

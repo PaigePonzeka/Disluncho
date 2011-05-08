@@ -18,12 +18,16 @@
 @synthesize UserUNID;
 @synthesize GroupUNID;
 @synthesize RoundUNID;
-
+@synthesize DATABASE_VERBOSE;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	
+	//testing purposes ONLY
 	UserUNID = 3;
+	
+	//will print out each database call and results
+	DATABASE_VERBOSE = TRUE;
+	
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
     self.window.rootViewController = self.navigationController;
@@ -79,11 +83,11 @@
 	NSString* string = [NSString stringWithString:[[returnValues objectAtIndex:0]objectAtIndex:0]];
 	if (NSOrderedSame == [string compare:@""]){
 		[returnValues removeLastObject];
-		NSLog(@"return arry of size [0,0] - NO RESULTS");
+		if(DATABASE_VERBOSE)NSLog(@"return arry of size [0,0] - NO RESULTS");
 	}
 	else{
 		//print out return string size, row and fields
-		[self printResults:returnValues];
+		if(DATABASE_VERBOSE)[self printResults:returnValues];
 	}
 	
 	return returnValues;
@@ -118,7 +122,7 @@
 	}
 	//turn response into String stripped of \n characters
 	NSString *urlString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding]; 
-	NSLog(@"\n\t%@",urlString);
+	if(DATABASE_VERBOSE)NSLog(@"\n\t%@",urlString);
     [urlString release];
 
 }

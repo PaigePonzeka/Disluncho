@@ -12,6 +12,7 @@
 @implementation WinnerViewController
 @synthesize waitingForVotes;
 @synthesize root;
+@synthesize nominees;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -62,7 +63,7 @@
 	NSString *waitingForVotesParams = [[NSString stringWithString:@"action=GET_NOT_VOTED_MEMBERS"]
 									   stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
 	waitingForVotes = [root sendAndRetrieve:waitingForVotesParams];
-	[waitingForVotes retain];
+
 	// set the status of voting (are we waiting for people to finish voting?)
 	waiting_for_votes = ([waitingForVotes count]!=0);
 	

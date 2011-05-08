@@ -14,12 +14,14 @@
 	int UserUNID;
 	int GroupUNID;
 	int RoundUNID;
+	bool DATABASE_VERBOSE;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
+@property (nonatomic,assign) bool DATABASE_VERBOSE;
 @property (nonatomic,assign) int UserUNID;
 @property (nonatomic,assign) int GroupUNID;
 @property (nonatomic,assign) int RoundUNID;
