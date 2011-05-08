@@ -18,6 +18,7 @@
 @synthesize UserUNID;
 @synthesize GroupUNID;
 @synthesize RoundUNID;
+@synthesize UserPhoto;
 @synthesize DATABASE_VERBOSE;
 @synthesize image_type, imageFileString;
 

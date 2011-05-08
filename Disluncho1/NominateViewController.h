@@ -20,6 +20,7 @@
 	//index into array
 	int PLACEUNID;
 	int PLACENAME;
+	int PLACEPHOTO;
 }
 @property (nonatomic, retain) NSMutableArray *currentRestaurants;
 @property (nonatomic, retain) Disluncho1AppDelegate *root;

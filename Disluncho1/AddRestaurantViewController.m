@@ -11,6 +11,7 @@
 
 @implementation AddRestaurantViewController
 @synthesize root;
+@synthesize photo_path;
 
 
 - (void)dealloc
@@ -90,6 +91,12 @@
 		addPlace = [root sendAndRetrieve:addPlaceParams];
 	
 		place = [[[addPlace objectAtIndex:0] objectAtIndex:0] intValue];
+	}
+	//if photo updates were done then update the photo
+	if([self photo_path]!=NULL){
+		NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&place=%i",[self photo_path],place];
+		[root send:photoUpdateParams];
+		
 	}
 	//user who added the place nominates it for this round 
 	NSString *nominateParams = [NSString stringWithFormat:@"action=ADD_NOMINATION&user=%i&round=%i&place=%i",

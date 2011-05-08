@@ -14,6 +14,7 @@
 	int UserUNID;
 	int GroupUNID;
 	int RoundUNID;
+	NSString *UserPhoto;
 	bool DATABASE_VERBOSE;
     
     int image_type; //used to determine if images are for users, groups or places
@@ -27,7 +28,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-
+@property (nonatomic,assign) NSString * UserPhoto;
 @property (nonatomic,assign) bool DATABASE_VERBOSE;
 @property (nonatomic,assign) int UserUNID;
 @property (nonatomic,assign) int GroupUNID;

@@ -45,7 +45,8 @@
 
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
-
+	GROUPNAME = 0;
+	GROUPPHOTO = 1;
 	MEMBERNAME = 1;
 	MEMBERUNID = 0;
 	
@@ -134,7 +135,7 @@
     
        
         UIImageView *myImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        [myImage setImage:[UIImage imageNamed:@"default_group.png"]];
+        [myImage setImage:[UIImage imageNamed:[[group objectAtIndex:0]objectAtIndex:GROUPPHOTO]]];//@"default_group.png"]];
         //myImage.opaque = YES; // explicitly opaque for performance
         [modalView addSubview:myImage];
         [myImage release];

@@ -14,10 +14,11 @@
 @interface AddRestaurantViewController : UIViewController <UITextFieldDelegate>{
 	Disluncho1AppDelegate *root;
     IBOutlet UITextField *eatery_name;
-    
+	NSString *photo_path;
 
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
+@property (nonatomic, retain) NSString *photo_path;
 
 -(IBAction) setPhoto:(id) sender;
 

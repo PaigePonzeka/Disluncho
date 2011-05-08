@@ -48,6 +48,7 @@
 	USERUNID = 0;
 	PLACENAME = 1;
 	PLACEUNID = 0;
+	PLACEPHOTO = 2;
 	VOTES = 3;
 	
 	//get the votes the user will have for this round
@@ -253,7 +254,7 @@
         cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
         
         // Add Destination Image Icon
-        UIImage* theImage = [UIImage imageNamed:@"default_eatery.png"];
+        UIImage* theImage = [UIImage imageNamed:[[nominees objectAtIndex:indexPath.row]objectAtIndex:PLACEPHOTO]];//@"default_eatery.png"];
         cell.imageView.image = theImage;
         
         //create custom Accessory View

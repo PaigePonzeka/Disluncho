@@ -21,6 +21,7 @@
 	//index into the results array
 	int GROUPNAME;
 	int GROUPID;
+	int GROUPPHOTO;
 	int ROUNDID;
 
 }
