@@ -15,6 +15,11 @@
 	int GroupUNID;
 	int RoundUNID;
 	bool DATABASE_VERBOSE;
+    
+    int image_type; //used to determine if images are for users, groups or places
+    //1 - groups
+    //2 - places
+    //3 - users
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -25,6 +30,9 @@
 @property (nonatomic,assign) int UserUNID;
 @property (nonatomic,assign) int GroupUNID;
 @property (nonatomic,assign) int RoundUNID;
+
+@property (nonatomic,assign) int image_type;
+
 
 -(NSMutableArray *) sendAndRetrieve:(NSString *)parameters;
 -(void) send:(NSString *)parameters;

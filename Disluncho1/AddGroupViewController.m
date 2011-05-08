@@ -213,6 +213,9 @@
 -(void) addPhoto
 {
     NSLog(@"Changing to Add Photo Screen");
+    
+    //set the appdelegate global varable to determine if the photo is for users, places or groups
+    root.image_type = 1; 
     //switch to the add photo screen
     PhotoViewController *photoAdder = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
     [self.navigationController pushViewController:photoAdder animated:YES];
