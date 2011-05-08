@@ -162,7 +162,7 @@
         
        
         // Add Destination Image Icon
-        UIImage* theImage = [UIImage imageNamed:@"default_eatery.png"];
+        UIImage* theImage = [UIImage imageNamed:[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACEPHOTO] ];//@"default_eatery.png"];
         cell.imageView.image = theImage;
     }
     
@@ -194,7 +194,7 @@
 	NSString *nominateParams =[[[[NSString stringWithString:@"action=ADD_NOMINATION"] 
 								stringByAppendingFormat:@"&round=%i",[root RoundUNID]]
 								stringByAppendingFormat:@"&place=%i",place]
-								stringByAppendingFormat:@"&user=",[root UserUNID]];
+								stringByAppendingFormat:@"&user=%i",[root UserUNID]];
 	[root send:nominateParams];
 
 

@@ -162,7 +162,7 @@
     //add the user group name to the cell
     [cell.textLabel setText:[NSString stringWithString:[[usersGroups objectAtIndex:indexPath.row]objectAtIndex:GROUPNAME]]];
     //add the group image to the cell
-    NSString *path = @"default_group.png";
+    NSString *path = [[usersGroups objectAtIndex:indexPath.row]objectAtIndex:GROUPPHOTO];//@"default_group.png";
     UIImage *theImage = [UIImage imageNamed:path]; 
     cell.imageView.image = theImage;
     return cell;
