@@ -65,8 +65,10 @@
                 //set it to the new file name
                 filename = [NSString stringWithFormat:@"%i.png", fileNumber];
             }
-            //NSString lastFile = 
             NSString *saveFile = [[documentsDirectory stringByAppendingPathComponent:folder]stringByAppendingPathComponent:filename];
+            
+            //save the saveFile to the root
+            root.imageFileString = saveFile;
             
             NSData *imageData =  UIImagePNGRepresentation(selectedImage);
             [imageData writeToFile:saveFile atomically:YES];

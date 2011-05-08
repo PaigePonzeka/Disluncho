@@ -20,6 +20,8 @@
     //1 - groups
     //2 - places
     //3 - users
+    
+    NSString *imageFileString; 
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -32,6 +34,7 @@
 @property (nonatomic,assign) int RoundUNID;
 
 @property (nonatomic,assign) int image_type;
+@property (nonatomic,retain) NSString *imageFileString; 
 
 
 -(NSMutableArray *) sendAndRetrieve:(NSString *)parameters;

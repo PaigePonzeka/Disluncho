@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Disluncho1AppDelegate.h"
-
+#import "PhotoViewController.h"
 @interface AddMemberViewController : UIViewController {
     IBOutlet UITextField *member_email;
 	Disluncho1AppDelegate *root;
 }
 - (void) sendEmailTo:(NSString *)to;
+-(IBAction) setPhoto:(id) sender;
 @end

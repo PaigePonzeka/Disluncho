@@ -59,6 +59,19 @@
 {
 	[super viewDidDisappear:animated];
 }
+/*Called when user selected option to add a Photo to a newly created eatery*/
+-(IBAction) setPhoto:(id) sender
+{
+    NSLog(@"Changing to Add Photo Screen");
+    
+    //set the appdelegate global varable to determine if the photo is for users, places or groups
+    root.image_type = 3; //set value to users
+    //switch to the add photo screen
+    PhotoViewController *photoAdder = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
+    [self.navigationController pushViewController:photoAdder animated:YES];
+    [photoAdder release];
+}
+
 -(void) registerUser:(UIBarButtonItem*)button
 {
     NSLog(@"Register User");
@@ -81,6 +94,7 @@
 	//}
 
 }
+
 /* makes keyboard disappear on enter */
 -(BOOL)textFieldShouldReturn:(UITextField *)theTextField
 {

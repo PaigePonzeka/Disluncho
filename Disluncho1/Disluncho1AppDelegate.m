@@ -19,7 +19,7 @@
 @synthesize GroupUNID;
 @synthesize RoundUNID;
 @synthesize DATABASE_VERBOSE;
-@synthesize image_type;
+@synthesize image_type, imageFileString;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GroupsViewController.h"
 #import "Disluncho1AppDelegate.h"
+#import "PhotoViewController.h"
 
 @interface RootViewController : UIViewController {
 	Disluncho1AppDelegate *root;
@@ -16,6 +17,7 @@
     IBOutlet UITextField *login_name;
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
+-(IBAction) setPhoto:(id) sender;
 
 //@property (nonatomic, retain) IBOutlet UITextField *login_name;
 @end
