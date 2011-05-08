@@ -45,7 +45,8 @@
 
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
-
+	GROUPNAME = 0;
+	GROUPPHOTO = 1;
 	MEMBERNAME = 1;
 	MEMBERUNID = 0;
 	

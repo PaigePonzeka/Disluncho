@@ -14,6 +14,7 @@
 @implementation AddGroupViewController
 @synthesize root;
 @synthesize groupMembersArray;
+@synthesize photo_path;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -103,6 +104,13 @@
 	NSString *updateGroupParams = [NSString stringWithFormat:@"action=UPDATE_GROUP&name=%@&group=%i",
 									   add_group_name.text,[root GroupUNID]];
 	[root send:updateGroupParams];
+	
+	//if photo updates were done then update the photo
+	if([self photo_path]!=NULL){
+		NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&group=%i",[self photo_path],[root GroupUNID]];
+		[root send:photoUpdateParams];
+		
+	}
 		
 	NSLog(@"Done Adding New Group");
     //pop this view off the screen (back to the previous view)

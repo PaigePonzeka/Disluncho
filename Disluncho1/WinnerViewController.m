@@ -47,7 +47,8 @@
 	
 	PLACEUNID = 0;
 	PLACENAME = 1;
-	PLACEVOTES = 2;
+	PLACEPHOTO = 2;
+	PLACEVOTES = 3;
     // remove the back button
     self.navigationItem.hidesBackButton = YES;
 	

@@ -21,6 +21,7 @@
 	int USERUNID;
 	int PLACENAME;
 	int PLACEUNID;
+	int PLACEPHOTO;
 	int VOTES;
    // int votes; //temporary value for votes 
     int userTotalVotes; //total votes user has left to spend

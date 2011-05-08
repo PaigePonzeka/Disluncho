@@ -48,6 +48,7 @@
 	USERUNID = 0;
 	PLACENAME = 1;
 	PLACEUNID = 0;
+	PLACEPHOTO = 2;
 	VOTES = 3;
 	
 	//get the votes the user will have for this round

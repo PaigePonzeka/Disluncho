@@ -5,7 +5,7 @@
 		activeExecutable = 8135D8B313679B74008F87AE /* Disluncho1 */;
 		activeTarget = 28031BDD136728BD006A76F6 /* Disluncho1 */;
 		breakpoints = (
-			81AE2484136F434600757701 /* VoteViewController.m:334 */,
+			81AE2484136F434600757701 /* VoteViewController.m:335 */,
 			81779C20136F74B200672DAA /* __NSAutoreleaseFreedObject(): */,
 			81779C41136F76F100672DAA /* SIGABRT */,
 			81779C42136F770E00672DAA /* objc_exception_throw */,
@@ -85,6 +85,18 @@
 			81ACD95513772FE3004D0F77 /* PBXTextBookmark */ = 81ACD95513772FE3004D0F77 /* PBXTextBookmark */;
 			81ACD95613772FE5004D0F77 /* PBXTextBookmark */ = 81ACD95613772FE5004D0F77 /* PBXTextBookmark */;
 			81ACD95713772FE7004D0F77 /* PBXTextBookmark */ = 81ACD95713772FE7004D0F77 /* PBXTextBookmark */;
+			81ACD95A137731DC004D0F77 /* PBXTextBookmark */ = 81ACD95A137731DC004D0F77 /* PBXTextBookmark */;
+			81ACD96813773455004D0F77 /* PBXTextBookmark */ = 81ACD96813773455004D0F77 /* PBXTextBookmark */;
+			81ACD96913773455004D0F77 /* PBXTextBookmark */ = 81ACD96913773455004D0F77 /* PBXTextBookmark */;
+			81ACD96A13773455004D0F77 /* PBXTextBookmark */ = 81ACD96A13773455004D0F77 /* PBXTextBookmark */;
+			81ACD96B13773455004D0F77 /* PBXTextBookmark */ = 81ACD96B13773455004D0F77 /* PBXTextBookmark */;
+			81ACD96C13773455004D0F77 /* PBXTextBookmark */ = 81ACD96C13773455004D0F77 /* PBXTextBookmark */;
+			81ACD96D13773455004D0F77 /* PBXTextBookmark */ = 81ACD96D13773455004D0F77 /* PBXTextBookmark */;
+			81ACD96E13773455004D0F77 /* PBXTextBookmark */ = 81ACD96E13773455004D0F77 /* PBXTextBookmark */;
+			81ACD96F13773455004D0F77 /* PBXTextBookmark */ = 81ACD96F13773455004D0F77 /* PBXTextBookmark */;
+			81ACD97213773458004D0F77 /* PBXTextBookmark */ = 81ACD97213773458004D0F77 /* PBXTextBookmark */;
+			81ACD97513773507004D0F77 /* PBXTextBookmark */ = 81ACD97513773507004D0F77 /* PBXTextBookmark */;
+			81ACD97613773507004D0F77 /* PBXTextBookmark */ = 81ACD97613773507004D0F77 /* PBXTextBookmark */;
 			81E9DB1A13731D6D00CE25B5 = 81E9DB1A13731D6D00CE25B5 /* PBXTextBookmark */;
 			81E9DB52137326E500CE25B5 = 81E9DB52137326E500CE25B5 /* PBXTextBookmark */;
 			81E9DB54137326E500CE25B5 = 81E9DB54137326E500CE25B5 /* PBXTextBookmark */;
@@ -123,30 +135,30 @@
 	};
 	28031BF1136728BD006A76F6 /* Disluncho1AppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1046, 736}}";
-			sepNavSelRange = "{577, 0}";
-			sepNavVisRange = "{0, 827}";
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
+			sepNavSelRange = "{562, 0}";
+			sepNavVisRange = "{0, 899}";
 		};
 	};
 	28031BF2136728BD006A76F6 /* Disluncho1AppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1046, 2665}}";
-			sepNavSelRange = "{600, 0}";
-			sepNavVisRange = "{0, 1676}";
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 2652}}";
+			sepNavSelRange = "{390, 0}";
+			sepNavVisRange = "{0, 1636}";
 		};
 	};
 	28031BF7136728BD006A76F6 /* RootViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1010, 630}}";
-			sepNavSelRange = "{323, 0}";
-			sepNavVisRange = "{0, 495}";
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
+			sepNavSelRange = "{602, 0}";
+			sepNavVisRange = "{0, 686}";
 		};
 	};
 	28031BF8136728BD006A76F6 /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1118, 2054}}";
-			sepNavSelRange = "{1219, 0}";
-			sepNavVisRange = "{927, 1524}";
+			sepNavIntBoundsRect = "{{0, 0}, {1118, 2340}}";
+			sepNavSelRange = "{296, 0}";
+			sepNavVisRange = "{0, 1179}";
 		};
 	};
 	28031C01136728BE006A76F6 /* Disluncho1Tests */ = {
@@ -154,54 +166,54 @@
 	};
 	28031C1B13672CB1006A76F6 /* GroupsViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1046, 713}}";
-			sepNavSelRange = "{551, 0}";
-			sepNavVisRange = "{0, 717}";
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
+			sepNavSelRange = "{550, 0}";
+			sepNavVisRange = "{0, 734}";
 		};
 	};
 	28031C1C13672CB1006A76F6 /* GroupsViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{10130, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{10181, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{10231, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 10497}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1048, 4004}}";
-			sepNavSelRange = "{5629, 0}";
-			sepNavVisRange = "{4499, 2229}";
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{10147, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{10198, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{10248, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 10514}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1097, 4238}}";
+			sepNavSelRange = "{1358, 0}";
+			sepNavVisRange = "{735, 1350}";
 		};
 	};
 	28031C30136740B5006A76F6 /* NominateViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1046, 688}}";
-			sepNavSelRange = "{331, 0}";
-			sepNavVisRange = "{0, 623}";
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
+			sepNavSelRange = "{505, 0}";
+			sepNavVisRange = "{0, 640}";
 		};
 	};
 	28031C31136740B6006A76F6 /* NominateViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{6317, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{6368, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6418, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 6658}\";\n    s = 0;\n}";
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{6332, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{6383, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6433, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 6673}\";\n    s = 0;\n}";
 			sepNavIntBoundsRect = "{{0, 0}, {1132, 2925}}";
-			sepNavSelRange = "{5273, 0}";
-			sepNavVisRange = "{4641, 1334}";
+			sepNavSelRange = "{801, 0}";
+			sepNavVisRange = "{427, 1695}";
 		};
 	};
 	28031C35136745D8006A76F6 /* VoteViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
-			sepNavSelRange = "{988, 0}";
-			sepNavVisRange = "{0, 994}";
+			sepNavSelRange = "{492, 0}";
+			sepNavVisRange = "{0, 1011}";
 		};
 	};
 	28031C36136745D9006A76F6 /* VoteViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{14437, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{14488, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{14538, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 14778}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1167, 5980}}";
-			sepNavSelRange = "{3928, 0}";
-			sepNavVisRange = "{1886, 1943}";
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{14454, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{14505, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{14555, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 14795}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 5928}}";
+			sepNavSelRange = "{953, 0}";
+			sepNavVisRange = "{226, 1471}";
 		};
 	};
 	28031C3A13674A73006A76F6 /* WinnerViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1046, 736}}";
-			sepNavSelRange = "{706, 0}";
-			sepNavVisRange = "{0, 713}";
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
+			sepNavSelRange = "{468, 0}";
+			sepNavVisRange = "{0, 730}";
 		};
 	};
 	28031C3B13674A73006A76F6 /* WinnerViewController.m */ = {
@@ -215,52 +227,52 @@
 	28031C3F1367578D006A76F6 /* AddGroupViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
-			sepNavSelRange = "{656, 0}";
-			sepNavVisRange = "{0, 664}";
+			sepNavSelRange = "{719, 0}";
+			sepNavVisRange = "{0, 739}";
 		};
 	};
 	28031C401367578D006A76F6 /* AddGroupViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{9734, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{9785, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{9835, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 10076}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1153, 4160}}";
-			sepNavSelRange = "{3762, 0}";
-			sepNavVisRange = "{1835, 1527}";
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{10018, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{10069, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{10119, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 10360}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 4173}}";
+			sepNavSelRange = "{3287, 0}";
+			sepNavVisRange = "{1859, 2029}";
 		};
 	};
 	28031C4413675D37006A76F6 /* AddRestaurantViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
-			sepNavSelRange = "{283, 0}";
-			sepNavVisRange = "{0, 423}";
+			sepNavSelRange = "{490, 0}";
+			sepNavVisRange = "{0, 498}";
 		};
 	};
 	28031C4513675D37006A76F6 /* AddRestaurantViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1153, 1560}}";
-			sepNavSelRange = "{1822, 7}";
-			sepNavVisRange = "{832, 2184}";
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 1651}}";
+			sepNavSelRange = "{2531, 246}";
+			sepNavVisRange = "{1086, 2240}";
 		};
 	};
 	28031C491367647C006A76F6 /* GroupDetailsViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
-			sepNavSelRange = "{390, 0}";
-			sepNavVisRange = "{0, 568}";
+			sepNavSelRange = "{389, 0}";
+			sepNavVisRange = "{0, 601}";
 		};
 	};
 	28031C4A1367647C006A76F6 /* GroupDetailsViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{6708, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{6759, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6809, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 7049}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1046, 2873}}";
-			sepNavSelRange = "{5734, 0}";
-			sepNavVisRange = "{4668, 1855}";
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{6740, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{6791, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6841, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 7081}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 3250}}";
+			sepNavSelRange = "{913, 0}";
+			sepNavVisRange = "{254, 1482}";
 		};
 	};
 	28932A80136A0DA6006054CE /* AddMemberViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
 			sepNavSelRange = "{197, 0}";
-			sepNavVisRange = "{0, 334}";
+			sepNavVisRange = "{0, 370}";
 		};
 	};
 	28932A81136A0DA7006054CE /* AddMemberViewController.m */ = {
@@ -269,6 +281,20 @@
 			sepNavSelRange = "{1847, 0}";
 			sepNavVisRange = "{827, 2178}";
 			sepNavWindowFrame = "{{15, 35}, {901, 838}}";
+		};
+	};
+	28CA88E61370B474006302F8 /* PhotoViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 711}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 602}";
+		};
+	};
+	28CA88E71370B474006302F8 /* PhotoViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 949}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1429}";
 		};
 	};
 	8132A7A413728146008A25AB /* PBXTextBookmark */ = {
@@ -286,7 +312,7 @@
 		fRef = 28031C35136745D8006A76F6 /* VoteViewController.h */;
 		name = "VoteViewController.h: 38";
 		rLen = 0;
-		rLoc = 988;
+		rLoc = 1005;
 		rType = 0;
 		vrLen = 994;
 		vrLoc = 0;
@@ -358,7 +384,7 @@
 		fRef = 28031BF7136728BD006A76F6 /* RootViewController.h */;
 		name = "RootViewController.h: 15";
 		rLen = 0;
-		rLoc = 323;
+		rLoc = 339;
 		rType = 0;
 		vrLen = 495;
 		vrLoc = 0;
@@ -426,7 +452,7 @@
 		fRef = 28031C31136740B6006A76F6 /* NominateViewController.m */;
 		name = "NominateViewController.m: 181";
 		rLen = 0;
-		rLoc = 5273;
+		rLoc = 5288;
 		rType = 0;
 		vrLen = 2077;
 		vrLoc = 4581;
@@ -436,7 +462,7 @@
 		fRef = 28031C31136740B6006A76F6 /* NominateViewController.m */;
 		name = "NominateViewController.m: 181";
 		rLen = 0;
-		rLoc = 5273;
+		rLoc = 5288;
 		rType = 0;
 		vrLen = 2077;
 		vrLoc = 4581;
@@ -446,7 +472,7 @@
 		fRef = 28031C31136740B6006A76F6 /* NominateViewController.m */;
 		name = "NominateViewController.m: 181";
 		rLen = 0;
-		rLoc = 5273;
+		rLoc = 5288;
 		rType = 0;
 		vrLen = 1334;
 		vrLoc = 4641;
@@ -456,7 +482,7 @@
 		fRef = 28031C31136740B6006A76F6 /* NominateViewController.m */;
 		name = "NominateViewController.m: 181";
 		rLen = 0;
-		rLoc = 5273;
+		rLoc = 5288;
 		rType = 0;
 		vrLen = 2077;
 		vrLoc = 4581;
@@ -466,7 +492,7 @@
 		fRef = 28031C1B13672CB1006A76F6 /* GroupsViewController.h */;
 		name = "GroupsViewController.h: 27";
 		rLen = 0;
-		rLoc = 551;
+		rLoc = 568;
 		rType = 0;
 		vrLen = 717;
 		vrLoc = 0;
@@ -476,7 +502,7 @@
 		fRef = 28031BF8136728BD006A76F6 /* RootViewController.m */;
 		name = "RootViewController.m: 58";
 		rLen = 0;
-		rLoc = 1219;
+		rLoc = 1253;
 		rType = 0;
 		vrLen = 1524;
 		vrLoc = 927;
@@ -486,7 +512,7 @@
 		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
 		name = "GroupsViewController.m: 280";
 		rLen = 0;
-		rLoc = 9250;
+		rLoc = 9267;
 		rType = 0;
 		vrLen = 2544;
 		vrLoc = 7936;
@@ -496,7 +522,7 @@
 		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
 		name = "GroupsViewController.m: 280";
 		rLen = 0;
-		rLoc = 9250;
+		rLoc = 9267;
 		rType = 0;
 		vrLen = 1634;
 		vrLoc = 1619;
@@ -506,7 +532,7 @@
 		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
 		name = "GroupsViewController.m: 280";
 		rLen = 0;
-		rLoc = 9250;
+		rLoc = 9267;
 		rType = 0;
 		vrLen = 1634;
 		vrLoc = 1619;
@@ -516,7 +542,7 @@
 		fRef = 28031C31136740B6006A76F6 /* NominateViewController.m */;
 		name = "NominateViewController.m: 181";
 		rLen = 0;
-		rLoc = 5273;
+		rLoc = 5288;
 		rType = 0;
 		vrLen = 1334;
 		vrLoc = 4641;
@@ -526,7 +552,7 @@
 		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
 		name = "GroupsViewController.m: 280";
 		rLen = 0;
-		rLoc = 9250;
+		rLoc = 9267;
 		rType = 0;
 		vrLen = 1119;
 		vrLoc = 2134;
@@ -536,7 +562,7 @@
 		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
 		name = "GroupsViewController.m: 280";
 		rLen = 0;
-		rLoc = 9250;
+		rLoc = 9267;
 		rType = 0;
 		vrLen = 1613;
 		vrLoc = 1682;
@@ -546,7 +572,7 @@
 		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
 		name = "GroupsViewController.m: 280";
 		rLen = 0;
-		rLoc = 9250;
+		rLoc = 9267;
 		rType = 0;
 		vrLen = 1119;
 		vrLoc = 2134;
@@ -556,7 +582,7 @@
 		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
 		name = "GroupsViewController.m: 181";
 		rLen = 0;
-		rLoc = 5629;
+		rLoc = 5646;
 		rType = 0;
 		vrLen = 2229;
 		vrLoc = 4499;
@@ -566,7 +592,7 @@
 		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
 		name = "GroupsViewController.m: 181";
 		rLen = 0;
-		rLoc = 5629;
+		rLoc = 5646;
 		rType = 0;
 		vrLen = 2229;
 		vrLoc = 4499;
@@ -576,12 +602,132 @@
 		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
 		name = "GroupsViewController.m: 181";
 		rLen = 0;
-		rLoc = 5629;
+		rLoc = 5646;
 		rType = 0;
 		vrLen = 2229;
 		vrLoc = 4499;
 	};
-	81AE2484136F434600757701 /* VoteViewController.m:334 */ = {
+	81ACD95A137731DC004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
+		name = "GroupsViewController.m: 181";
+		rLen = 0;
+		rLoc = 5646;
+		rType = 0;
+		vrLen = 1905;
+		vrLoc = 4499;
+	};
+	81ACD96813773455004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031BF1136728BD006A76F6 /* Disluncho1AppDelegate.h */;
+		name = "Disluncho1AppDelegate.h: 24";
+		rLen = 0;
+		rLoc = 562;
+		rType = 0;
+		vrLen = 899;
+		vrLoc = 0;
+	};
+	81ACD96913773455004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031BF2136728BD006A76F6 /* Disluncho1AppDelegate.m */;
+		name = "Disluncho1AppDelegate.m: 21";
+		rLen = 0;
+		rLoc = 390;
+		rType = 0;
+		vrLen = 1636;
+		vrLoc = 0;
+	};
+	81ACD96A13773455004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C1B13672CB1006A76F6 /* GroupsViewController.h */;
+		name = "GroupsViewController.h: 27";
+		rLen = 0;
+		rLoc = 568;
+		rType = 0;
+		vrLen = 717;
+		vrLoc = 0;
+	};
+	81ACD96B13773455004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C491367647C006A76F6 /* GroupDetailsViewController.h */;
+		name = "GroupDetailsViewController.h: 21";
+		rLen = 0;
+		rLoc = 423;
+		rType = 0;
+		vrLen = 568;
+		vrLoc = 0;
+	};
+	81ACD96C13773455004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
+		name = "GroupsViewController.m: 181";
+		rLen = 0;
+		rLoc = 5646;
+		rType = 0;
+		vrLen = 2379;
+		vrLoc = 4166;
+	};
+	81ACD96D13773455004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031BF7136728BD006A76F6 /* RootViewController.h */;
+		name = "RootViewController.h: 24";
+		rLen = 0;
+		rLoc = 616;
+		rType = 0;
+		vrLen = 611;
+		vrLoc = 0;
+	};
+	81ACD96E13773455004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031BF8136728BD006A76F6 /* RootViewController.m */;
+		name = "RootViewController.m: 16";
+		rLen = 0;
+		rLoc = 246;
+		rType = 0;
+		vrLen = 1192;
+		vrLoc = 0;
+	};
+	81ACD96F13773455004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031BF8136728BD006A76F6 /* RootViewController.m */;
+		name = "RootViewController.m: 75";
+		rLen = 0;
+		rLoc = 1848;
+		rType = 0;
+		vrLen = 1758;
+		vrLoc = 1111;
+	};
+	81ACD97213773458004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031BF8136728BD006A76F6 /* RootViewController.m */;
+		name = "RootViewController.m: 75";
+		rLen = 0;
+		rLoc = 1848;
+		rType = 0;
+		vrLen = 1716;
+		vrLoc = 1153;
+	};
+	81ACD97513773507004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
+		name = "GroupsViewController.m: 181";
+		rLen = 0;
+		rLoc = 5646;
+		rType = 0;
+		vrLen = 1905;
+		vrLoc = 4499;
+	};
+	81ACD97613773507004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031BF8136728BD006A76F6 /* RootViewController.m */;
+		name = "RootViewController.m: 75";
+		rLen = 0;
+		rLoc = 1848;
+		rType = 0;
+		vrLen = 1382;
+		vrLoc = 1237;
+	};
+	81AE2484136F434600757701 /* VoteViewController.m:335 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -593,7 +739,7 @@
 		functionName = "-tableView:cellForRowAtIndexPath:";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 334;
+		lineNumber = 335;
 		location = Disluncho1;
 		modificationTime = 326072429.292291;
 		originalNumberOfMultipleMatches = 1;
@@ -604,7 +750,7 @@
 		fRef = 28031C1B13672CB1006A76F6 /* GroupsViewController.h */;
 		name = "GroupsViewController.h: 27";
 		rLen = 0;
-		rLoc = 551;
+		rLoc = 568;
 		rType = 0;
 		vrLen = 717;
 		vrLoc = 0;
@@ -614,7 +760,7 @@
 		fRef = 28031C3F1367578D006A76F6 /* AddGroupViewController.h */;
 		name = "AddGroupViewController.h: 27";
 		rLen = 0;
-		rLoc = 656;
+		rLoc = 679;
 		rType = 0;
 		vrLen = 664;
 		vrLoc = 0;
@@ -644,7 +790,7 @@
 		fRef = 28031C491367647C006A76F6 /* GroupDetailsViewController.h */;
 		name = "GroupDetailsViewController.h: 21";
 		rLen = 0;
-		rLoc = 390;
+		rLoc = 423;
 		rType = 0;
 		vrLen = 568;
 		vrLoc = 0;
@@ -654,7 +800,7 @@
 		fRef = 28031BF1136728BD006A76F6 /* Disluncho1AppDelegate.h */;
 		name = "Disluncho1AppDelegate.h: 25";
 		rLen = 0;
-		rLoc = 577;
+		rLoc = 649;
 		rType = 0;
 		vrLen = 827;
 		vrLoc = 0;
@@ -664,7 +810,7 @@
 		fRef = 28031C3A13674A73006A76F6 /* WinnerViewController.h */;
 		name = "WinnerViewController.h: 29";
 		rLen = 0;
-		rLoc = 706;
+		rLoc = 723;
 		rType = 0;
 		vrLen = 713;
 		vrLoc = 0;
@@ -674,7 +820,7 @@
 		fRef = 28031BF2136728BD006A76F6 /* Disluncho1AppDelegate.m */;
 		name = "Disluncho1AppDelegate.m: 28";
 		rLen = 0;
-		rLoc = 600;
+		rLoc = 623;
 		rType = 0;
 		vrLen = 1676;
 		vrLoc = 0;
@@ -683,8 +829,8 @@
 		isa = PBXTextBookmark;
 		fRef = 28031BF8136728BD006A76F6 /* RootViewController.m */;
 		name = "RootViewController.m: 80";
-		rLen = 152;
-		rLoc = 2049;
+		rLen = 150;
+		rLoc = 2170;
 		rType = 0;
 		vrLen = 1524;
 		vrLoc = 927;
@@ -694,7 +840,7 @@
 		fRef = 28031C4A1367647C006A76F6 /* GroupDetailsViewController.m */;
 		name = "GroupDetailsViewController.m: 195";
 		rLen = 0;
-		rLoc = 5734;
+		rLoc = 5766;
 		rType = 0;
 		vrLen = 1855;
 		vrLoc = 4668;
@@ -704,7 +850,7 @@
 		fRef = 28031C36136745D9006A76F6 /* VoteViewController.m */;
 		name = "VoteViewController.m: 133";
 		rLen = 0;
-		rLoc = 3928;
+		rLoc = 3945;
 		rType = 0;
 		vrLen = 1943;
 		vrLoc = 1886;
@@ -724,7 +870,7 @@
 		fRef = 28031C401367578D006A76F6 /* AddGroupViewController.m */;
 		name = "AddGroupViewController.m: 126";
 		rLen = 0;
-		rLoc = 3762;
+		rLoc = 4046;
 		rType = 0;
 		vrLen = 1866;
 		vrLoc = 448;
@@ -744,7 +890,7 @@
 		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
 		name = "GroupsViewController.m: 280";
 		rLen = 0;
-		rLoc = 9250;
+		rLoc = 9267;
 		rType = 0;
 		vrLen = 2544;
 		vrLoc = 7936;
@@ -754,7 +900,7 @@
 		fRef = 28031C4513675D37006A76F6 /* AddRestaurantViewController.m */;
 		name = "AddRestaurantViewController.m: 65";
 		rLen = 7;
-		rLoc = 1822;
+		rLoc = 1846;
 		rType = 0;
 		vrLen = 2184;
 		vrLoc = 832;
@@ -764,7 +910,7 @@
 		fRef = 28031C31136740B6006A76F6 /* NominateViewController.m */;
 		name = "NominateViewController.m: 86";
 		rLen = 7;
-		rLoc = 2332;
+		rLoc = 2347;
 		rType = 0;
 		vrLen = 1598;
 		vrLoc = 1569;
@@ -774,7 +920,7 @@
 		fRef = 28031C31136740B6006A76F6 /* NominateViewController.m */;
 		name = "NominateViewController.m: 181";
 		rLen = 0;
-		rLoc = 5273;
+		rLoc = 5288;
 		rType = 0;
 		vrLen = 1939;
 		vrLoc = 4719;

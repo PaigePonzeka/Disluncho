@@ -13,8 +13,9 @@
 
 @implementation RootViewController
 @synthesize root;
-//@synthesize login_name=_login_name;
-
+@synthesize login_name;
+@synthesize login_email;
+@synthesize photo_path;
 
 - (void)viewDidLoad
 {
@@ -63,22 +64,23 @@
 {
     NSLog(@"Register User");
 	//commented out for testing purposes to easily just set useruid
-	/*NSString *loginParams = [[[NSString stringWithString:@"action=LOGIN"]
-							   stringByAppendingString:@"&email=%@",email.text]
-							 stringByAppendingFormat:@"&username=%@",username.text];
+	NSString *loginParams = [[[NSString stringWithString:@"action=LOGIN"]
+							   stringByAppendingFormat:@"&email=%@",login_email.text]
+							 stringByAppendingFormat:@"&username=%@",login_name.text];
 	NSMutableArray *login = [root sendAndRetrieve:loginParams];
 	
 	if([login count]==0){
 		//some sort of error message
 	}
 	else {
-		[root setUserUNID:[[login objectAtIndex:0]objectAtIndex:USERUNID]];
-*/
+		[root setUserUNID:[[[login objectAtIndex:0]objectAtIndex:USERUNID] intValue]];
+		[root setUserPhoto:[[login objectAtIndex:0]objectAtIndex:USERPHOTO]];
+
 		//push Groups View controller to the front
 		GroupsViewController *groupview = [[GroupsViewController alloc] initWithNibName:@"GroupsViewController" bundle:nil];
 		[self.navigationController pushViewController:groupview animated:YES];
         [groupview release];
-	//}
+	}
 
 }
 /* makes keyboard disappear on enter */

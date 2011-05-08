@@ -18,6 +18,7 @@
 	
 	int PLACEUNID;
 	int PLACENAME;
+	int PLACEPHOTO;
 	int PLACEVOTES;
 
     BOOL waiting_for_votes;

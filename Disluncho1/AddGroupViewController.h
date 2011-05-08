@@ -15,6 +15,7 @@
     IBOutlet UITextField *add_group_name;
     NSMutableArray *groupMembersArray;
 
+	NSString *photo_path;
 	Disluncho1AppDelegate *root;
 	int MEMBERUNID;
 	int MEMBERNAME;
@@ -25,5 +26,6 @@
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 @property (nonatomic, retain) NSMutableArray *groupMembersArray;
+@property (nonatomic, retain) NSString *photo_path;
 
 @end

@@ -15,6 +15,8 @@
 	NSMutableArray *group;
 	int MEMBERUNID;
 	int MEMBERNAME;
+	int GROUPNAME;
+	int GROUPPHOTO;
 	Disluncho1AppDelegate *root;
 
 }

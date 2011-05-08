@@ -45,6 +45,7 @@
 	
 	PLACENAME = 1;
 	PLACEUNID = 0;
+	PLACEPHOTO=2;
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
 	

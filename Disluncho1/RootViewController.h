@@ -13,9 +13,15 @@
 @interface RootViewController : UIViewController {
 	Disluncho1AppDelegate *root;
 	int USERUNID;
+	int USERPHOTO;
     IBOutlet UITextField *login_name;
+	IBOutlet UITextField *login_email;
+	NSString *photo_path;
+
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 
-//@property (nonatomic, retain) IBOutlet UITextField *login_name;
+@property (nonatomic, retain) IBOutlet UITextField *login_name;
+@property (nonatomic, retain) NSString *photo_path;
+@property (nonatomic, retain) IBOutlet UITextField *login_email;
 @end
