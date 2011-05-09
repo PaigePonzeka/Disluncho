@@ -46,6 +46,7 @@
 		28932A86136A0E46006054CE /* icon in Resources */ = {isa = PBXBuildFile; fileRef = 28932A85136A0E46006054CE /* icon */; };
 		28932A8A136A0E98006054CE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28932A89136A0E98006054CE /* icon.png */; };
 		28932A8C136A10D7006054CE /* AddGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28932A8B136A10D6006054CE /* AddGroupViewController.xib */; };
+		28C6ACF81377885300A9E9CE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C6ACF71377885300A9E9CE /* MessageUI.framework */; };
 		28CA88E91370B474006302F8 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CA88E71370B474006302F8 /* PhotoViewController.m */; };
 		28CA88EA1370B474006302F8 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CA88E81370B474006302F8 /* PhotoViewController.xib */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		28932A85136A0E46006054CE /* icon */ = {isa = PBXFileReference; lastKnownFileType = file; path = icon; sourceTree = "<group>"; };
 		28932A89136A0E98006054CE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 		28932A8B136A10D6006054CE /* AddGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddGroupViewController.xib; path = Disluncho1.xcodeproj/AddGroupViewController.xib; sourceTree = SOURCE_ROOT; };
+		28C6ACF71377885300A9E9CE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		28CA88E61370B474006302F8 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		28CA88E71370B474006302F8 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		28CA88E81370B474006302F8 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C6ACF81377885300A9E9CE /* MessageUI.framework in Frameworks */,
 				28932A661369E8DD006054CE /* QuartzCore.framework in Frameworks */,
 				28031BE3136728BD006A76F6 /* UIKit.framework in Frameworks */,
 				28031BE5136728BD006A76F6 /* Foundation.framework in Frameworks */,
@@ -165,6 +168,7 @@
 		28031BE1136728BD006A76F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28C6ACF71377885300A9E9CE /* MessageUI.framework */,
 				28932A651369E8DD006054CE /* QuartzCore.framework */,
 				28031BE2136728BD006A76F6 /* UIKit.framework */,
 				28031BE4136728BD006A76F6 /* Foundation.framework */,

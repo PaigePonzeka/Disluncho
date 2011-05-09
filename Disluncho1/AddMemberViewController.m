@@ -7,6 +7,8 @@
 //
 
 #import "AddMemberViewController.h"
+#import <MessageUI/MessageUI.h>
+
 
 
 @implementation AddMemberViewController
@@ -85,17 +87,17 @@
 {
 	NSMutableArray *userFromEmail;
 	userFromEmail= [root sendAndRetrieve:[NSString stringWithFormat:@"action=GET_USER&email=%@",member_email.text]];
-	NSLog(@"got the email\n");
+	//NSLog(@"got the email\n");
 	if([userFromEmail count]==0){
 		/* the email does not exist in the database send the person an email to join and add them later 
 			have a pop up to tell the person that they cannot add the member now
 		 */
-		NSLog(@"No User was found with Email: %@ <--- need to ask them to join", member_email.text);
-
-		member_email.placeholder = @"Email Address";
+		NSLog(@"Sending Email to: %@ Asking Them to Join", member_email.text);
+        //send email to the user
         [self sendEmailTo: member_email.text];
+        member_email.placeholder = @"Email Address";
         member_email.text = @"";
-	}
+      	}
 	else{
 		NSString *addMemberParams = [NSString stringWithFormat:@"action=ADD_MEMBER&user=%i&group=%i",
 									 [[[userFromEmail objectAtIndex:0]objectAtIndex:0]intValue ],
