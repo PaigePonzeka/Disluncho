@@ -14,7 +14,7 @@
 @implementation AddGroupViewController
 @synthesize root;
 @synthesize groupMembersArray;
-@synthesize photo_path;
+@synthesize photo_path, add_photo;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -42,7 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    hasSetPicture =false;
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
 	
@@ -140,16 +140,37 @@
 	[[self tableView] reloadData];
 
 }
-
+//loading image from Documents
+- (UIImage*)loadImage:(NSString*)imgName {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imgName]];
+	return [UIImage imageWithContentsOfFile:fullPath];
+}
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];	
+    if(hasSetPicture)
+    {
+        add_photo.hidden = YES;
+        //add the image view to that position instead
+        //remove .png from the file 
+        NSString *withoutPNG = [root.imageFileString stringByReplacingOccurrencesOfString:@".png" withString:@""];
+        
+        UIImageView *userImageView = [[UIImageView alloc] initWithFrame: CGRectMake(15, 15, 75, 75)];
+        UIImage *myUIImage = [self loadImage: withoutPNG];
+        userImageView.image = myUIImage;
+        [self.view addSubview:userImageView];
+    }
+
 
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -186,13 +207,14 @@
         return 20;
     }
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if(section == 0)
     {
         UIView *modalView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 100)] autorelease];
         
-        UIButton *add_photo = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+       add_photo = [UIButton buttonWithType:UIButtonTypeRoundedRect];
        add_photo.frame = CGRectMake(0, 0, 100, 100);
         [add_photo setTitle:@"Add Photo" forState:UIControlStateNormal];
         [add_photo addTarget:self action:@selector(addPhoto) forControlEvents:UIControlEventTouchUpInside];
@@ -225,6 +247,7 @@
     //set the appdelegate global varable to determine if the photo is for users, places or groups
     root.image_type = 1; 
     //switch to the add photo screen
+    hasSetPicture = true;
     PhotoViewController *photoAdder = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
     [self.navigationController pushViewController:photoAdder animated:YES];
     [photoAdder release];

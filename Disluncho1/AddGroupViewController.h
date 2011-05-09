@@ -14,18 +14,20 @@
 @interface AddGroupViewController : UITableViewController <UITextFieldDelegate>{
     IBOutlet UITextField *add_group_name;
     NSMutableArray *groupMembersArray;
-
+    UIButton *add_photo;
 	NSString *photo_path;
 	Disluncho1AppDelegate *root;
 	int MEMBERUNID;
 	int MEMBERNAME;
 	int GROUPUNID;
 	int GROUPNAME;
+    bool hasSetPicture;
     
 
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
+@property (nonatomic, retain) UIButton *add_photo;
 @property (nonatomic, retain) NSMutableArray *groupMembersArray;
 @property (nonatomic, retain) NSString *photo_path;
-
+@property (nonatomic, assign) bool hasSetPicture;
 @end

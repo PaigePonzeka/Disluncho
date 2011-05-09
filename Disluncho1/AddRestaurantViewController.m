@@ -11,7 +11,7 @@
 
 @implementation AddRestaurantViewController
 @synthesize root;
-@synthesize photo_path;
+@synthesize photo_path, hasSetPicture, add_photo;
 
 
 - (void)dealloc
@@ -38,7 +38,7 @@
 -(IBAction) setPhoto:(id) sender
 {
     NSLog(@"Changing to Add Photo Screen");
-    
+    hasSetPicture = true;
     //set the appdelegate global varable to determine if the photo is for users, places or groups
     root.image_type = 2; 
     //switch to the add photo screen
@@ -120,11 +120,31 @@
     [super viewWillAppear:animated];
 }
 
+//loading image from Documents
+- (UIImage*)loadImage:(NSString*)imgName {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imgName]];
+	return [UIImage imageWithContentsOfFile:fullPath];
+}
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewDidAppear:animated];	
+    if(hasSetPicture)
+    {
+        add_photo.hidden = YES;
+        //add the image view to that position instead
+        //remove .png from the file 
+        NSString *withoutPNG = [root.imageFileString stringByReplacingOccurrencesOfString:@".png" withString:@""];
+        
+        UIImageView *userImageView = [[UIImageView alloc] initWithFrame: CGRectMake(15, 15, 75, 75)];
+        UIImage *myUIImage = [self loadImage: withoutPNG];
+        userImageView.image = myUIImage;
+        [self.view addSubview:userImageView];
+    }
+    
+    
 }
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];

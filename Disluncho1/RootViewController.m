@@ -28,7 +28,7 @@
 	USERUNID = 0;
 	
     //change the navigation bar title 
-    self.title = @"Register";
+    self.title = @"Login";
     
     //create an add a done button to the right navigation bar
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(registerUser:)];
@@ -56,9 +56,6 @@
 	return [UIImage imageWithContentsOfFile:fullPath];
 }
 
-
-
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -69,7 +66,7 @@
         //remove .png from the file 
         NSString *withoutPNG = [root.imageFileString stringByReplacingOccurrencesOfString:@".png" withString:@""];
 
-        UIImageView *userImageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, 50, 50)];
+        UIImageView *userImageView = [[UIImageView alloc] initWithFrame: CGRectMake(15, 15, 75, 75)];
         UIImage *myUIImage = [self loadImage: withoutPNG];
         userImageView.image = myUIImage;
         [self.view addSubview:userImageView];
