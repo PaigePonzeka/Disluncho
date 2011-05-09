@@ -58,7 +58,7 @@
     self.title = @"Add Restaurant";    //display an add button for this view controller
 
 	//add place
-	NSString *addPlaceParams = [NSString stringWithFormat:@"action=UPDATE_PLACE&name=%@",eatery_name.text];
+	NSString *addPlaceParams = [NSString stringWithFormat:@"action=ADD_PLACE&name=%@",eatery_name.text];
 	NSMutableArray *addPlace;
 	addPlace = [root sendAndRetrieve:addPlaceParams];
 	
@@ -141,25 +141,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-	/***  self photo_path will be the path of the groups photo  **/
-	//if photo updates were done then update the photo
-	if([root imageFileString]!=NULL){
-		NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&place=%i",[root imageFileString],[self place]];
-		[self setPhoto_path:[root imageFileString]];
-		[root setImageFileString:NULL];
-		[root send:photoUpdateParams];
-	}
-	
+
 	
 }
 
-//loading image from Documents
-- (UIImage*)loadImage:(NSString*)imgName {
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imgName]];
-	return [UIImage imageWithContentsOfFile:fullPath];
-}
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];	
@@ -171,11 +156,18 @@
         NSString *withoutPNG = [root.imageFileString stringByReplacingOccurrencesOfString:@".png" withString:@""];
         
         UIImageView *userImageView = [[UIImageView alloc] initWithFrame: CGRectMake(15, 15, 75, 75)];
-        UIImage *myUIImage = [self loadImage: withoutPNG];
+        UIImage *myUIImage = [root loadImage: withoutPNG];
         userImageView.image = myUIImage;
         [self.view addSubview:userImageView];
     }
-    
+    	/***  self photo_path will be the path of the groups photo  **/
+	//if photo updates were done then update the photo
+	if([root imageFileString]!=NULL){
+		NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&place=%i",[root imageFileString],[self place]];
+		[self setPhoto_path:[root imageFileString]];
+		[root setImageFileString:NULL];
+		[root send:photoUpdateParams];
+	}
     
 }
 - (void)viewWillDisappear:(BOOL)animated

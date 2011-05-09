@@ -129,7 +129,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated
-{
+{    [super viewWillAppear:animated];
 
 	
 	//update the members array
@@ -141,16 +141,8 @@
 	NSLog(@"editing new group: %i with number of members:%i",[root GroupUNID],[groupMembersArray count]);
 	[[self tableView] reloadData];
 
-    [super viewWillAppear:animated];
+}
 
-}
-//loading image from Documents
-- (UIImage*)loadImage:(NSString*)imgName {
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imgName]];
-	return [UIImage imageWithContentsOfFile:fullPath];
-}
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -159,14 +151,11 @@
     {
         add_photo.hidden = YES;
         //add the image view to that position instead
-        //remove .png from the file 
-        NSString *withoutPNG = [root.imageFileString stringByReplacingOccurrencesOfString:@".png" withString:@""];
         
         UIImageView *userImageView = [[UIImageView alloc] initWithFrame: CGRectMake(15, 15, 75, 75)];
-        UIImage *myUIImage = [self loadImage: withoutPNG];
+        UIImage *myUIImage = [root loadImage: root.imageFileString];
         userImageView.image = myUIImage;
         [self.view addSubview:userImageView];
-		NSLog(@"hassetpicture %@", [root imageFileString]);
     }
 	
 	NSLog(@"will appear photo is: %@",[root imageFileString]);

@@ -39,5 +39,6 @@
 -(NSMutableArray *) sendAndRetrieve:(NSString *)parameters;
 -(void) send:(NSString *)parameters;
 -(void) printResults:(NSMutableArray *)results;
+- (UIImage*)loadImage:(NSString*)imgName; 
 
 @end

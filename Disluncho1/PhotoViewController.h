@@ -29,6 +29,5 @@
 
 
 -(IBAction) getPhoto:(id) sender;
--(void) saveImageToFile;
 
 @end
