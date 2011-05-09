@@ -12,6 +12,7 @@
 @implementation AddRestaurantViewController
 @synthesize root;
 @synthesize photo_path;
+@synthesize place;
 
 
 - (void)dealloc
@@ -56,6 +57,15 @@
 	
     self.title = @"Add Restaurant";    //display an add button for this view controller
 
+	//add place
+	NSString *addPlaceParams = [NSString stringWithFormat:@"action=UPDATE_PLACE&name=%@",eatery_name.text];
+	NSMutableArray *addPlace;
+	addPlace = [root sendAndRetrieve:addPlaceParams];
+	
+	self.place = [[[addPlace objectAtIndex:0] objectAtIndex:0] intValue];
+	
+	
+	
     eatery_name.borderStyle = UITextBorderStyleRoundedRect;
 	eatery_name.placeholder = @"Name";
 	[eatery_name setDelegate:self];
@@ -65,6 +75,14 @@
     self.navigationItem.rightBarButtonItem = doneButton;
     [doneButton release];
 	
+	//hide the backbutton
+    self.navigationItem.hidesBackButton = YES;
+    
+    //add cancel button
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAddPlace)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+    [cancelButton release];
+	
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -73,7 +91,6 @@
 }
 -(void)doneWithRestuarant
 {
-	int place;	
 	//search to see if this place exists in the database (possible similar finds screen/options)
 	NSString *similarPlacesParams = [NSString stringWithFormat:@"action=GET_LIKE_PLACE&name=%@",eatery_name.text];
 	NSMutableArray *similarPlaces;
@@ -82,29 +99,35 @@
 	if([similarPlaces count]!=0)
 	{
 		NSLog(@"there is a similar restuarant already in the database: %@ <-- use that",[[similarPlaces objectAtIndex:0] objectAtIndex:1]);
-		place = [[[similarPlaces objectAtIndex:0] objectAtIndex:0]intValue];
+		
+		//delete the place
+		NSString *deletePlaceParams = [NSString stringWithFormat:@"action=DELETE_PLACE&place=%i",[self place]];
+		[root send:deletePlaceParams];
+		
+		//reset place to the other place
+		self.place = [[[similarPlaces objectAtIndex:0] objectAtIndex:0]intValue];
 	}
 	else{
-		//add unique place to the database
-		NSString *addPlaceParams = [NSString stringWithFormat:@"action=ADD_PLACE&name=%@",eatery_name.text];
-		NSMutableArray *addPlace;
-		addPlace = [root sendAndRetrieve:addPlaceParams];
-	
-		place = [[[addPlace objectAtIndex:0] objectAtIndex:0] intValue];
-	}
-	//if photo updates were done then update the photo
-	if([self photo_path]!=NULL){
-		NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&place=%i",[self photo_path],place];
-		[root send:photoUpdateParams];
-		
+		//update unique place to the database
+		NSString *addPlaceParams = [NSString stringWithFormat:@"action=UPDATE_PLACE&name=%@&place=%i",eatery_name.text,[self place]];
+		[root send:addPlaceParams];
 	}
 	//user who added the place nominates it for this round 
 	NSString *nominateParams = [NSString stringWithFormat:@"action=ADD_NOMINATION&user=%i&round=%i&place=%i",
-								[root UserUNID],[root RoundUNID],place];
+								[root UserUNID],[root RoundUNID],[self place]];
 	[root send:nominateParams];
 	
 	//pop this view off the screen (back to the previous view)
 	[self.navigationController popViewControllerAnimated:YES];
+
+}
+-(void)cancelAddPlace{
+	//delete the place
+	NSString *deletePlaceParams = [NSString stringWithFormat:@"action=DELETE_PLACE&place=%i",[self place]];
+	[root send:deletePlaceParams];
+	
+    //pop this view off the screen (back to the previous view)
+    [self.navigationController popViewControllerAnimated:YES];
 
 }
 
@@ -118,6 +141,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+	/***  self photo_path will be the path of the groups photo  **/
+	//if photo updates were done then update the photo
+	if([root imageFileString]!=NULL){
+		NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&place=%i",[root imageFileString],[self place]];
+		[self setPhoto_path:[root imageFileString]];
+		[root setImageFileString:NULL];
+		[root send:photoUpdateParams];
+	}
+	
+	
 }
 
 - (void)viewDidAppear:(BOOL)animated

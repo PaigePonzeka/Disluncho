@@ -43,6 +43,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+	/***  self photo_path will be the path of the groups photo  **/
+	//if photo updates were done then update the photo
+	if([root imageFileString]!=NULL){
+		[self setPhoto_path:[root imageFileString]];
+		[root setImageFileString:NULL];
+	}
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -84,11 +90,17 @@
 	
 	if([login count]==0){
 		//some sort of error message
+		NSLog(@"tried to login %@ %@",login_name.text,login_email.text);
 	}
 	else {
-		[root setUserUNID:[[[login objectAtIndex:0]objectAtIndex:USERUNID] intValue]];
-		[root setUserPhoto:[[login objectAtIndex:0]objectAtIndex:USERPHOTO]];
 
+		if([self photo_path]!=NULL){
+		
+			NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&user=%i",
+										   [self photo_path],[root UserUNID]];
+			[root send:photoUpdateParams];
+
+		}
 		//push Groups View controller to the front
 		GroupsViewController *groupview = [[GroupsViewController alloc] initWithNibName:@"GroupsViewController" bundle:nil];
 		[self.navigationController pushViewController:groupview animated:YES];

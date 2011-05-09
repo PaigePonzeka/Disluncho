@@ -15,11 +15,12 @@
 	Disluncho1AppDelegate *root;
     IBOutlet UITextField *eatery_name;
 	NSString *photo_path;
+	int place;
 
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 @property (nonatomic, retain) NSString *photo_path;
-
+@property int place;
 -(IBAction) setPhoto:(id) sender;
 
 @end

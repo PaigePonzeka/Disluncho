@@ -18,6 +18,7 @@
 	int GROUPNAME;
 	int GROUPPHOTO;
 	Disluncho1AppDelegate *root;
+	IBOutlet UITextView *group_name;
 
 }
 @property (nonatomic, retain) NSMutableArray *groupMembers;

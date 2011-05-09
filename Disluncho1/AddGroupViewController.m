@@ -101,16 +101,14 @@
 {	
 	NSLog(@"Added name to group: %@",add_group_name.text);
     // save and update all the set information
+	NSString *group_name;
+	if(add_group_name.text!=NULL)
+	group_name= [NSString stringWithString:add_group_name.text];
+	else group_name= [NSString stringWithString:@"Unnamed Group"];
+
 	NSString *updateGroupParams = [NSString stringWithFormat:@"action=UPDATE_GROUP&name=%@&group=%i",
-									   add_group_name.text,[root GroupUNID]];
+								   group_name,[root GroupUNID]];
 	[root send:updateGroupParams];
-	
-	//if photo updates were done then update the photo
-	if([self photo_path]!=NULL){
-		NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&group=%i",[self photo_path],[root GroupUNID]];
-		[root send:photoUpdateParams];
-		
-	}
 		
 	NSLog(@"Done Adding New Group");
     //pop this view off the screen (back to the previous view)
@@ -131,11 +129,23 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	/***  self photo_path will be the path of the groups photo  **/
+	//if photo updates were done then update the photo
+	if([root imageFileString]!=NULL){
+		NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&group=%i",[root imageFileString],[root GroupUNID]];
+		[self setPhoto_path:[root imageFileString]];
+		[root setImageFileString:NULL];
+		[root send:photoUpdateParams];
+	}
+	
 	//update the members array
 	NSString *groupMembersParams = [NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",[root GroupUNID]];
 	groupMembersArray = [root sendAndRetrieve:groupMembersParams];
 	[groupMembersArray retain];
+	
+	//update the group array
 	NSLog(@"editing new group: %i with number of members:%i",[root GroupUNID],[groupMembersArray count]);
+	
     [super viewWillAppear:animated];
 	[[self tableView] reloadData];
 
