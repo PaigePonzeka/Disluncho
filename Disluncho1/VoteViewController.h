@@ -16,7 +16,7 @@
 
     NSMutableArray *nominees;
     NSMutableArray *delayedUsers;
-
+	NSTimer *timer;
 	int USERNAME;
 	int USERUNID;
 	int PLACENAME;
@@ -30,6 +30,7 @@
 }
 @property (nonatomic, retain) NSMutableArray *nominees;
 @property (nonatomic, retain) NSMutableArray *delayedUsers;
+@property (nonatomic, retain) NSTimer *timer;
 
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 

@@ -48,7 +48,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	NSLog(@"Loading Group View Controller");
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
     
@@ -60,6 +59,7 @@
 	GROUPID = 0;
 	ROUNDID = 0;
 	GROUPPHOTO = 2;
+	MEMBEREMAIL = 2;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -97,7 +97,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {    [super viewWillAppear:animated];
 
-	NSLog(@"will appear");
 	NSString* usersGroupsParams = [[[NSString stringWithString:@"action=LIST_USER_GROUPS"]
 									stringByAppendingString:@"&user="]stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
 	usersGroups = [root sendAndRetrieve:usersGroupsParams];
@@ -273,33 +272,63 @@
 		
 		//there are no open rounds so make one		
 		if([openRounds count]==0){
-			openRoundsParams = [[[openRoundsParams stringByReplacingOccurrencesOfString:@"LIST_OPEN_ROUNDS" withString:@"ADD_ROUND"]
-								stringByAppendingString:@"&user="] stringByAppendingString:[NSString stringWithFormat:@"%i",[root UserUNID]]];
-			openRounds = [root sendAndRetrieve:openRoundsParams];
-			NSLog(@"creating a new round\n");
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Creating a New Vote" message:@"You are about to create a new lunchtime vote. Send out an email to all the group members."
+														   delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+			[alert setDelegate:self];
+			[alert show];
+			[alert release];
+
+		
+		}
+		else{
+			//set what round they will be voting in
+			[root setRoundUNID:[[[openRounds objectAtIndex:0] objectAtIndex:ROUNDID]  intValue]];
+			NSLog(@"entering round #%i\n",[root RoundUNID]);
+			
+			//push the nominate table view screen
+			NominateViewController *nominateview = [[NominateViewController alloc] initWithNibName:@"NominateViewController" bundle:nil];
+			[self.navigationController pushViewController:nominateview animated:YES];
+			[nominateview release];
+		}
+    }
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+	if (buttonIndex ==0)//cancel button 
+	{
+		[root setGroupUNID:0];
+	}
+	else
+	{
+		//send out emails to everyone
+		NSMutableArray *allGroupMembers;
+		NSString *allGroupMembersParams = [NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",[root GroupUNID]];
+		allGroupMembers = [root sendAndRetrieve:allGroupMembersParams];
+		for(int member = 0; member<[allGroupMembers count];member++){
+			//[self sendEmailTo:[[allGroupMembers objectAtIndex:member]objectAtIndex:MEMBEREMAIL]];
 		}
 		
-		//set what round they will be voting in
-		[root setRoundUNID:[[[openRounds objectAtIndex:0] objectAtIndex:ROUNDID]  intValue]];
-		NSLog(@"entering round #%i\n",[root RoundUNID]);
-
-		
-        NSString *selected = [[usersGroups objectAtIndex:indexPath.row]objectAtIndex:GROUPNAME];
-        NSLog(@"You Selected %@", selected);
+		//create a new round
+		NSMutableArray *newRound;
+		NSString *newRoundParams = [NSString stringWithFormat:@"action=ADD_ROUND&group=%i&user=%i",[root GroupUNID],[root UserUNID]];
+			newRound = [root sendAndRetrieve:newRoundParams];
+			NSLog(@"creating a new round\n");
         
-
-        //push the nominate table view screen
+		
+		//push the nominate table view screen
         NominateViewController *nominateview = [[NominateViewController alloc] initWithNibName:@"NominateViewController" bundle:nil];
         [self.navigationController pushViewController:nominateview animated:YES];
         [nominateview release];
-        /*
-         <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-         // ...
-         // Pass the selected object to the new view controller.
-         [self.navigationController pushViewController:detailViewController animated:YES];
-         [detailViewController release];
-         */
-    }
+	}
+}
+- (void) sendEmailTo:(NSString *)to {
+    NSString *body = [ NSString stringWithFormat:@"A new round of lunch-time voting has started for %@.  Nominate NOW!",[[usersGroups objectAtIndex:[root GroupUNID]]objectAtIndex:GROUPNAME] ];
+    NSString *subject = @"It's time to nominate lunch";
+	NSString *mailString = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@",
+							[to stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
+							[subject stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
+							[body  stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
 }
 
 @end

@@ -12,7 +12,7 @@
 
 
 @implementation RootViewController
-@synthesize root, login_name, login_email,photo_path, hasSetPicture;;
+@synthesize root, login_name, login_email,photo_path, hasSetPicture, warning;
 
 
 
@@ -111,6 +111,7 @@
 	
 	if([login count]==0){
 		//some sort of error message
+		warning.text=@"User Name or Email NOT found.  Try again.";
 		NSLog(@"tried to login %@ %@",login_name.text,login_email.text);
 	}
 	else {

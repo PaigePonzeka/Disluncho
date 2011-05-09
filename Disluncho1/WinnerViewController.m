@@ -13,6 +13,7 @@
 @synthesize waitingForVotes;
 @synthesize root;
 @synthesize nominees;
+@synthesize timer;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -44,14 +45,15 @@
 
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
-	
 	PLACEUNID = 0;
 	PLACENAME = 1;
-	PLACEPHOTO = 2;
-	PLACEVOTES = 3;
+	PLACEPHOTO = 3;
+	PLACEVOTES = 2;
     // remove the back button
     self.navigationItem.hidesBackButton = YES;
-	
+
+	//[timer retain];
+
 	// Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -60,7 +62,20 @@
 }
 -(void)checkForVotingDone
 {
-
+	NSLog(@"checking for voting done");
+	//get members who have not voted yet in this round
+	NSString *waitingForVotesParams = [[NSString stringWithString:@"action=GET_NOT_VOTED_MEMBERS"]
+									   stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
+	waitingForVotes = [root sendAndRetrieve:waitingForVotesParams];
+	
+	// set the status of voting (are we waiting for people to finish voting?)
+	waiting_for_votes = ([waitingForVotes count]!=0);
+	
+	//tally the votes
+	NSString *nomineesParams = [[NSString stringWithString:@"action=TALLY_VOTES"]
+								stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
+	nominees = [root sendAndRetrieve:nomineesParams];
+	[nominees retain];
 	
 	//------choose between screens -----
 	if(!waiting_for_votes) // everyone has finished voting/the vote has ended
@@ -72,6 +87,7 @@
         UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Groups" style:UIBarButtonItemStylePlain  target:self action:@selector(goToGroups:)];
         self.navigationItem.leftBarButtonItem = backButton;
         [backButton release];
+		[timer invalidate];
 		
     }
     else // some one is still voting show the "tallying votes screen"
@@ -81,11 +97,11 @@
         self.navigationItem.hidesBackButton = YES;
 		
     }
+	[[self tableView]reloadData];
 }
 -(void)goToGroups:(UIBarButtonItem*)button
 {
     /* Reset back to the groups screen*/
-    NSLog(@"Reset to Groups Controller");
     
     // navigate to the winnerViewController to see the results
     GroupsViewController *winnerview = [[GroupsViewController alloc] initWithNibName:@"GroupsViewController" bundle:nil];
@@ -102,20 +118,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	//get members who have not voted yet in this round
-	NSString *waitingForVotesParams = [[NSString stringWithString:@"action=GET_NOT_VOTED_MEMBERS"]
-									   stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
-	waitingForVotes = [root sendAndRetrieve:waitingForVotesParams];
 	
-	// set the status of voting (are we waiting for people to finish voting?)
-	waiting_for_votes = ([waitingForVotes count]!=0);
-	
-	//tally the votes
-	NSString *nomineesParams = [[NSString stringWithString:@"action=TALLY_VOTES"]
-								stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
-	nominees = [root sendAndRetrieve:nomineesParams];
-	[nominees retain];
-	[self checkForVotingDone];
+	timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkForVotingDone) userInfo:nil repeats:TRUE];
+	[timer fire];
 	
 	[[self tableView] reloadData];
     [super viewWillAppear:animated];
@@ -134,6 +139,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+	
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

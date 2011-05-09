@@ -13,6 +13,7 @@
 @synthesize nominees;
 @synthesize delayedUsers;
 @synthesize root;
+@synthesize timer;
 
 //@synthesize votes;
 - (id)initWithStyle:(UITableViewStyle)style
@@ -64,24 +65,15 @@
     
 	userTotalVotes = maxTotalVotes; //intialze the players spending points
 	
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{    [super viewWillAppear:animated];
-
+-(void)timer_check{
+	NSLog(@"timer reloads data");
 	//get the members that havnt nominated yet
 	NSString *delayedUsersParams = [[NSString stringWithString:@"action=GET_DELAYED_MEMBERS"] 
 									stringByAppendingString:[NSString stringWithFormat:@"&round=%i",[root RoundUNID]]];
@@ -89,6 +81,7 @@
 	
 	//the current state of the voting process
 	wait_for_nominations =([delayedUsers count] != 0); 
+	
 	
 	
 	if(wait_for_nominations)//someone still hasnt nominated (or skipped) 
@@ -108,7 +101,7 @@
     {
 		
         //show the regular vote screen (set based on total number of votes available to the user)
-
+		
         [self setNavTitle];
         
 		
@@ -135,8 +128,19 @@
 	
 	//reload the data
 	[[self tableView] reloadData];
-
 }
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{    [super viewWillAppear:animated];
+	timer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(timer_check) userInfo:nil repeats:TRUE];
+	[timer fire];
+	}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -151,6 +155,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+	[timer invalidate];
 }
 -(void) finishVoteGroup:(UIBarButtonItem*)button {
     NSLog(@"Vote Finished");
@@ -250,7 +255,7 @@
         
        
         // add Subtitle (Last visit to the resturant)
-        cell.detailTextLabel.text=@"Last visit 2 days ago";
+        //cell.detailTextLabel.text=@"Last visit 2 days ago";
         cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
         
         // Add Destination Image Icon

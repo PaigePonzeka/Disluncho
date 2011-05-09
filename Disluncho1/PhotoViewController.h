@@ -29,7 +29,6 @@
 
 
 -(IBAction) getPhoto:(id) sender;
--(void) saveImageToFile;
 - (void)uploadImage: (NSString*) folder: (NSString *) filename;
 
 @end

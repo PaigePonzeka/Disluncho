@@ -65,9 +65,7 @@
     self.title = [[group objectAtIndex:0] objectAtIndex:0];
     
 	
-	NSString *groupMembersParams = [NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",[root GroupUNID]];
-	groupMembers = [root sendAndRetrieve:groupMembersParams];
-	[groupMembers retain];
+
 	
 }
 
@@ -81,6 +79,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+	NSString *groupMembersParams = [NSString stringWithFormat:@"action=LIST_GROUP_MEMBERS&group=%i",[root GroupUNID]];
+	groupMembers = [root sendAndRetrieve:groupMembersParams];
+	[groupMembers retain];
+	[[self tableView]reloadData];
+	
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -114,7 +117,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return section == 0 ? 0 : [groupMembers count];
+    return section == 0 ? 0 : ([groupMembers count]+1);
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -145,7 +148,7 @@
         [button setTitle:[[group objectAtIndex:0]objectAtIndex:0] forState:UIControlStateNormal];
         [modalView addSubview: button];
         // add targets and actions
-       // [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(editNAME) forControlEvents:UIControlEventTouchUpInside];
         return modalView;
 
         //return button;
@@ -156,6 +159,8 @@
         return view;
     }
 }
+-(void)editNAME{
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -164,9 +169,16 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    // Configure the cell...
-    [cell.textLabel setText:[[groupMembers objectAtIndex:indexPath.row] objectAtIndex:MEMBERNAME]];
-    
+	if(indexPath.row == [groupMembers count])
+    {
+        [cell.textLabel setText:@"Add a Member"];
+        //add the arrow to the cell
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+	else{
+		// Configure the cell...
+		[cell.textLabel setText:[[groupMembers objectAtIndex:indexPath.row] objectAtIndex:MEMBERNAME]];
+    }
     return cell;
 }
 
@@ -222,6 +234,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	
+	if(indexPath.row ==[groupMembers count])
+    {
+        NSLog(@"Adding A New Member");
+		
+		
+        // navigate to the AddMewmeberViewController to see the results
+        AddMemberViewController *memberView = [[AddMemberViewController alloc] initWithNibName:@"AddMemberViewController" bundle:nil];
+        [self.navigationController pushViewController:memberView animated:NO];
+        [memberView release];
+    }
+	
+	
+	
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

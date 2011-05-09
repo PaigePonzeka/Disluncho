@@ -146,9 +146,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-	
-	if(hasSetPicture)
-    {
+	if([root imageFileString]!=NULL){
+
         add_photo.hidden = YES;
         //add the image view to that position instead
         
@@ -156,12 +155,10 @@
         UIImage *myUIImage = [root loadImage: root.imageFileString];
         userImageView.image = myUIImage;
         [self.view addSubview:userImageView];
-    }
 	
-	NSLog(@"will appear photo is: %@",[root imageFileString]);
 	/***  self photo_path will be the path of the groups photo  **/
 	//if photo updates were done then update the photo
-	if([root imageFileString]!=NULL){
+	
 		NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&group=%i",[root imageFileString],[root GroupUNID]];
 		[self setPhoto_path:[root imageFileString]];
 		[root setImageFileString:NULL];
@@ -230,6 +227,7 @@
         add_group_name.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;
         add_group_name.font=[UIFont fontWithName:@"Helvetica Bold" size:20];
 		[add_group_name setDelegate: self];
+		[add_group_name retain];
         [modalView addSubview: add_group_name];
         
         return modalView;

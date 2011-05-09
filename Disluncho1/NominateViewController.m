@@ -157,7 +157,7 @@
         // Add the Destination Title
         [cell.textLabel setText:[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACENAME]];
         // add Subtitle (Last visit to the resturant)
-        cell.detailTextLabel.text=@"Last visit 2 days ago";
+        //cell.detailTextLabel.text=@"Last visit 2 days ago";
         cell.detailTextLabel.font=[UIFont fontWithName:@"Helvetica" size:13];
         
        

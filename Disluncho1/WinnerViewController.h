@@ -15,7 +15,7 @@
     NSMutableArray *nominees;
     NSMutableArray *waitingForVotes;
 	Disluncho1AppDelegate *root;
-	
+	NSTimer *timer;
 	int PLACEUNID;
 	int PLACENAME;
 	int PLACEPHOTO;
@@ -25,6 +25,7 @@
 }
 @property (nonatomic, retain) NSMutableArray *nominees;
 @property (nonatomic, retain) NSMutableArray *waitingForVotes;
+@property (nonatomic, retain) NSTimer *timer;
 
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 -(void)checkForVotingDone;

@@ -47,7 +47,7 @@
 
 	
 	//will print out each database call and results
-	DATABASE_VERBOSE = TRUE;
+	DATABASE_VERBOSE = FALSE;
 	
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
@@ -204,12 +204,13 @@
 		
 		return [UIImage imageNamed:imgName];
 	}
-	NSString *withoutPNG = [imgName stringByReplacingOccurrencesOfString:@".png" withString:@""];
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", withoutPNG]];
-	NSLog(@"fullpath = %@",fullPath);
-	return [UIImage imageWithContentsOfFile:fullPath];
+	else{
+		NSString *withoutPNG = [imgName stringByReplacingOccurrencesOfString:@".png" withString:@""];
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		NSString *documentsDirectory = [paths objectAtIndex:0];
+		NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", withoutPNG]];
+		return [UIImage imageWithContentsOfFile:fullPath];
+	}
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

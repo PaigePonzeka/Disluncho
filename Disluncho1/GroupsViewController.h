@@ -23,9 +23,13 @@
 	int GROUPID;
 	int GROUPPHOTO;
 	int ROUNDID;
+	int MEMBEREMAIL;
 
 }
 @property (nonatomic, retain) NSMutableArray *usersGroups;
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 @property (nonatomic, assign) int GROUPID;
+- (void) sendEmailTo:(NSString *)to;
+
+
 @end

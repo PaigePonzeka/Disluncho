@@ -18,6 +18,7 @@
     IBOutlet UITextField *login_name;
 	IBOutlet UITextField *login_email;
     IBOutlet UIButton *add_photo;
+	IBOutlet UILabel *warning;
 	NSString *photo_path;
    // PhotoViewController *photoAdder;
     bool hasSetPicture;
@@ -29,6 +30,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *login_name;
 @property (nonatomic, retain) NSString *photo_path;
 @property (nonatomic, retain) IBOutlet UITextField *login_email;
+@property (nonatomic, retain) IBOutlet UILabel *warning;
 //@property (nonatomic, retain) PhotoViewController *photoAdder;
 @property (nonatomic, assign) bool hasSetPicture;
 

@@ -92,6 +92,7 @@
 -(void)doneWithRestuarant
 {
 	//search to see if this place exists in the database (possible similar finds screen/options)
+	if((eatery_name.text == NULL)||([eatery_name.text isEqualToString:@""])){eatery_name.text = @"Unnamed Restuarant";}
 	NSString *similarPlacesParams = [NSString stringWithFormat:@"action=GET_LIKE_PLACE&name=%@",eatery_name.text];
 	NSMutableArray *similarPlaces;
 	similarPlaces = [root sendAndRetrieve:similarPlacesParams];
@@ -147,9 +148,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];	
-    if(hasSetPicture)
-    {
+    [super viewDidAppear:animated];		
+	if([root imageFileString]!=NULL){
         add_photo.hidden = YES;
         //add the image view to that position instead
         //remove .png from the file 
@@ -159,10 +159,9 @@
         UIImage *myUIImage = [root loadImage: withoutPNG];
         userImageView.image = myUIImage;
         [self.view addSubview:userImageView];
-    }
+    
     	/***  self photo_path will be the path of the groups photo  **/
 	//if photo updates were done then update the photo
-	if([root imageFileString]!=NULL){
 		NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&place=%i",[root imageFileString],[self place]];
 		[self setPhoto_path:[root imageFileString]];
 		[root setImageFileString:NULL];
