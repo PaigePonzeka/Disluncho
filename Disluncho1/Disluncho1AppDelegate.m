@@ -44,23 +44,7 @@
     [theData writeToFile:localFilePath atomically:YES];
     
     UIImage *img = [[UIImage alloc] initWithData:theData];
-    //ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    //[request setDownloadDestinationPath:fullPathOfWhereToStoreFile];
-   /* NSString *urlOfFiles=@"";
-    NSURL *fileUrl = [[NSURL alloc] initFileURLWithPath:urlOfFiles];
-    NSURLRequest *theRequest = [NSURLRequest requestWithURL:fileUrl cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
-    self.receivedData = [[NSMutableData alloc] initWithLength:0];
-    self.connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    // Create the connection with the request and start loading the data.
-    if (self.connection) {
-        // Create the NSMutableData to hold the received data.
-        // receivedData is an instance variable declared elsewhere.
-        self.receivedData = [[NSMutableData data] retain];
-        NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);	
-    } else {
-        // Inform the user that the connection failed.
-    }    */
-    //testing purposes ONLY
+        //testing purposes ONLY
 	UserUNID = 3;
 	
 	//will print out each database call and results

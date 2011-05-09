@@ -6673,9 +6673,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>326608222.51033598</real>
-		<string>{525, 2454}</string>
-		<string>{1807, 0}</string>
+		<real>326609281.35455602</real>
+		<string>{926, 1869}</string>
+		<string>{2001, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -26061,9 +26061,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>326608222.516352</real>
-		<string>{525, 2454}</string>
-		<string>{1807, 0}</string>
+		<real>326609281.35703498</real>
+		<string>{926, 1869}</string>
+		<string>{2001, 0}</string>
 		<string>-application:didFinishLaunchingWithOptions:</string>
 		<dict>
 			<key>$class</key>
