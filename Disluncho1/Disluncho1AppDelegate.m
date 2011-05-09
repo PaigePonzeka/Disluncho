@@ -34,16 +34,11 @@
     
     
     /*Download Images*/
-    NSLog(@"Downloading images from Server...");
-    NSURL *link = [[NSURL alloc]initWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/10.png"]];
-    [NSURLConnection connectionWithRequest:request delegate:self];
-   
-    NSString *localFilePath = [documentsDirectory stringByAppendingPathComponent:@"groups/"];
-    NSData* theData = [NSData dataWithContentsOfURL:link];
-    [theData writeToFile:localFilePath atomically:YES];
+    [self downloadFile:@"0.png":@"places"];   
+    [self downloadFile:@"1.png":@"places"];   
     
-    UIImage *img = [[UIImage alloc] initWithData:theData];
+    [self downloadFile:@"0.png":@"groups"];   
+    //UIImage *img = [[UIImage alloc] initWithData:theData];
 
 	
 	//will print out each database call and results
@@ -57,14 +52,19 @@
 }
 -(void) downloadFile: (NSString*) filename : (NSString*) folder
 {
-    NSString *linkAsString = [[NSString alloc] initWithFormat:@"%http://ponzeka.com/iphone_disluncho/images/@%filename", folder, filename];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+
+    NSString *linkAsString = [[NSString alloc] initWithFormat:@"http://ponzeka.com/iphone_disluncho/images/%@/%@",folder,filename];
+    NSLog(@"Getting Files From: %@", linkAsString);
     NSURL *link = [[NSURL alloc]initWithString:linkAsString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/10.png"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:linkAsString]];
     [NSURLConnection connectionWithRequest:request delegate:self];
     
-    //NSString *localFilePath = [documentsDirectory stringByAppendingPathComponent:@"groups/"];
+    NSString *localFilePath = [[documentsDirectory stringByAppendingPathComponent:folder]stringByAppendingPathComponent:filename];
+    NSLog(@"Dropping Them: %@", localFilePath );
     NSData* theData = [NSData dataWithContentsOfURL:link];
-   // [theData writeToFile:localFilePath atomically:YES];
+    [theData writeToFile:localFilePath atomically:YES];
     
 
 }
