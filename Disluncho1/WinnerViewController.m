@@ -60,19 +60,7 @@
 }
 -(void)checkForVotingDone
 {
-	//get members who have not voted yet in this round
-	NSString *waitingForVotesParams = [[NSString stringWithString:@"action=GET_NOT_VOTED_MEMBERS"]
-									   stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
-	waitingForVotes = [root sendAndRetrieve:waitingForVotesParams];
 
-	// set the status of voting (are we waiting for people to finish voting?)
-	waiting_for_votes = ([waitingForVotes count]!=0);
-	
-	//tally the votes
-	NSString *nomineesParams = [[NSString stringWithString:@"action=TALLY_VOTES"]
-								stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
-	nominees = [root sendAndRetrieve:nomineesParams];
-	[nominees retain];
 	
 	//------choose between screens -----
 	if(!waiting_for_votes) // everyone has finished voting/the vote has ended
@@ -114,7 +102,20 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	if(waiting_for_votes)[self checkForVotingDone];
+	//get members who have not voted yet in this round
+	NSString *waitingForVotesParams = [[NSString stringWithString:@"action=GET_NOT_VOTED_MEMBERS"]
+									   stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
+	waitingForVotes = [root sendAndRetrieve:waitingForVotesParams];
+	
+	// set the status of voting (are we waiting for people to finish voting?)
+	waiting_for_votes = ([waitingForVotes count]!=0);
+	
+	//tally the votes
+	NSString *nomineesParams = [[NSString stringWithString:@"action=TALLY_VOTES"]
+								stringByAppendingFormat:@"&round=%i",[root RoundUNID]];
+	nominees = [root sendAndRetrieve:nomineesParams];
+	[nominees retain];
+	[self checkForVotingDone];
 	
 	[[self tableView] reloadData];
     [super viewWillAppear:animated];

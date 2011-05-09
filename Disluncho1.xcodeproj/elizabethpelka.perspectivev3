@@ -275,7 +275,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
+									<integer>15</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -316,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>811B2EAF136A08D4002CE630</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>RootViewController.m</string>
+								<string>WinnerViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,18 +324,16 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>811B2EB0136A08D4002CE630</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>RootViewController.m</string>
+										<string>WinnerViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>81ACDB671377AE15004D0F77</string>
+										<string>81ACDB911377B728004D0F77</string>
 										<key>history</key>
 										<array>
 											<string>81779C21136F74B600672DAA</string>
 											<string>81E9DB9E137363FF00CE25B5</string>
 											<string>81ACD984137742F2004D0F77</string>
-											<string>81ACD98C137742F2004D0F77</string>
-											<string>81ACD99B13774619004D0F77</string>
 											<string>81ACD9C9137759B9004D0F77</string>
 											<string>81ACDA2B13776FA6004D0F77</string>
 											<string>81ACDA2E13776FA6004D0F77</string>
@@ -346,14 +344,16 @@
 											<string>81ACDB101377947D004D0F77</string>
 											<string>81ACDB111377947D004D0F77</string>
 											<string>81ACDB2313779A55004D0F77</string>
-											<string>81ACDB2413779A55004D0F77</string>
-											<string>81ACDB2513779A55004D0F77</string>
 											<string>81ACDB2613779A55004D0F77</string>
 											<string>81ACDB2713779A55004D0F77</string>
-											<string>81ACDB2813779A55004D0F77</string>
-											<string>81ACDB3213779AF9004D0F77</string>
-											<string>81ACDB641377ADB5004D0F77</string>
-											<string>81ACDB651377ADB5004D0F77</string>
+											<string>81ACDB6C1377AF3E004D0F77</string>
+											<string>81ACDB6D1377AF3E004D0F77</string>
+											<string>81ACDB6E1377AF3E004D0F77</string>
+											<string>81ACDB6F1377AF3E004D0F77</string>
+											<string>81ACDB7A1377B2B3004D0F77</string>
+											<string>81ACDB841377B597004D0F77</string>
+											<string>81ACDB8E1377B70D004D0F77</string>
+											<string>81ACDB8F1377B70D004D0F77</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -393,8 +393,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1107, -26}}</string>
-										<key>RubberWindowFrame</key>
-										<string>16 63 1376 815 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -448,7 +446,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{0, 0}, {568, 405}}</string>
+										<string>{{10, 27}, {1107, -26}}</string>
+										<key>RubberWindowFrame</key>
+										<string>16 63 1376 815 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
