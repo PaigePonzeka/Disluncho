@@ -210,7 +210,8 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-
+<<<<<<< HEAD
+=======
 						<string key="label">add_photo</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="328810559"/>
@@ -219,12 +220,16 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+>>>>>>> b44ef8a30bc8fc79973a044dab32c79dfcde2abe
 						<string key="label">login_email</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="64877428"/>
 					</object>
+<<<<<<< HEAD
 					<int key="connectionID">16</int>
-
+=======
+					<int key="connectionID">17</int>
+>>>>>>> b44ef8a30bc8fc79973a044dab32c79dfcde2abe
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -320,8 +325,11 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
+<<<<<<< HEAD
 			<int key="maxID">16</int>
-
+=======
+			<int key="maxID">17</int>
+>>>>>>> b44ef8a30bc8fc79973a044dab32c79dfcde2abe
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

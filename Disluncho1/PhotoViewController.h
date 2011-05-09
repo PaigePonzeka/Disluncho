@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Disluncho1AppDelegate.h"
+#import "RootViewController.h"
 
 @interface PhotoViewController :  UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>  {
     UIImageView * imageView;
@@ -23,6 +24,9 @@
 @property (nonatomic, retain) IBOutlet UIButton * takePhotoBtn;
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 @property (nonatomic, retain)  UIImage *selectedImage;
+
+@property(nonatomic,assign) bool isImageSelected;
+
 
 -(IBAction) getPhoto:(id) sender;
 -(void) saveImageToFile;

@@ -11,8 +11,12 @@
 
 @implementation AddRestaurantViewController
 @synthesize root;
+<<<<<<< HEAD
+@synthesize photo_path;
 @synthesize place;
+=======
 @synthesize photo_path, hasSetPicture, add_photo;
+>>>>>>> b44ef8a30bc8fc79973a044dab32c79dfcde2abe
 
 
 - (void)dealloc

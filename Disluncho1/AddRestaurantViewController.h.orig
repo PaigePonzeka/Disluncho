@@ -15,17 +15,23 @@
 	Disluncho1AppDelegate *root;
     IBOutlet UITextField *eatery_name;
 	NSString *photo_path;
+<<<<<<< HEAD
 	int place;
+=======
     bool hasSetPicture;
     IBOutlet UIButton *add_photo;
 
+>>>>>>> b44ef8a30bc8fc79973a044dab32c79dfcde2abe
 
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
 @property (nonatomic, retain) NSString *photo_path;
+<<<<<<< HEAD
 @property int place;
+=======
 @property (nonatomic, retain) IBOutlet UIButton *add_photo;
 @property (nonatomic, assign) bool hasSetPicture;
+>>>>>>> b44ef8a30bc8fc79973a044dab32c79dfcde2abe
 -(IBAction) setPhoto:(id) sender;
 
 @end

@@ -46,12 +46,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+<<<<<<< HEAD
 	/***  self photo_path will be the path of the groups photo  **/
 	//if photo updates were done then update the photo
 	if([root imageFileString]!=NULL){
 		[self setPhoto_path:[root imageFileString]];
 		[root setImageFileString:NULL];
 	}
+=======
+
 }
 //loading image from Documents
 - (UIImage*)loadImage:(NSString*)imgName {
@@ -59,6 +62,7 @@
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imgName]];
 	return [UIImage imageWithContentsOfFile:fullPath];
+>>>>>>> b44ef8a30bc8fc79973a044dab32c79dfcde2abe
 }
 
 - (void)viewDidAppear:(BOOL)animated
