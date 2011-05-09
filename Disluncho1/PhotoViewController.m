@@ -34,7 +34,7 @@
                 folder = @"users/";
             }
             //determine the file name
-            NSString *filename; 
+            NSString* filename; 
         
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -85,19 +85,16 @@
 
                
             }
+            //set the root imagefilestring
             root.imageFileString = applicationFilePath;
             
             NSData *imageData =  UIImagePNGRepresentation(selectedImage);
             [imageData writeToFile:saveFile atomically:YES];
             NSLog(@" file is %@ ... %@", applicationFilePath, root.imageFileString);
-            //see if the files were written
-            // Create file manager
-           /* NSError *error;
-            NSFileManager *fileMgr = [NSFileManager defaultManager];
-            
-            // Write out the contents of home directory to console
-            NSLog(@"Documents directory: %@", [fileMgr contentsOfDirectoryAtPath:documentsDirectory error:&error]);*/
+            //upload the image to the web
+            [self uploadImage:folder:filename];
 
+            
         }
         else //behave like normal
         {
@@ -158,7 +155,41 @@
 }
 
 #pragma mark - View lifecycle
-
+/*upload the image to the server*/
+- (void)uploadImage: (NSString*) folder: (NSString*) filename {
+    
+	NSData *imageData = UIImagePNGRepresentation(selectedImage);
+	// setting up the URL to post to
+	NSString *urlString = [[NSString alloc] initWithFormat:@"%@%@%@",@"http://ponzeka.com/iphone_disluncho/images/", folder,@"upload.php"];
+    NSLog(@"Sending File to: %@", urlString);
+	// setting up the request object now
+	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+	[request setURL:[NSURL URLWithString:urlString]];
+	[request setHTTPMethod:@"POST"];
+    
+    
+NSString *boundary = [NSString stringWithString:@"---------------------------14737809831466499882746641449"];
+	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+	[request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+	/*
+	 now lets create the body of the post
+     */
+	NSMutableData *body = [NSMutableData data];
+	[body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"%@\"\r\n", filename] dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData:[NSData dataWithData:imageData]];
+	[body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	// setting the body of the post to the reqeust
+	[request setHTTPBody:body];
+    
+	// now lets make the connection to the web
+	NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+	NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    
+	NSLog(@"%@",returnString);
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
