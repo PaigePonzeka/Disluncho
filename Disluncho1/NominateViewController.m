@@ -162,7 +162,7 @@
         
        
         // Add Destination Image Icon
-        UIImage* theImage = [UIImage imageNamed:[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACEPHOTO] ];//@"default_eatery.png"];
+        UIImage* theImage = [root loadImage:[[currentRestaurants objectAtIndex:indexPath.row]objectAtIndex:PLACEPHOTO] ];//@"default_eatery.png"];
         cell.imageView.image = theImage;
     }
     

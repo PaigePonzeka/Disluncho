@@ -192,7 +192,20 @@
 		NSLog(@"[row #%i]- %@ ",j,fields);
 	}
 }
-
+//loading image from Documents
+- (UIImage*)loadImage:(NSString*)imgName {
+	//default images are stored separately 
+	if(([imgName length]>7)&&([[imgName substringToIndex:7] isEqualToString:@"default"])){
+		
+		return [UIImage imageNamed:imgName];
+	}
+	NSString *withoutPNG = [imgName stringByReplacingOccurrencesOfString:@".png" withString:@""];
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", withoutPNG]];
+	NSLog(@"fullpath = %@",fullPath);
+	return [UIImage imageWithContentsOfFile:fullPath];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
