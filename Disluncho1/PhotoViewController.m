@@ -35,8 +35,7 @@
             }
             //determine the file name
             NSString *filename; 
-            /*put in the code to determine a generic file name*/
-            filename;
+        
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectory = [paths objectAtIndex:0];
 
@@ -47,6 +46,9 @@
             NSString *pathToCheck = [NSString stringWithFormat: @"%@/%@",documentsDirectory,folder];
             NSArray *fileList = [manager directoryContentsAtPath:pathToCheck];
                       
+
+            //pop the view controller
+            [self.navigationController popViewControllerAnimated:YES];
             //if the folder is empty then set the name to 00
             if(fileList.count ==0 )
             {
@@ -67,12 +69,28 @@
             }
             NSString *saveFile = [[documentsDirectory stringByAppendingPathComponent:folder]stringByAppendingPathComponent:filename];
             
+            //get the path relative to the file inside the document section of the applicaiton
+            NSArray *folders = [saveFile componentsSeparatedByString: @"/"];
             //save the saveFile to the root
-            root.imageFileString = saveFile;
+            NSMutableString *applicationFilePath=[[NSMutableString alloc]init];
+            int i;
+            for(i =([folders count]-2); i<([folders count]); i++)
+            {
+                NSLog(@"%@",[folders objectAtIndex:i]);
+                [applicationFilePath appendFormat:@"%@",[folders objectAtIndex:i]];
+                if(i!=([folders count]-1))
+                {
+                    [applicationFilePath appendFormat:@"%/"];
+                }
+
+               
+            }
+            root.imageFileString = applicationFilePath;
+            
             
             NSData *imageData =  UIImagePNGRepresentation(selectedImage);
             [imageData writeToFile:saveFile atomically:YES];
-            NSLog(@" file is %@", saveFile);
+            NSLog(@" file is %@", applicationFilePath);
             //see if the files were written
             // Create file manager
            /* NSError *error;

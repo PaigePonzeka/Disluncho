@@ -12,15 +12,16 @@
 
 
 @implementation RootViewController
-@synthesize root;
-@synthesize login_name;
-@synthesize login_email;
-@synthesize photo_path;
+@synthesize root, login_name, login_email,photo_path, hasSetPicture;;
+
+
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
+    hasSetPicture = false;
 	//set up pointer to the root
 	root = (Disluncho1AppDelegate*)[UIApplication sharedApplication].delegate;
 	
@@ -36,6 +37,8 @@
 
     //set the height of the login_name text field
     login_name.borderStyle = UITextBorderStyleRoundedRect;
+    
+    //photoAdder = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
 
         
 }
@@ -43,12 +46,34 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
 }
+//loading image from Documents
+- (UIImage*)loadImage:(NSString*)imgName {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imgName]];
+	return [UIImage imageWithContentsOfFile:fullPath];
+}
+
+
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    if(hasSetPicture)
+    {
+        add_photo.hidden = YES;
+        //add the image view to that position instead
+        //remove .png from the file 
+        NSString *withoutPNG = [root.imageFileString stringByReplacingOccurrencesOfString:@".png" withString:@""];
+
+        UIImageView *userImageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, 50, 50)];
+        UIImage *myUIImage = [self loadImage: withoutPNG];
+        userImageView.image = myUIImage;
+        [self.view addSubview:userImageView];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -64,14 +89,14 @@
 -(IBAction) setPhoto:(id) sender
 {
     NSLog(@"Changing to Add Photo Screen");
-    
+    hasSetPicture=true;
     //set the appdelegate global varable to determine if the photo is for users, places or groups
     root.image_type = 3; //set value to users
     //switch to the add photo screen
     PhotoViewController *photoAdder = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
     [self.navigationController pushViewController:photoAdder animated:YES];
     [photoAdder release];
-}
+    }
 
 -(void) registerUser:(UIBarButtonItem*)button
 {
@@ -172,6 +197,8 @@
 - (void)dealloc
 {
     [login_name release];
+    //[photoAdder release];
+
     [super dealloc];
 }
 

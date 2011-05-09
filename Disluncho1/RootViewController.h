@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GroupsViewController.h"
 #import "Disluncho1AppDelegate.h"
-#import "PhotoViewController.h"
+//#import "PhotoViewController.h"
 
 @interface RootViewController : UIViewController {
 	Disluncho1AppDelegate *root;
@@ -17,7 +17,10 @@
 	int USERPHOTO;
     IBOutlet UITextField *login_name;
 	IBOutlet UITextField *login_email;
+    IBOutlet UIButton *add_photo;
 	NSString *photo_path;
+   // PhotoViewController *photoAdder;
+    bool hasSetPicture;
 
 }
 @property (nonatomic, retain) Disluncho1AppDelegate *root;
@@ -26,4 +29,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *login_name;
 @property (nonatomic, retain) NSString *photo_path;
 @property (nonatomic, retain) IBOutlet UITextField *login_email;
+//@property (nonatomic, retain) PhotoViewController *photoAdder;
+@property (nonatomic, assign) bool hasSetPicture;
+
 @end
