@@ -15,11 +15,7 @@
 
 @synthesize navigationController=_navigationController;
 
-@synthesize UserUNID;
-@synthesize GroupUNID;
-@synthesize RoundUNID;
-@synthesize DATABASE_VERBOSE;
-@synthesize image_type, imageFileString;
+@synthesize UserUNID,GroupUNID, RoundUNID, DATABASE_VERBOSE, image_type, imageFileString, receivedData,connection;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -36,7 +32,19 @@
             [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:nil];
     }
     
-   //testing purposes ONLY
+    
+    /*Download Images*/
+    NSLog(@"Downloading images from Server...");
+    NSURL *link = [[NSURL alloc]initWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/10.png"]];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+   
+    NSString *localFilePath = [documentsDirectory stringByAppendingPathComponent:@"groups/"];
+    NSData* theData = [NSData dataWithContentsOfURL:link];
+    [theData writeToFile:localFilePath atomically:YES];
+    
+    UIImage *img = [[UIImage alloc] initWithData:theData];
+        //testing purposes ONLY
 	UserUNID = 3;
 	
 	//will print out each database call and results
@@ -48,7 +56,28 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [receivedData setLength:0];
+}
 
+- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [receivedData appendData:data];
+}
+
+- (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+   
+}
+
+- (NSCachedURLResponse *) connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+    return nil;
+}
+
+- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+}
 /*
  *will return 2D array of results[row,field] 
  *must send parameters as (@"action=____&otherParamName=___& ...")
@@ -212,6 +241,7 @@
 
 - (void)dealloc
 {
+    [connection release];
     [_window release];
     [_navigationController release];
     [super dealloc];
