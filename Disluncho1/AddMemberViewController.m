@@ -92,11 +92,13 @@
 		/* the email does not exist in the database send the person an email to join and add them later 
 			have a pop up to tell the person that they cannot add the member now
 		 */
-		NSLog(@"Sending Email to: %@ Asking Them to Join", member_email.text);
-        //send email to the user
-        [self sendEmailTo: member_email.text];
-        member_email.placeholder = @"Email Address";
-        member_email.text = @"";
+		
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invite Them to Disluncho" message:[NSString stringWithFormat:@"The email provide doesn't match any of our current users.  Send an Invite to %@ and add them later.",member_email.text]
+													   delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+		[alert setDelegate:self];
+		[alert show];
+		[alert release];
+
       	}
 	else{
 		NSString *addMemberParams = [NSString stringWithFormat:@"action=ADD_MEMBER&user=%i&group=%i",
@@ -108,6 +110,22 @@
 
 		//pop this view off the screen (back to the previous view)
 		[self.navigationController popViewControllerAnimated:YES];
+	}
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+	if (buttonIndex ==0)//cancel button 
+	{
+		member_email.placeholder = @"Email Address";
+        member_email.text = @"";
+	}
+	else
+	{		
+		NSLog(@"Sending Email to: %@ Asking Them to Join", member_email.text);
+        //send email to the user
+        [self sendEmailTo: member_email.text];
+        member_email.placeholder = @"Email Address";
+        member_email.text = @"";
+
 	}
 }
 - (void)viewDidUnload

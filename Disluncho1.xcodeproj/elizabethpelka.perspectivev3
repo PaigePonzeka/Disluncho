@@ -276,7 +276,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>17</integer>
+									<integer>9</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -310,14 +310,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>811B2EAF136A08D4002CE630</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AddGroupViewController.m</string>
+								<string>GroupDetailsViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +323,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>811B2EB0136A08D4002CE630</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AddGroupViewController.m</string>
+										<string>GroupDetailsViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>81ACDD1C1378016E004D0F77</string>
+										<string>81ACDD3B137805B9004D0F77</string>
 										<key>history</key>
 										<array>
 											<string>81779C21136F74B600672DAA</string>
@@ -338,23 +336,23 @@
 											<string>81ACDBB01377BD07004D0F77</string>
 											<string>81ACDC4A1377CD84004D0F77</string>
 											<string>81ACDC6E1377D14C004D0F77</string>
-											<string>81ACDC701377D14C004D0F77</string>
 											<string>81ACDC7A1377D210004D0F77</string>
 											<string>81ACDC911377D6EC004D0F77</string>
 											<string>81ACDCA51377D981004D0F77</string>
-											<string>81ACDCBF1377F022004D0F77</string>
 											<string>81ACDCD11377F698004D0F77</string>
 											<string>81ACDCE91377FB01004D0F77</string>
 											<string>81ACDD121378016E004D0F77</string>
 											<string>81ACDD131378016E004D0F77</string>
-											<string>81ACDD141378016E004D0F77</string>
-											<string>81ACDD151378016E004D0F77</string>
 											<string>81ACDD161378016E004D0F77</string>
-											<string>81ACDD171378016E004D0F77</string>
 											<string>81ACDD181378016E004D0F77</string>
-											<string>81ACDD191378016E004D0F77</string>
 											<string>81ACDD1A1378016E004D0F77</string>
-											<string>81ACDD1B1378016E004D0F77</string>
+											<string>81ACDD241378034A004D0F77</string>
+											<string>81ACDD251378034A004D0F77</string>
+											<string>81ACDD261378034A004D0F77</string>
+											<string>81ACDD271378034A004D0F77</string>
+											<string>81ACDD321378052A004D0F77</string>
+											<string>81ACDD39137805B9004D0F77</string>
+											<string>81ACDD3A137805B9004D0F77</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

@@ -138,7 +138,7 @@
     
        
         UIImageView *myImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        [myImage setImage:[UIImage imageNamed:[[group objectAtIndex:0]objectAtIndex:GROUPPHOTO]]];//@"default_group.png"]];
+        [myImage setImage:[root loadImage:[[group objectAtIndex:0]objectAtIndex:GROUPPHOTO]]];//@"default_group.png"]];
         //myImage.opaque = YES; // explicitly opaque for performance
         [modalView addSubview:myImage];
         [myImage release];
