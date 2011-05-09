@@ -44,8 +44,7 @@
     [theData writeToFile:localFilePath atomically:YES];
     
     UIImage *img = [[UIImage alloc] initWithData:theData];
-        //testing purposes ONLY
-	UserUNID = 3;
+
 	
 	//will print out each database call and results
 	DATABASE_VERBOSE = TRUE;
