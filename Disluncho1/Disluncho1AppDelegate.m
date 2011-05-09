@@ -55,6 +55,19 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+-(void) downloadFile: (NSString*) filename : (NSString*) folder
+{
+    NSString *linkAsString = [[NSString alloc] initWithFormat:@"%http://ponzeka.com/iphone_disluncho/images/@%filename", folder, filename];
+    NSURL *link = [[NSURL alloc]initWithString:linkAsString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/10.png"]];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+    
+    //NSString *localFilePath = [documentsDirectory stringByAppendingPathComponent:@"groups/"];
+    NSData* theData = [NSData dataWithContentsOfURL:link];
+   // [theData writeToFile:localFilePath atomically:YES];
+    
+
+}
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [receivedData setLength:0];
