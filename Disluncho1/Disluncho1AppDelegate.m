@@ -35,9 +35,18 @@
     
     /*Download Images*/
     NSLog(@"Downloading images from Server...");
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDownloadDestinationPath:fullPathOfWhereToStoreFile];
-    /*NSString *urlOfFiles=@"http://ponzeka.com/iphone_disluncho/images/groups/10.png";
+    NSURL *link = [[NSURL alloc]initWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/10.png"]];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+   
+    NSString *localFilePath = [documentsDirectory stringByAppendingPathComponent:@"groups/"];
+    NSData* theData = [NSData dataWithContentsOfURL:link];
+    [theData writeToFile:localFilePath atomically:YES];
+    
+    UIImage *img = [[UIImage alloc] initWithData:theData];
+    //ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    //[request setDownloadDestinationPath:fullPathOfWhereToStoreFile];
+   /* NSString *urlOfFiles=@"";
     NSURL *fileUrl = [[NSURL alloc] initFileURLWithPath:urlOfFiles];
     NSURLRequest *theRequest = [NSURLRequest requestWithURL:fileUrl cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
     self.receivedData = [[NSMutableData alloc] initWithLength:0];
