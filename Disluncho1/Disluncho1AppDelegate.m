@@ -35,15 +35,7 @@
     
     /*Download Images*/
     NSLog(@"Downloading images from Server...");
-    NSURL *link = [[NSURL alloc]initWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/10.png"]];
-    [NSURLConnection connectionWithRequest:request delegate:self];
-   
-    NSString *localFilePath = [documentsDirectory stringByAppendingPathComponent:@"groups/"];
-    NSData* theData = [NSData dataWithContentsOfURL:link];
-    [theData writeToFile:localFilePath atomically:YES];
-    
-    UIImage *img = [[UIImage alloc] initWithData:theData];
+    //[self downloadFile: @"0.png", @"places"];
         //testing purposes ONLY
 	UserUNID = 3;
 	
@@ -55,6 +47,19 @@
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     return YES;
+}
+-(void) downloadFile: (NSString*) filename : (NSString*) folder
+{
+    NSString *linkAsString = [[NSString alloc] initWithFormat:@"%http://ponzeka.com/iphone_disluncho/images/@%filename", folder, filename];
+    NSURL *link = [[NSURL alloc]initWithString:linkAsString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ponzeka.com/iphone_disluncho/images/groups/10.png"]];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+    
+    //NSString *localFilePath = [documentsDirectory stringByAppendingPathComponent:@"groups/"];
+    NSData* theData = [NSData dataWithContentsOfURL:link];
+   // [theData writeToFile:localFilePath atomically:YES];
+    
+
 }
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;

@@ -44,5 +44,6 @@
 -(void) send:(NSString *)parameters;
 -(void) printResults:(NSMutableArray *)results;
 - (UIImage*)loadImage:(NSString*)imgName; 
+-(void) downloadFile: (NSString*) filename : (NSString*) folder;
 
 @end
