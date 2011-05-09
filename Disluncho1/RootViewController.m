@@ -114,7 +114,7 @@
 		NSLog(@"tried to login %@ %@",login_name.text,login_email.text);
 	}
 	else {
-
+		[root setUserUNID:[[[login objectAtIndex:0]objectAtIndex:0] intValue]];
 		if([self photo_path]!=NULL){
 		
 			NSString *photoUpdateParams = [NSString stringWithFormat:@"action=UPDATE_PHOTO&photo=%@&user=%i",
