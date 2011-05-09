@@ -21,7 +21,9 @@
     //2 - places
     //3 - users
     
-    NSString *imageFileString; 
+    NSString *imageFileString;
+    NSMutableData *receivedData;
+    NSURLConnection *connection;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -31,9 +33,11 @@
 @property (nonatomic,assign) int UserUNID;
 @property (nonatomic,assign) int GroupUNID;
 @property (nonatomic,assign) int RoundUNID;
-
 @property (nonatomic,assign) int image_type;
+
 @property (nonatomic,retain) NSString *imageFileString; 
+@property (nonatomic,retain) NSMutableData *receivedData; 
+@property (nonatomic,retain) NSURLConnection *connection;
 
 
 -(NSMutableArray *) sendAndRetrieve:(NSString *)parameters;

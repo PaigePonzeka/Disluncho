@@ -15,11 +15,7 @@
 
 @synthesize navigationController=_navigationController;
 
-@synthesize UserUNID;
-@synthesize GroupUNID;
-@synthesize RoundUNID;
-@synthesize DATABASE_VERBOSE;
-@synthesize image_type, imageFileString;
+@synthesize UserUNID,GroupUNID, RoundUNID, DATABASE_VERBOSE, image_type, imageFileString, receivedData,connection;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -36,7 +32,26 @@
             [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:nil];
     }
     
-   //testing purposes ONLY
+    
+    /*Download Images*/
+    NSLog(@"Downloading images from Server...");
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDownloadDestinationPath:fullPathOfWhereToStoreFile];
+    /*NSString *urlOfFiles=@"http://ponzeka.com/iphone_disluncho/images/groups/10.png";
+    NSURL *fileUrl = [[NSURL alloc] initFileURLWithPath:urlOfFiles];
+    NSURLRequest *theRequest = [NSURLRequest requestWithURL:fileUrl cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
+    self.receivedData = [[NSMutableData alloc] initWithLength:0];
+    self.connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    // Create the connection with the request and start loading the data.
+    if (self.connection) {
+        // Create the NSMutableData to hold the received data.
+        // receivedData is an instance variable declared elsewhere.
+        self.receivedData = [[NSMutableData data] retain];
+        NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);	
+    } else {
+        // Inform the user that the connection failed.
+    }    */
+    //testing purposes ONLY
 	UserUNID = 3;
 	
 	//will print out each database call and results
@@ -48,7 +63,28 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [receivedData setLength:0];
+}
 
+- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [receivedData appendData:data];
+}
+
+- (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+   
+}
+
+- (NSCachedURLResponse *) connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+    return nil;
+}
+
+- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+}
 /*
  *will return 2D array of results[row,field] 
  *must send parameters as (@"action=____&otherParamName=___& ...")
@@ -199,6 +235,7 @@
 
 - (void)dealloc
 {
+    [connection release];
     [_window release];
     [_navigationController release];
     [super dealloc];
