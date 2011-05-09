@@ -165,6 +165,22 @@
 			81ACDB731377AF3E004D0F77 /* PBXTextBookmark */ = 81ACDB731377AF3E004D0F77 /* PBXTextBookmark */;
 			81ACDB741377AF78004D0F77 /* PBXTextBookmark */ = 81ACDB741377AF78004D0F77 /* PBXTextBookmark */;
 			81ACDB751377AF78004D0F77 /* PBXTextBookmark */ = 81ACDB751377AF78004D0F77 /* PBXTextBookmark */;
+			81ACDB7A1377B2B3004D0F77 /* PBXTextBookmark */ = 81ACDB7A1377B2B3004D0F77 /* PBXTextBookmark */;
+			81ACDB7B1377B2B3004D0F77 /* PBXTextBookmark */ = 81ACDB7B1377B2B3004D0F77 /* PBXTextBookmark */;
+			81ACDB7C1377B2B3004D0F77 /* PBXTextBookmark */ = 81ACDB7C1377B2B3004D0F77 /* PBXTextBookmark */;
+			81ACDB7D1377B2D1004D0F77 /* PBXTextBookmark */ = 81ACDB7D1377B2D1004D0F77 /* PBXTextBookmark */;
+			81ACDB801377B3ED004D0F77 /* PBXTextBookmark */ = 81ACDB801377B3ED004D0F77 /* PBXTextBookmark */;
+			81ACDB811377B3ED004D0F77 /* PBXTextBookmark */ = 81ACDB811377B3ED004D0F77 /* PBXTextBookmark */;
+			81ACDB841377B597004D0F77 /* PBXTextBookmark */ = 81ACDB841377B597004D0F77 /* PBXTextBookmark */;
+			81ACDB851377B597004D0F77 /* PBXTextBookmark */ = 81ACDB851377B597004D0F77 /* PBXTextBookmark */;
+			81ACDB861377B597004D0F77 /* PBXTextBookmark */ = 81ACDB861377B597004D0F77 /* PBXTextBookmark */;
+			81ACDB891377B641004D0F77 /* PBXTextBookmark */ = 81ACDB891377B641004D0F77 /* PBXTextBookmark */;
+			81ACDB8A1377B654004D0F77 /* PBXTextBookmark */ = 81ACDB8A1377B654004D0F77 /* PBXTextBookmark */;
+			81ACDB8B1377B654004D0F77 /* PBXTextBookmark */ = 81ACDB8B1377B654004D0F77 /* PBXTextBookmark */;
+			81ACDB8E1377B70D004D0F77 /* PBXTextBookmark */ = 81ACDB8E1377B70D004D0F77 /* PBXTextBookmark */;
+			81ACDB8F1377B70D004D0F77 /* PBXTextBookmark */ = 81ACDB8F1377B70D004D0F77 /* PBXTextBookmark */;
+			81ACDB901377B70D004D0F77 /* PBXTextBookmark */ = 81ACDB901377B70D004D0F77 /* PBXTextBookmark */;
+			81ACDB911377B728004D0F77 /* PBXTextBookmark */ = 81ACDB911377B728004D0F77 /* PBXTextBookmark */;
 			81E9DB9E137363FF00CE25B5 = 81E9DB9E137363FF00CE25B5 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 8135D8BC13679B78008F87AE /* Source Control */;
@@ -193,9 +209,9 @@
 	};
 	28031BF2136728BD006A76F6 /* Disluncho1AppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1046, 3185}}";
-			sepNavSelRange = "{1938, 0}";
-			sepNavVisRange = "{214, 2535}";
+			sepNavIntBoundsRect = "{{0, 0}, {992, 3354}}";
+			sepNavSelRange = "{10143, 0}";
+			sepNavVisRange = "{1360, 1550}";
 		};
 	};
 	28031BF7136728BD006A76F6 /* RootViewController.h */ = {
@@ -225,9 +241,9 @@
 	28031C1C13672CB1006A76F6 /* GroupsViewController.m */ = {
 		uiCtxt = {
 			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{10185, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{10236, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{10286, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 10552}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1097, 3900}}";
-			sepNavSelRange = "{4812, 0}";
-			sepNavVisRange = "{3936, 2234}";
+			sepNavIntBoundsRect = "{{0, 0}, {1090, 3965}}";
+			sepNavSelRange = "{8803, 0}";
+			sepNavVisRange = "{8232, 1483}";
 		};
 	};
 	28031C30136740B5006A76F6 /* NominateViewController.h */ = {
@@ -269,10 +285,10 @@
 	};
 	28031C3B13674A73006A76F6 /* WinnerViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{6534, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{6585, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6635, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 6875}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1153, 2873}}";
-			sepNavSelRange = "{5534, 0}";
-			sepNavVisRange = "{4086, 2264}";
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{6515, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{6566, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6616, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 6856}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 3081}}";
+			sepNavSelRange = "{3346, 0}";
+			sepNavVisRange = "{1923, 1687}";
 		};
 	};
 	28031C3F1367578D006A76F6 /* AddGroupViewController.h */ = {
@@ -523,7 +539,7 @@
 		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
 		name = "WinnerViewController.m: 183";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5580;
 		rType = 0;
 		vrLen = 2216;
 		vrLoc = 4659;
@@ -1083,7 +1099,7 @@
 		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
 		name = "WinnerViewController.m: 183";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5580;
 		rType = 0;
 		vrLen = 2214;
 		vrLoc = 4659;
@@ -1093,7 +1109,7 @@
 		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
 		name = "WinnerViewController.m: 183";
 		rLen = 0;
-		rLoc = 5534;
+		rLoc = 5515;
 		rType = 0;
 		vrLen = 2174;
 		vrLoc = 4176;
@@ -1103,7 +1119,7 @@
 		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
 		name = "WinnerViewController.m: 183";
 		rLen = 0;
-		rLoc = 5534;
+		rLoc = 5515;
 		rType = 0;
 		vrLen = 2174;
 		vrLoc = 4176;
@@ -1123,7 +1139,7 @@
 		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
 		name = "WinnerViewController.m: 183";
 		rLen = 0;
-		rLoc = 5534;
+		rLoc = 5515;
 		rType = 0;
 		vrLen = 1684;
 		vrLoc = 4665;
@@ -1133,7 +1149,7 @@
 		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
 		name = "WinnerViewController.m: 183";
 		rLen = 0;
-		rLoc = 5534;
+		rLoc = 5515;
 		rType = 0;
 		vrLen = 2174;
 		vrLoc = 4176;
@@ -1413,7 +1429,7 @@
 		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
 		name = "WinnerViewController.m: 183";
 		rLen = 0;
-		rLoc = 5534;
+		rLoc = 5515;
 		rType = 0;
 		vrLen = 2264;
 		vrLoc = 4086;
@@ -1456,6 +1472,166 @@
 		rType = 0;
 		vrLen = 1254;
 		vrLoc = 1409;
+	};
+	81ACDB7A1377B2B3004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031BF2136728BD006A76F6 /* Disluncho1AppDelegate.m */;
+		name = "Disluncho1AppDelegate.m: 46";
+		rLen = 0;
+		rLoc = 1938;
+		rType = 0;
+		vrLen = 2535;
+		vrLoc = 214;
+	};
+	81ACDB7B1377B2B3004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
+		name = "GroupsViewController.m: 166";
+		rLen = 0;
+		rLoc = 4812;
+		rType = 0;
+		vrLen = 2555;
+		vrLoc = 3704;
+	};
+	81ACDB7C1377B2B3004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
+		name = "GroupsViewController.m: 266";
+		rLen = 0;
+		rLoc = 8803;
+		rType = 0;
+		vrLen = 2345;
+		vrLoc = 8207;
+	};
+	81ACDB7D1377B2D1004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
+		name = "GroupsViewController.m: 266";
+		rLen = 0;
+		rLoc = 8803;
+		rType = 0;
+		vrLen = 2533;
+		vrLoc = 8019;
+	};
+	81ACDB801377B3ED004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031BF2136728BD006A76F6 /* Disluncho1AppDelegate.m */;
+		name = "Disluncho1AppDelegate.m: 263";
+		rLen = 0;
+		rLoc = 10143;
+		rType = 0;
+		vrLen = 1550;
+		vrLoc = 1360;
+	};
+	81ACDB811377B3ED004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
+		name = "GroupsViewController.m: 266";
+		rLen = 0;
+		rLoc = 8803;
+		rType = 0;
+		vrLen = 1483;
+		vrLoc = 8232;
+	};
+	81ACDB841377B597004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
+		name = "GroupsViewController.m: 266";
+		rLen = 0;
+		rLoc = 8803;
+		rType = 0;
+		vrLen = 2533;
+		vrLoc = 8019;
+	};
+	81ACDB851377B597004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
+		name = "WinnerViewController.m: 183";
+		rLen = 0;
+		rLoc = 5515;
+		rType = 0;
+		vrLen = 2263;
+		vrLoc = 4086;
+	};
+	81ACDB861377B597004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
+		name = "WinnerViewController.m: 117";
+		rLen = 0;
+		rLoc = 3344;
+		rType = 0;
+		vrLen = 1677;
+		vrLoc = 2289;
+	};
+	81ACDB891377B641004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
+		name = "WinnerViewController.m: 117";
+		rLen = 0;
+		rLoc = 3344;
+		rType = 0;
+		vrLen = 1546;
+		vrLoc = 2486;
+	};
+	81ACDB8A1377B654004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C1C13672CB1006A76F6 /* GroupsViewController.m */;
+		name = "GroupsViewController.m: 266";
+		rLen = 0;
+		rLoc = 8803;
+		rType = 0;
+		vrLen = 1483;
+		vrLoc = 8232;
+	};
+	81ACDB8B1377B654004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
+		name = "WinnerViewController.m: 117";
+		rLen = 0;
+		rLoc = 3344;
+		rType = 0;
+		vrLen = 796;
+		vrLoc = 2917;
+	};
+	81ACDB8E1377B70D004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C3A13674A73006A76F6 /* WinnerViewController.h */;
+		name = "WinnerViewController.h: 21";
+		rLen = 0;
+		rLoc = 468;
+		rType = 0;
+		vrLen = 730;
+		vrLoc = 0;
+	};
+	81ACDB8F1377B70D004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
+		name = "WinnerViewController.m: 117";
+		rLen = 0;
+		rLoc = 3344;
+		rType = 0;
+		vrLen = 1546;
+		vrLoc = 2486;
+	};
+	81ACDB901377B70D004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
+		name = "WinnerViewController.m: 118";
+		rLen = 0;
+		rLoc = 3346;
+		rType = 0;
+		vrLen = 1687;
+		vrLoc = 1923;
+	};
+	81ACDB911377B728004D0F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28031C3B13674A73006A76F6 /* WinnerViewController.m */;
+		name = "WinnerViewController.m: 118";
+		rLen = 0;
+		rLoc = 3346;
+		rType = 0;
+		vrLen = 1687;
+		vrLoc = 1923;
 	};
 	81AE2484136F434600757701 /* VoteViewController.m:335 */ = {
 		isa = PBXFileBreakpoint;
