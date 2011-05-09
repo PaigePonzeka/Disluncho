@@ -311,6 +311,7 @@
 		NSMutableArray *newRound;
 		NSString *newRoundParams = [NSString stringWithFormat:@"action=ADD_ROUND&group=%i&user=%i",[root GroupUNID],[root UserUNID]];
 			newRound = [root sendAndRetrieve:newRoundParams];
+		[root setRoundUNID:[[[newRound objectAtIndex:0]objectAtIndex:0] intValue]];
 			NSLog(@"creating a new round\n");
         
 		
