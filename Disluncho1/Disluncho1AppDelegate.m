@@ -23,7 +23,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	//testing purposes ONLY
+    //create the file directories if they don't already exist
+    NSArray *defaultFolders = [[NSArray alloc] initWithObjects:@"groups",@"users",@"places", nil];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    for(NSString *defaultFolder in defaultFolders)
+    {
+        //set the datapath 
+        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:defaultFolder];
+        //if the file path already exists don't create it
+        if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+            [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    
+   //testing purposes ONLY
 	UserUNID = 3;
 	
 	//will print out each database call and results
